@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (email) {
                 // Simulate API call
                 btnNotify.disabled = true;
-                btnNotify.textContent = 'Wird gesendet...';
+                btnNotify.textContent = 'Sending...';
 
                 setTimeout(() => {
                     notifyForm.style.display = 'none';
