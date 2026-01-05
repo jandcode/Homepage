@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitHub Connector | Premium Profile Viewer</title>
-    <meta name="description" content="Verbinde dich sicher mit GitHub und visualisiere dein Profil in einem eleganten Design.">
+    <title>JDCODE LLC | Coming Soon</title>
+    <meta name="description" content="JDCODE LLC - Die Zukunft der Softwareentwicklung. Demnächst verfügbar.">
     <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="background-blobs">
         <div class="blob blob-1"></div>
@@ -19,33 +22,31 @@
     </div>
 
     <main class="container">
-        <header class="hero">
-            <h1>GitHub <span class="gradient-text">Connector</span></h1>
-            <p>Gib deinen Personal Access Token ein, um dein Profil zu erkunden.</p>
-        </header>
-
-        <section class="auth-card glass">
-            <div class="input-group">
-                <label for="gh-token">GitHub Personal Access Token</label>
-                <div class="input-wrapper">
-                    <input type="password" id="gh-token" placeholder="ghp_..." autocomplete="off">
-                    <button id="btn-connect" class="primary-btn">Verbinden</button>
-                </div>
-                <p class="security-note">Ihr Token wird nur lokal verwendet und niemals auf Servern gespeichert.</p>
+        <div class="glass-card">
+            <div class="logo-container">
+                <div class="logo-icon">JD</div>
             </div>
-        </section>
 
-        <section id="profile-display" class="profile-card glass hidden">
-            <!-- Profile content will be injected here -->
-            <div class="loader hidden" id="loader"></div>
-            <div id="profile-content"></div>
-        </section>
+            <span class="badge">In Entwicklung</span>
+            <h1>JDCODE <span class="gradient-text">LLC</span></h1>
+            <p class="hero-sub">Wir bauen die nächste Generation digitaler Lösungen. Etwas Großartiges entsteht gerade
+                hinter den Kulissen.</p>
 
-        <section id="error-message" class="error-toast glass hidden">
-            <p>Ups! Da ist etwas schiefgelaufen. Bitte überprüfe deinen Token.</p>
-        </section>
+            <form class="cta-group" id="notify-form">
+                <div class="input-wrapper">
+                    <input type="email" id="email-input" placeholder="Deine E-Mail Adresse" required>
+                </div>
+                <button type="submit" id="btn-notify">Benachrichtigt mich</button>
+            </form>
+            <p class="success-message" id="success-msg">Danke! Wir melden uns bei dir.</p>
+        </div>
+
+        <footer>
+            &copy; 2026 JDCODE LLC. Alle Rechte vorbehalten.
+        </footer>
     </main>
 
     <script src="script.js"></script>
 </body>
+
 </html>
