@@ -1,50 +1,249 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JDCODE LLC | Coming Soon</title>
-    <meta name="description" content="JDCODE LLC - The future of software development. Coming soon.">
-    <!-- Google Fonts: Inter -->
+    <title>JDCode LLC | Tech-Partner für Agenturen & KMU</title>
+    <meta name="description"
+        content="JDCode LLC - Ihr technischer Partner für Matterport SDK, Custom E-Commerce & AI-Integrationen. Wir verwandeln statische 3D-Touren in Business-Anwendungen.">
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap"
         rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="background-blobs">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
-    </div>
 
-    <main class="container">
-        <div class="glass-card">
-            <div class="logo-container">
-                <div class="logo-icon">JD</div>
-            </div>
-
-            <span class="badge">In Development</span>
-            <h1>JDCODE <span class="gradient-text">LLC</span></h1>
-            <p class="hero-sub">We are building the next generation of digital solutions. Something great is happening
-                behind the scenes.</p>
-
-            <form class="cta-group" id="notify-form">
-                <div class="input-wrapper">
-                    <input type="email" id="email-input" placeholder="Your email address" required>
-                </div>
-                <button type="submit" id="btn-notify">Notify Me</button>
-            </form>
-            <p class="success-message" id="success-msg">Thank you! We'll be in touch soon.</p>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="#" class="logo">JDCode <span class="highlight">LLC</span></a>
+            <nav class="nav">
+                <a href="#services" class="nav-link">Leistungen</a>
+                <a href="#about" class="nav-link">Über mich</a>
+            </nav>
+            <a href="#contact" class="btn btn-primary">Erstgespräch vereinbaren</a>
+            <button class="mobile-menu-btn" aria-label="Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
         </div>
+    </header>
 
-        <footer>
-            &copy; 2026 JDCODE LLC. All rights reserved.
-        </footer>
-    </main>
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-bg-overlay"></div>
+        <div class="container hero-content">
+            <h1 class="hero-headline">Ich verwandle statische 3D-Touren & Shops in <span
+                    class="gradient-text">intelligente Business-Anwendungen.</span></h1>
+            <p class="hero-subheadline">
+                Ihr technischer Partner für Matterport SDK, Custom E-Commerce & AI-Integrationen. <br>
+                Für Agenturen, die "geht nicht" nicht akzeptieren.
+            </p>
+            <div class="hero-cta">
+                <button class="btn btn-secondary"
+                    onclick="document.getElementById('vsl').scrollIntoView({behavior: 'smooth'})">
+                    <i class="fa-solid fa-play"></i> Fallstudie ansehen
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- VSL Section -->
+    <section id="vsl" class="section vsl-section">
+        <div class="container">
+            <h2 class="section-title">Wie Custom Code das Nutzererlebnis verändert</h2>
+            <div class="vsl-grid">
+                <div class="video-wrapper">
+                    <!-- Placeholder for Loom Video -->
+                    <div class="video-placeholder">
+                        <i class="fa-brands fa-youtube video-icon"></i>
+                        <p>Hier 60-90 Sek. Loom-Video einfügen</p>
+                        <!-- <iframe src="..." frameborder="0" allowfullscreen></iframe> -->
+                    </div>
+                </div>
+                <div class="vsl-content">
+                    <ul class="benefit-list">
+                        <li class="benefit-item">
+                            <i class="fa-solid fa-check-circle benefit-icon"></i>
+                            <div>
+                                <h3>Nahtlose Integration</h3>
+                                <p>Kein Medienbruch zwischen 3D-Raum und Warenkorb.</p>
+                            </div>
+                        </li>
+                        <li class="benefit-item">
+                            <i class="fa-solid fa-check-circle benefit-icon"></i>
+                            <div>
+                                <h3>Datenhoheit</h3>
+                                <p>Lösungen, die Ihnen gehören, nicht der Plattform.</p>
+                            </div>
+                        </li>
+                        <li class="benefit-item">
+                            <i class="fa-solid fa-check-circle benefit-icon"></i>
+                            <div>
+                                <h3>Automatisierung</h3>
+                                <p>KI übernimmt Support & Lead-Qualifizierung.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem / Solution Section -->
+    <section id="problem-solution" class="section problem-solution-section">
+        <div class="container">
+            <div class="comparison-grid">
+                <!-- Problem Column -->
+                <div class="comparison-col problem-col">
+                    <h3 class="col-title"><i class="fa-solid fa-triangle-exclamation"></i> Das Problem</h3>
+                    <ul class="comparison-list">
+                        <li>"Matterport ist ein goldener Käfig – tolle Optik, aber kaum Funktionen."</li>
+                        <li>"Webshops sind oft langweilige 2D-Kataloge ohne Erlebnis."</li>
+                        <li>"Interne Prozesse fressen Zeit, weil Software-Inseln nicht verbunden sind."</li>
+                    </ul>
+                </div>
+
+                <!-- Solution Column -->
+                <div class="comparison-col solution-col">
+                    <h3 class="col-title"><i class="fa-solid fa-code"></i> Die Lösung (JDCode LLC)</h3>
+                    <ul class="comparison-list">
+                        <li>"Ich schreibe <strong>Custom Layers (SDK)</strong>, die Matterport zu einer App machen."
+                        </li>
+                        <li>"Ich verbinde <strong>WooCommerce & 3D</strong> via API für echtes v-Commerce."</li>
+                        <li>"Ich integriere <strong>OpenAI</strong>, um Ihre digitalen Räume 'smart' zu machen."</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section services-section">
+        <div class="container">
+            <h2 class="section-title">Productized Services</h2>
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-layer-group"></i></div>
+                    <h3>The Spatial Layer</h3>
+                    <ul class="service-list">
+                        <li>Matterport SDK Entwicklung</li>
+                        <li>Gamification & Gated Content</li>
+                        <li>Interaktive Menüs & IoT Daten</li>
+                    </ul>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-cart-shopping"></i></div>
+                    <h3>The E-Commerce Bridge</h3>
+                    <ul class="service-list">
+                        <li>WooCommerce Custom Development</li>
+                        <li>Synchronisation Warenwirtschaft <-> Frontend</li>
+                        <li>Performance-Optimierung</li>
+                    </ul>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-brain"></i></div>
+                    <h3>The AI Integrator</h3>
+                    <ul class="service-list">
+                        <li>Chatbots mit Firmenwissen (RAG)</li>
+                        <li>Automatisierte Bildanalyse</li>
+                        <li>Prozess-Automatisierung (Python)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="section about-section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image-wrapper">
+                    <img src="profile.png" alt="JDCode Profile" class="about-image">
+                </div>
+                <div class="about-content">
+                    <h2 class="section-title align-left">Code, Kreativität & Klartext.</h2>
+                    <p class="about-text">
+                        Ich bin <strong>Jan Corbatha</strong>*, Gründer von JDCode LLC. <br>
+                        Als gelernter Mediengestalter und studierter Medientechniker (B. Eng.) spreche ich beide
+                        Sprachen:
+                        <strong>Design und Code (C++, JS, Python).</strong>
+                    </p>
+                    <p class="about-text">
+                        Ich arbeite remote aus Australien – das bedeutet für Sie: Während Sie schlafen, werden Ihre
+                        Probleme gelöst.
+                        Morgens liegt das Update in Ihrem Postfach.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-badge"><i class="fa-brands fa-python"></i> Python</span>
+                        <span class="tech-badge"><i class="fa-brands fa-react"></i> React</span>
+                        <span class="tech-badge"><i class="fa-solid fa-cube"></i> Matterport</span>
+                        <span class="tech-badge"><i class="fa-solid fa-robot"></i> OpenAI</span>
+                        <span class="tech-badge"><i class="fa-brands fa-wordpress"></i> WordPress</span>
+                        <span class="tech-badge"><i class="fa-brands fa-php"></i> PHP</span>
+                    </div>
+                </div>
+            </div>
+            <p class="disclaimer-text" style="font-size: 0.8rem; margin-top: 1rem; opacity: 0.7;">* Name exemplarisch
+                eingesetzt</p>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="section process-section">
+        <div class="container">
+            <h2 class="section-title">Der Prozess</h2>
+            <div class="process-steps">
+                <div class="step-card">
+                    <div class="step-number">01</div>
+                    <h3>Discovery Call</h3>
+                    <p>Wir prüfen in 15 Min, ob ich helfen kann.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">02</div>
+                    <h3>Konzept & Fixpreis</h3>
+                    <p>Sie bekommen einen Plan und einen Preis. Keine Überraschungen.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">03</div>
+                    <h3>Execution</h3>
+                    <p>Ich liefere den Code, getestet und dokumentiert.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container footer-content">
+            <h2>Bereit, Ihr Projekt aufs nächste Level zu heben?</h2>
+            <a href="#" class="btn btn-primary footer-cta">Kalender öffnen & Termin buchen</a>
+
+            <div class="footer-bottom">
+                <div class="copyright">© 2026 JDCode LLC. Alle Rechte vorbehalten.</div>
+                <div class="legal-links">
+                    <a href="#">Impressum</a>
+                    <a href="#">Datenschutz</a>
+                    <a href="#">AGB</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
