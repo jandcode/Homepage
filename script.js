@@ -1,47 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Mobile Menu Toggle
-    const mobileBtn = document.querySelector('.mobile-menu-btn');
-    const nav = document.querySelector('.nav');
-    const navLinks = document.querySelectorAll('.nav-link');
-    const header = document.querySelector('header');
+    const navBar = document.querySelector('.nav-bar');
 
-    if (mobileBtn) {
-        mobileBtn.addEventListener('click', () => {
-            nav.classList.toggle('nav-active');
-
-            // Toggle icon
-            const icon = mobileBtn.querySelector('i');
-            if (nav.classList.contains('nav-active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
-        });
-    }
-
-    // Close mobile menu on link click
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            if (nav.classList.contains('nav-active')) {
-                nav.classList.remove('nav-active');
-                const icon = mobileBtn.querySelector('i');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
-        });
-    });
-
-    // Scroll Effect for Header
+    // Scroll Effect for Navbar
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.style.background = "rgba(5, 5, 5, 0.95)";
-            header.style.boxShadow = "0 5px 20px rgba(0,0,0,0.5)";
+        if (window.scrollY > 20) {
+            navBar.style.background = "rgba(255, 255, 255, 0.8)";
+            navBar.style.backdropFilter = "blur(12px)";
+            navBar.style.borderBottom = "1px solid rgba(0,0,0,0.05)";
+            navBar.style.padding = "16px 0"; // shrink slightly
         } else {
-            header.style.background = "rgba(5, 5, 5, 0.85)";
-            header.style.boxShadow = "none";
+            navBar.style.background = "rgba(255, 255, 255, 0.5)"; // original transparent
+            navBar.style.backdropFilter = "blur(10px)";
+            navBar.style.borderBottom = "1px solid rgba(0,0,0,0.03)";
+            navBar.style.padding = "24px 0"; // original size
         }
     });
 
@@ -61,6 +33,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('section').forEach(section => {
         section.classList.add('fade-in-section');
+        section.style.opacity = "0";
+        section.style.transform = "translateY(20px)";
+        section.style.transition = "opacity 0.6s ease-out, transform 0.6s ease-out";
+        section.style.willChange = "opacity, transform";
         observer.observe(section);
     });
+
+    // JS side of the fade-in class logic if CSS is missing it
+    document.head.insertAdjacentHTML("beforeend", `<style>
+        section.visible { opacity: 1 !important; transform: none !important; }
+    </style>`)
 });
