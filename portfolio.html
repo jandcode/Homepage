@@ -78,6 +78,25 @@
 
         .project-info p {
             color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .project-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .meta-item {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .meta-item strong {
+            color: var(--text-main);
         }
 
         .on-site-section {
@@ -167,29 +186,11 @@
     </nav>
 
     <div class="container project-header">
-        <span class="badge">Portfolio</span>
-        <h1 class="headline">Immersive Räume &<br>Smarte Shops</h1>
-        <p class="subheadline">Von Deutschland über Tokyo bis Melbourne. Hier sind einige meiner weltweiten
-            Projekte,<br>bei denen ich
-            physische Orte digital erweitert habe.</p>
+        <h1 class="headline" style="font-size: 2.5rem;">Projekte</h1>
+        <p class="subheadline">Ausgewählte Arbeiten aus den Bereichen 3D & E-Commerce</p>
     </div>
 
     <div class="container">
-        <!-- On Site Section -->
-        <section class="on-site-section">
-            <div class="about-text">
-                <h2>Hands-on. Weltweit.</h2>
-                <p>
-                    Code passiert nicht nur im dunklen Kämmerlein. Für Projekte wie das <strong>Porsche Experience
-                        Center in Tokyo</strong> war ich direkt vor Ort, um sicherzustellen, dass die digitale Aufnahme
-                    der Realität gerecht wird.
-                </p>
-                <p>
-                    Dieses Verständnis für den physischen Raum erlaubt mir, Custom Layers zu entwickeln, die sich
-                    natürlich anfühlen und nicht wie "aufgeklebte" Buttons wirken.
-                </p>
-            </div>
-        </section>
 
         <!-- Matterport Projects -->
         <section id="matterport">
@@ -203,8 +204,13 @@
                     </div>
                     <div class="project-info">
                         <h3>Porsche Experience Center Tokyo</h3>
-                        <p>Ein kompletter digitaler Zwilling der Rennstrecke und des Centers. Custom Navigation und
-                            Info-Points integriert.</p>
+                        <p>Digitaler Zwilling der Rennstrecke und des Experience Centers mit Custom Navigation,
+                            interaktiven Info-Points und nahtloser Integration in die Porsche-Markenwelt.</p>
+                        <div class="project-meta">
+                            <span class="meta-item"><strong>Rolle:</strong> Lead Developer & On-Site Scanning</span>
+                            <span class="meta-item"><strong>Tech:</strong> Matterport SDK, Three.js, Custom UI</span>
+                            <span class="meta-item"><strong>Jahr:</strong> 2024</span>
+                        </div>
                     </div>
                 </div>
 
@@ -216,12 +222,16 @@
                     </div>
                     <div class="project-info">
                         <h3>Melbourne F1 Pavilion 2024</h3>
-                        <p>Digitale Begleitung zum Formel 1 Event. Hochauflösende Erfassung des temporären Pavillons.
-                        </p>
+                        <p>Temporärer Porsche-Pavillon beim Formel 1 Grand Prix. Hochauflösende 3D-Erfassung für
+                            virtuelle Besucher weltweit während des Events.</p>
+                        <div class="project-meta">
+                            <span class="meta-item"><strong>Rolle:</strong> 3D Scanning & Web Integration</span>
+                            <span class="meta-item"><strong>Tech:</strong> Matterport Pro 3, Custom Hosting</span>
+                            <span class="meta-item"><strong>Jahr:</strong> 2024</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Project 3 -->
                 <!-- Project 3 -->
                 <div class="project-item">
                     <div class="iframe-container">
@@ -229,8 +239,13 @@
                     </div>
                     <div class="project-info">
                         <h3>Yagan Square AI</h3>
-                        <p>KI-Guided Tour: Eine integrierte künstliche Intelligenz führt Besucher per Chatbot interaktiv
-                            durch den virtuellen Raum.</p>
+                        <p>Öffentlicher Platz in Perth mit KI-gesteuertem Chatbot. Besucher werden interaktiv durch den
+                            virtuellen Raum geführt und erhalten kontextbezogene Informationen.</p>
+                        <div class="project-meta">
+                            <span class="meta-item"><strong>Rolle:</strong> AI Integration & Frontend</span>
+                            <span class="meta-item"><strong>Tech:</strong> OpenAI API, Matterport SDK, React</span>
+                            <span class="meta-item"><strong>Jahr:</strong> 2024</span>
+                        </div>
                     </div>
                 </div>
 
@@ -242,8 +257,13 @@
                     </div>
                     <div class="project-info">
                         <h3>WA Museum: To The Moon</h3>
-                        <p>Interaktive Ausstellung mit Multimedia-Inhalten, die direkt in die 3D-Tour eingebettet sind.
-                        </p>
+                        <p>Interaktive Museumsausstellung mit eingebetteten Videos, Audio-Guides und Multimedia-Inhalten
+                            direkt im 3D-Raum. Barrierefreier Zugang zur Ausstellung.</p>
+                        <div class="project-meta">
+                            <span class="meta-item"><strong>Rolle:</strong> Multimedia Integration</span>
+                            <span class="meta-item"><strong>Tech:</strong> Matterport SDK, Custom Media Player</span>
+                            <span class="meta-item"><strong>Jahr:</strong> 2023</span>
+                        </div>
                     </div>
                 </div>
 
@@ -263,9 +283,13 @@
                     </div>
                     <div class="card-content" style="padding: 24px;">
                         <h3>Chiropraktik Training Shop</h3>
-                        <p>Mehr als nur ein Shop. Exklusive Features: <strong>Level-System</strong> (automatische
-                            Freischaltung für Level 2 & 3), integriertes <strong>Wartelisten-System</strong> und
-                            angepasste Checkout-Flows.</p>
+                        <p>E-Commerce-Plattform für Ausbildungskurse mit automatischem Level-System,
+                            Wartelisten-Management und Custom Checkout-Flows für gestaffelte Freischaltungen.</p>
+                        <div class="project-meta" style="margin-top: 16px;">
+                            <span class="meta-item"><strong>Rolle:</strong> Full-Stack Development</span>
+                            <span class="meta-item"><strong>Tech:</strong> WooCommerce, Custom PHP, Stripe</span>
+                            <span class="meta-item"><strong>Jahr:</strong> 2024</span>
+                        </div>
                     </div>
                 </a>
             </div>
