@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matterport & 3D Projekte | JDCode</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Page specific overrides */
+        .project-header {
+            padding: 120px 0 60px;
+            text-align: center;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+
+        .iframe-container {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #f1f5f9;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .iframe-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .project-info {
+            margin-top: 20px;
+        }
+
+        .project-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .project-info p {
+            color: var(--text-muted);
+        }
+
+        .on-site-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            margin: 80px 0;
+            background: #fff;
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .on-site-image {
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+        }
+
+        .on-site-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .shop-placeholder-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .shop-card {
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .shop-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-hover-shadow);
+        }
+
+        .shop-image {
+            height: 250px;
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9ca3af;
+        }
+
+        @media (max-width: 768px) {
+            .on-site-section {
+                grid-template-columns: 1fr;
+            }
+
+            .shop-placeholder-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Background Liquid Animation -->
+    <div class="background-liquid">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav-bar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">JDCode</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="#matterport">Interactive 3D</a>
+                <a href="#shops">E-Commerce</a>
+                <a href="index.html#contact" class="btn-nav">Kontakt</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container project-header">
+        <span class="badge">Portfolio</span>
+        <h1 class="headline">Immersive Räume &<br>Smarte Shops</h1>
+        <p class="subheadline">Von Tokyo bis Melbourne. Hier sind einige meiner weltweiten Projekte,<br>bei denen ich
+            physische Orte digital erweitert habe.</p>
+    </div>
+
+    <div class="container">
+        <!-- On Site Section -->
+        <section class="on-site-section">
+            <div class="on-site-image">
+                <img src="jan-matterport-tokyo.jpg" alt="Jan Dorbath mit Matterport Pro 3 in Tokyo">
+            </div>
+            <div class="about-text">
+                <h2>Hands-on. Weltweit.</h2>
+                <p>
+                    Code passiert nicht nur im dunklen Kämmerlein. Für Projekte wie das <strong>Porsche Experience
+                        Center in Tokyo</strong> war ich direkt vor Ort, um sicherzustellen, dass die digitale Aufnahme
+                    der Realität gerecht wird.
+                </p>
+                <p>
+                    Dieses Verständnis für den physischen Raum erlaubt mir, Custom Layers zu entwickeln, die sich
+                    natürlich anfühlen und nicht wie "aufgeklebte" Buttons wirken.
+                </p>
+            </div>
+        </section>
+
+        <!-- Matterport Projects -->
+        <section id="matterport">
+            <h2 class="section-title">Matterport Experiences</h2>
+            <div class="project-grid">
+
+                <!-- Project 1 -->
+                <div class="project-item">
+                    <div class="iframe-container">
+                        <iframe src="https://pectokyo3d.com/" allowfullscreen allow="xr-spatial-tracking"></iframe>
+                    </div>
+                    <div class="project-info">
+                        <h3>Porsche Experience Center Tokyo</h3>
+                        <p>Ein kompletter digitaler Zwilling der Rennstrecke und des Centers. Custom Navigation und
+                            Info-Points integriert.</p>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-item">
+                    <div class="iframe-container">
+                        <iframe src="https://www.dealership3d.com/porsche/pavilion2024" allowfullscreen
+                            allow="xr-spatial-tracking"></iframe>
+                    </div>
+                    <div class="project-info">
+                        <h3>Melbourne F1 Pavilion 2024</h3>
+                        <p>Digitale Begleitung zum Formel 1 Event. Hochauflösende Erfassung des temporären Pavillons.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-item">
+                    <div class="iframe-container">
+                        <iframe src="https://www.dealership3d.com/porsche/missionx" allowfullscreen
+                            allow="xr-spatial-tracking"></iframe>
+                    </div>
+                    <div class="project-info">
+                        <h3>Mission X Presentation</h3>
+                        <p>Exklusive Präsentation des Concept Cars. Custom Lighting und Inszenierung im virtuellen Raum.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-item">
+                    <div class="iframe-container">
+                        <iframe src="https://www.museum3d.com.au/wamuseum/to-the-moon" allowfullscreen
+                            allow="xr-spatial-tracking"></iframe>
+                    </div>
+                    <div class="project-info">
+                        <h3>WA Museum: To The Moon</h3>
+                        <p>Interaktive Ausstellung mit Multimedia-Inhalten, die direkt in die 3D-Tour eingebettet sind.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Shop Placeholders -->
+        <section id="shops" style="padding-bottom: 100px;">
+            <h2 class="section-title">Custom E-Commerce</h2>
+            <div class="shop-placeholder-grid">
+                <!-- Shop 1 -->
+                <div class="shop-card">
+                    <div class="shop-image">
+                        <div style="text-align: center;">
+                            <i class="fa-solid fa-shirt" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                            <p>Fashion Brand<br>Headless Shopify</p>
+                        </div>
+                    </div>
+                    <div class="card-content" style="padding: 24px;">
+                        <h3>Minimalist Fashion Store</h3>
+                        <p>Ein Onlineshop, der sich wie eine App anfühlt. Schnelle Ladezeiten durch Headless-Architektur
+                            und nahtloses Checkout.</p>
+                    </div>
+                </div>
+
+                <!-- Shop 2 -->
+                <div class="shop-card">
+                    <div class="shop-image">
+                        <div style="text-align: center;">
+                            <i class="fa-solid fa-couch" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                            <p>Interior Design<br>Configurator</p>
+                        </div>
+                    </div>
+                    <div class="card-content" style="padding: 24px;">
+                        <h3>Möbel-Konfigurator</h3>
+                        <p>Custom React-App, eingebettet in WooCommerce. Kunden können Sofa-Stoffe und Farben in
+                            Echtzeit 3D ansehen.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 60px;">
+                <a href="index.html#contact" class="btn-primary">Projekt anfragen</a>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 JDCode LLC.</p>
+            <a href="index.html"
+                style="color: var(--text-muted); text-decoration: none; margin-top: 10px; display: inline-block;">Zurück
+                zur Startseite</a>
+        </div>
+    </footer>
+
+</body>
+
+</html>
