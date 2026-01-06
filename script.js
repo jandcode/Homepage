@@ -44,4 +44,46 @@ document.addEventListener('DOMContentLoaded', () => {
     document.head.insertAdjacentHTML("beforeend", `<style>
         section.visible { opacity: 1 !important; transform: none !important; }
     </style>`)
+
+    // Mobile Menu Logic
+    const menuToggle = document.querySelector('.mobile-menu-toggle');
+    // Create mobile menu container if not exists (simpler than editing HTML separately)
+    let mobileMenu = document.querySelector('.mobile-menu');
+    if (!mobileMenu) {
+        mobileMenu = document.createElement('div');
+        mobileMenu.classList.add('mobile-menu');
+        mobileMenu.innerHTML = `
+            <a href="/">Home</a>
+            <a href="portfolio.html">Projekte</a>
+            <a href="/#about">Über mich</a>
+            <a href="/#contact">Kontakt</a>
+        `;
+        // Insert after nav-bar
+        navBar.after(mobileMenu);
+    }
+
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+            // Change icon
+            const icon = menuToggle.querySelector('i');
+            if (mobileMenu.classList.contains('open')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close menu when clicking a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                const icon = menuToggle.querySelector('i');
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            });
+        });
+    }
 });

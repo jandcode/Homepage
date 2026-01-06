@@ -147,6 +147,46 @@ body {
     color: var(--text-main);
 }
 
+.mobile-menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-main);
+}
+
+/* Mobile Menu Container */
+.mobile-menu {
+    position: fixed;
+    top: 70px;
+    /* Below navbar */
+    left: 0;
+    width: 100%;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 99;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.mobile-menu.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+}
+
+.mobile-menu a {
+    display: block;
+    padding: 15px 0;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: var(--text-main);
+    border-bottom: 1px solid #f3f4f6;
+    text-align: center;
+}
+
 .btn-nav {
     color: var(--text-main) !important;
 }
@@ -461,6 +501,15 @@ footer {
 
     .nav-links {
         display: none;
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+    }
+
+    .iframe-container {
+        aspect-ratio: 9/16 !important;
+        /* Portrait mode for mobile */
     }
 
     /* Simple hide for mobile as requested Framer style usually implies desktop-first or burger, but keeping it simple as I removed JS logic */
