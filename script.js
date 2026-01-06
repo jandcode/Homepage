@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileMenu.classList.add('mobile-menu');
         mobileMenu.innerHTML = `
             <a href="/">Home</a>
-            <a href="portfolio.html">Projekte</a>
+            <a href="portfolio.html">Portfolio</a>
             <a href="/#about">Über mich</a>
             <a href="/#contact">Kontakt</a>
         `;
