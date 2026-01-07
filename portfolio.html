@@ -109,21 +109,63 @@
 
         .shop-placeholder-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
+            grid-template-columns: 1fr;
+            /* Stacked layout for these specific sections */
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
         .shop-card {
             background: #fff;
-            border-radius: 16px;
+            border-radius: 20px;
             overflow: hidden;
             border: 1px solid rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s;
+            transition: all 0.3s ease;
+            display: flex;
+            /* Horizontal on desktop */
+            align-items: stretch;
+            min-height: 400px;
+            text-decoration: none;
+            color: inherit;
         }
 
         .shop-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 30px 60px -12px rgba(50, 50, 93, 0.1), 0 18px 36px -18px rgba(0, 0, 0, 0.1);
+        }
+
+        .on-site-image {
+            flex: 0 0 45%;
+            /* Image takes 45% */
+            position: relative;
+            overflow: hidden;
+            background: #f8fafc;
+        }
+
+        .on-site-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-content {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        @media (max-width: 991px) {
+            .shop-card {
+                flex-direction: column;
+            }
+
+            .on-site-image {
+                flex: 0 0 250px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -135,8 +177,8 @@
                 font-size: 2rem !important;
             }
 
-            .shop-placeholder-grid {
-                grid-template-columns: 1fr;
+            .card-content {
+                padding: 30px;
             }
         }
     </style>
@@ -164,8 +206,10 @@
                 </div>
                 <div class="nav-links">
                     <a href="/" data-i18n="nav-home">Home</a>
-                    <a href="#matterport" data-i18n="nav-works">Works</a>
-                    <a href="#shops">E-Commerce</a>
+                    <a href="#ai-integration" data-i18n="nav-ai">AI</a>
+                    <a href="#ecommerce" data-i18n="nav-shop">Shop</a>
+                    <a href="#tracking" data-i18n="nav-tracking">Tracking</a>
+                    <a href="#matterport" data-i18n="nav-3d">3D</a>
                     <a href="/#contact" class="btn-nav" data-i18n="nav-contact">Projekt anfragen</a>
                 </div>
             </div>
@@ -179,137 +223,20 @@
     </div>
 
     <div class="container">
-
-
-        <section id="shops" style="padding-bottom: 100px;">
-            <div class="container">
-                <h2 class="section-title" data-i18n="portfolio-business-section">Business Infrastructure</h2>
-                <div class="shop-placeholder-grid">
-                    <a href="https://chiropraktiktraining.com/shop-neu/" target="_blank" class="shop-card"
-                        style="text-decoration: none; color: inherit; display: block;">
-                        <div class="on-site-image">
-                            <img src="shop.png" alt="Chiropraktik Shop Interface"
-                                style="width: 100%; height: auto; display: block;">
-                        </div>
-                        <div class="card-content" style="padding: 30px;">
-                            <h3 data-i18n="work-shop-title">Custom E-Commerce Solution</h3>
-
-                            <div class="project-insight" style="font-size: 0.95rem; margin-top: 0;"
-                                data-i18n="portfolio-shop-insight">
-                                "Standard WooCommerce konnte die komplexen Kurs-Freischaltungen nicht abbilden. Also
-                                habe
-                                ich es für die <strong>Chiropraktik Training Academy</strong> gebaut."
-                            </div>
-
-                            <p style="margin-top: 15px;" data-i18n="portfolio-shop-desc">Eine Lernplattform, die mehr
-                                ist
-                                als ein Shop. Implementierung von:
-                            </p>
-                            <ul style="color: var(--text-muted); margin-bottom: 20px; padding-left: 20px;">
-                                <li data-i18n="portfolio-shop-li1">Automatisiertem Level-System für Studenten</li>
-                                <li data-i18n="portfolio-shop-li2">Wartelisten-Logik mit Auto-Benachrichtigung</li>
-                                <li data-i18n="portfolio-shop-li3">Gestaffelten Checkout-Flows (Stripe Integration)</li>
-                            </ul>
-
-                            <div class="project-meta">
-                                <span class="meta-item">Custom PHP</span>
-                                <span class="meta-item">WooCommerce Hooks</span>
-                                <span class="meta-item">Headless Elements</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <!-- Tracking Card -->
-                    <div class="shop-card">
-                        <div class="on-site-image">
-                            <img src="tracking.jpeg" alt="Tracking Image"
-                                style="width: 100%; height: auto; display: block;">
-                        </div>
-                        <div class="card-content" style="padding: 30px;">
-                            <h3>Performance Tracking</h3>
-                            <div class="project-insight" style="font-size: 0.95rem; margin-top: 0;"
-                                data-i18n="portfolio-tracking-insight">
-                                "Agenturen schalten Ads, aber die Daten sind blind. Ich baue die technische Brücke zum
-                                Werbeanzeigen-Manager."
-                            </div>
-                            <p style="margin-top: 15px;" data-i18n="portfolio-tracking-desc">Präzise Messbarkeit für
-                                komplexe Systeme:</p>
-                            <ul style="color: var(--text-muted); margin-bottom: 20px; padding-left: 20px;">
-                                <li data-i18n="portfolio-tracking-li1">Server-Side Tracking (SST)</li>
-                                <li data-i18n="portfolio-tracking-li2">GTM Container & Data Layer Logic</li>
-                                <li data-i18n="portfolio-tracking-li3">3D-Interaktions-Tracking</li>
-                            </ul>
-                            <div class="project-meta">
-                                <span class="meta-item">GA4 / GTM</span>
-                                <span class="meta-item">Meta CAPI</span>
-                                <span class="meta-item">Custom Events</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="matterport">
-            <h2 class="section-title" data-i18n="portfolio-3d-section">Immersive Brand Spaces</h2>
+        <!-- 1. AI Integration -->
+        <section id="ai-integration" style="padding-bottom: 60px;">
+            <h2 class="section-title" data-i18n="portfolio-ai-title">AI Integration</h2>
             <div class="project-grid">
-
-                <div class="project-item">
-                    <div class="iframe-container">
-                        <iframe src="https://pectokyo3d.com/" allowfullscreen allow="xr-spatial-tracking"></iframe>
-                    </div>
-                    <div class="project-info">
-                        <h3 data-i18n="portfolio-porsche-title">Porsche Experience Center Tokyo</h3>
-
-                        <div class="project-insight" data-i18n="portfolio-porsche-insight">
-                            "Wie bringen wir strikte Corporate Identity Guidelines in einen 3D-Player, der eigentlich
-                            nicht anpassbar ist?"
-                        </div>
-
-                        <p data-i18n="portfolio-porsche-desc">Ein digitaler Zwilling, der sich nicht wie ein
-                            Standard-Tool anfühlt, sondern wie Porsche.
-                            Ich habe das Matterport SDK genutzt, um ein <strong>maßgeschneidertes Interface
-                                (UI)</strong> über den Player zu legen. Das Ergebnis: Eine Navigation, die sich nahtlos
-                            in die Markenwelt einfügt, interaktive Hotspots und Tracking-Integration.</p>
-
-                        <div class="project-meta">
-                            <span class="meta-item"><i class="fa-solid fa-code"></i> Matterport SDK & Three.js</span>
-                            <span class="meta-item"><i class="fa-solid fa-paintbrush"></i> Custom UI Dev</span>
-                            <span class="meta-item"><i class="fa-solid fa-earth-asia"></i> Tokyo, Japan</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 
-                <div class="project-item">
-                    <div class="iframe-container">
-                        <iframe src="https://www.dealership3d.com/porsche/pavilion2024" allowfullscreen
-                            allow="xr-spatial-tracking"></iframe>
-                    </div>
-                    <div class="project-info">
-                        <h3 data-i18n="portfolio-f1-title">Porsche F1 Pavilion Melbourne</h3>
-                        <p data-i18n="portfolio-f1-desc">Für temporäre Event-Architektur zählt Geschwindigkeit und Qualität. Dieser Scan macht den
-                            Pavillon des Grand Prix dauerhaft erlebbar. Fokus lag auf höchster Bildqualität (Pro3 LiDAR)
-                            und stabiler Performance für globalen Traffic während des Rennwochenendes.</p>
-                        <div class="project-meta">
-                            <span class="meta-item"><i class="fa-solid fa-bullseye"></i> LiDAR Scanning</span>
-                            <span class="meta-item"><i class="fa-solid fa-server"></i> High-Traffic Optimization</span>
-                        </div>
-                    </div>
-                </div>
-                -->
                 <div class="project-item">
                     <div class="iframe-container">
                         <iframe src="https://www.yagansquare3d.au" allowfullscreen allow="xr-spatial-tracking"></iframe>
                     </div>
                     <div class="project-info">
                         <h3 data-i18n="portfolio-yagan-title">Yagan Square AI Assistant</h3>
-
                         <div class="project-insight" data-i18n="portfolio-yagan-insight">
                             "Ein Raum ist nur dann smart, wenn er antwortet. Hier habe ich den visuellen Zwilling mit
                             einem LLM (KI) verbunden."
                         </div>
-
                         <p data-i18n="portfolio-yagan-desc">Besucher navigieren nicht nur visuell, sondern interagieren
                             mit einem
                             <strong>KI-Concierge</strong>. Die technische Herausforderung: Die KI musste "wissen", wo
@@ -318,6 +245,99 @@
                         <div class="project-meta">
                             <span class="meta-item"><i class="fa-solid fa-brain"></i> OpenAI API Integration</span>
                             <span class="meta-item"><i class="fa-brands fa-react"></i> React Frontend</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Custom E-Commerce -->
+        <section id="ecommerce" style="padding-bottom: 60px;">
+            <h2 class="section-title" data-i18n="portfolio-shop-title">Custom E-Commerce</h2>
+            <div class="shop-placeholder-grid">
+                <a href="https://chiropraktiktraining.com/shop-neu/" target="_blank" class="shop-card">
+                    <div class="on-site-image">
+                        <img src="shop.png" alt="Chiropraktik Shop Interface">
+                    </div>
+                    <div class="card-content">
+                        <h3 data-i18n="work-shop-title">Custom E-Commerce Solution</h3>
+                        <div class="project-insight" style="font-size: 0.95rem; margin-top: 0;"
+                            data-i18n="portfolio-shop-insight">
+                            "Standard WooCommerce konnte die komplexen Kurs-Freischaltungen nicht abbilden. Also
+                            habe ich es für die <strong>Chiropraktik Training Academy</strong> gebaut."
+                        </div>
+                        <p style="margin-top: 15px;" data-i18n="portfolio-shop-desc">Eine Lernplattform, die mehr ist
+                            als ein Shop. Implementierung von:</p>
+                        <ul style="color: var(--text-muted); margin-bottom: 20px; padding-left: 20px;">
+                            <li data-i18n="portfolio-shop-li1">Automatisiertem Level-System für Studenten</li>
+                            <li data-i18n="portfolio-shop-li2">Wartelisten-Logik mit Auto-Benachrichtigung</li>
+                            <li data-i18n="portfolio-shop-li3">Gestaffelten Checkout-Flows (Stripe Integration)</li>
+                        </ul>
+                        <div class="project-meta">
+                            <span class="meta-item">Custom PHP</span>
+                            <span class="meta-item">WooCommerce Hooks</span>
+                            <span class="meta-item">Headless Elements</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- 3. Tracking & Analytics -->
+        <section id="tracking" style="padding-bottom: 60px;">
+            <h2 class="section-title" data-i18n="portfolio-tracking-section">Tracking und Analytics Setup</h2>
+            <div class="shop-placeholder-grid">
+                <div class="shop-card">
+                    <div class="on-site-image">
+                        <img src="tracking.jpeg" alt="Tracking Image">
+                    </div>
+                    <div class="card-content">
+                        <h3 data-i18n="portfolio-tracking-title">Performance Tracking</h3>
+                        <div class="project-insight" style="font-size: 0.95rem; margin-top: 0;"
+                            data-i18n="portfolio-tracking-insight">
+                            "Agenturen schalten Ads, aber die Daten sind blind. Ich baue die technische Brücke zum
+                            Werbeanzeigen-Manager."
+                        </div>
+                        <p style="margin-top: 15px;" data-i18n="portfolio-tracking-desc">Präzise Messbarkeit für
+                            komplexe Systeme:</p>
+                        <ul style="color: var(--text-muted); margin-bottom: 20px; padding-left: 20px;">
+                            <li data-i18n="portfolio-tracking-li1">Server-Side Tracking (SST)</li>
+                            <li data-i18n="portfolio-tracking-li2">GTM Container & Data Layer Logic</li>
+                            <li data-i18n="portfolio-tracking-li3">3D-Interaktions-Tracking</li>
+                        </ul>
+                        <div class="project-meta">
+                            <span class="meta-item">GA4 / GTM</span>
+                            <span class="meta-item">Meta CAPI</span>
+                            <span class="meta-item">Custom Events</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Immersive Brand Spaces -->
+        <section id="matterport" style="padding-bottom: 60px;">
+            <h2 class="section-title" data-i18n="portfolio-3d-title">Immersive Brand Spaces (Matterport SDK)</h2>
+            <div class="project-grid">
+                <div class="project-item">
+                    <div class="iframe-container">
+                        <iframe src="https://pectokyo3d.com/" allowfullscreen allow="xr-spatial-tracking"></iframe>
+                    </div>
+                    <div class="project-info">
+                        <h3 data-i18n="portfolio-porsche-title">Porsche Experience Center Tokyo</h3>
+                        <div class="project-insight" data-i18n="portfolio-porsche-insight">
+                            "Wie bringen wir strikte Corporate Identity Guidelines in einen 3D-Player, der eigentlich
+                            nicht anpassbar ist?"
+                        </div>
+                        <p data-i18n="portfolio-porsche-desc">Ein digitaler Zwilling, der sich nicht wie ein
+                            Standard-Tool anfühlt, sondern wie Porsche.
+                            Ich habe das Matterport SDK genutzt, um ein <strong>maßgeschneidertes Interface
+                                (UI)</strong> über den Player zu legen. Das Ergebnis: Eine Navigation, die sich nahtlos
+                            in die Markenwelt einfügt, interaktive Hotspots und Tracking-Integration.</p>
+                        <div class="project-meta">
+                            <span class="meta-item"><i class="fa-solid fa-code"></i> Matterport SDK & Three.js</span>
+                            <span class="meta-item"><i class="fa-solid fa-paintbrush"></i> Custom UI Dev</span>
+                            <span class="meta-item"><i class="fa-solid fa-earth-asia"></i> Tokyo, Japan</span>
                         </div>
                     </div>
                 </div>
@@ -339,17 +359,16 @@
                         </div>
                     </div>
                 </div>
-
-                <div style="text-align: center; margin-top: 80px;">
-                    <p style="margin-bottom: 20px; font-size: 1.2rem;" data-i18n="portfolio-cta-text">Hast du ein
-                        Projekt,
-                        das ähnlich komplex ist?</p>
-                    <a href="/#contact" class="btn-primary" data-i18n="portfolio-cta-btn">Lass uns den Code
-                        besprechen</a>
-                </div>
-
             </div>
         </section>
+
+        <!-- CTA Section -->
+        <div style="text-align: center; margin-top: 40px; padding-bottom: 80px;">
+            <p style="margin-bottom: 20px; font-size: 1.2rem;" data-i18n="portfolio-cta-text">Hast du ein
+                Projekt, das ähnlich komplex ist?</p>
+            <a href="/#contact" class="btn-primary" data-i18n="portfolio-cta-btn">Lass uns den Code
+                besprechen</a>
+        </div>
     </div>
 
     <footer>
