@@ -87,7 +87,7 @@ const translations = {
         "hero-cta-primary": "Book Tech-Check",
         "hero-cta-secondary": "View Works",
         "about-title": "Hi, I'm Jan.",
-        "about-p1": "I am the translator between design and code. Many agencies have great ideas but fail at the technical implementation of complex 3D or shop projects.",
+        "about-p1": "I am the translator between design and code. Many agencies & creatives have great ideas but fail at the technical implementation of complex 3D or shop projects.",
         "about-p2": "<strong>That's exactly where I come in.</strong> I work as a partner in the background. As a digital nomad (currently Australia 🇦🇺), I use the time difference to your advantage: While your team sleeps, I solve the problems. In the morning, the code is ready.",
         "work-title": "Selected Projects",
         "work-3d-title": "Immersive Brand Spaces",
@@ -131,7 +131,7 @@ const translations = {
         "portfolio-shop-li1": "Automated level system for users",
         "portfolio-shop-li2": "Waiting list logic with auto-notification",
         "portfolio-shop-li3": "Tiered checkout flows (Stripe integration)",
-        "portfolio-tracking-insight": "\"Agencies run ads, but the data is blind. I build the technical bridge to the Ads Manager.\"",
+        "portfolio-tracking-insight": "\"Agencies & creatives run ads, but the data is blind. I build the technical bridge to the Ads Manager.\"",
         "portfolio-tracking-desc": "Precise measurability for complex systems:",
         "portfolio-tracking-li1": "Server-Side Tracking (SST)",
         "portfolio-tracking-li2": "GTM Container & Data Layer Logic",
@@ -139,9 +139,9 @@ const translations = {
         "portfolio-cta-text": "Do you have a project that is similarly complex?",
         "portfolio-cta-btn": "Let's discuss the code",
         "portfolio-back-home": "Back to Home",
-        "home-meta-title": "Jan Dorbath | The Tech Partner for Agencies",
+        "home-meta-title": "Jan Dorbath | The Tech Partner for Agencies & Creatives",
         "home-meta-desc": "Jan Dorbath - I realize what designers design. Your technical partner for Matterport SDK, Custom E-Commerce & AI integrations.",
         "portfolio-meta-title": "Works | Jan Dorbath",
-        "portfolio-meta-desc": "Selected works by Jan Dorbath. Technical implementation of high-end 3D experiences and complex e-commerce systems for agencies."
+        "portfolio-meta-desc": "Selected works by Jan Dorbath. Technical implementation of high-end 3D experiences and complex e-commerce systems for agencies & creatives."
     }
 };
