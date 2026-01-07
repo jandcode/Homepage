@@ -156,6 +156,37 @@ body {
     letter-spacing: -0.5px;
 }
 
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.lang-switch {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.lang-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-muted);
+    padding: 4px;
+    transition: color 0.2s;
+}
+
+.lang-btn.active {
+    color: var(--accent-blue);
+}
+
+.lang-divider {
+    color: rgba(0, 0, 0, 0.1);
+}
+
 .nav-links {
     display: flex;
     gap: 30px;
@@ -522,6 +553,18 @@ footer {
     .about-image-wrapper {
         margin: 0 auto;
         max-width: 250px;
+    }
+
+    .avatar-wrapper {
+        margin-left: 20px;
+    }
+
+    .nav-right {
+        gap: 15px;
+    }
+
+    .lang-btn {
+        font-size: 0.75rem;
     }
 
     .nav-links {

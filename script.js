@@ -1,7 +1,73 @@
+// i18n Logic starts here
+const i18n = {
+    currentLang: localStorage.getItem('jd-lang') || (navigator.language.startsWith('de') ? 'de' : 'en'),
+
+    init() {
+        this.applyTranslations();
+        this.updateActiveBtn();
+        this.setupSwitcher();
+    },
+
+    applyTranslations() {
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[this.currentLang] && translations[this.currentLang][key]) {
+                el.innerHTML = translations[this.currentLang][key];
+            }
+        });
+
+        // Meta Translation
+        const isPortfolio = window.location.pathname.includes('portfolio');
+        const titleKey = isPortfolio ? 'portfolio-meta-title' : 'home-meta-title';
+        const descKey = isPortfolio ? 'portfolio-meta-desc' : 'home-meta-desc';
+
+        if (translations[this.currentLang][titleKey]) {
+            document.title = translations[this.currentLang][titleKey];
+        }
+        if (translations[this.currentLang][descKey]) {
+            const metaDesc = document.querySelector('meta[name="description"]');
+            if (metaDesc) metaDesc.setAttribute('content', translations[this.currentLang][descKey]);
+        }
+
+        // Special case for mobile menu links if they are already in the DOM
+        const mobileMenu = document.querySelector('.mobile-menu');
+        if (mobileMenu) {
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === '/') link.textContent = translations[this.currentLang]['nav-home'];
+                if (href === 'portfolio.html') link.textContent = translations[this.currentLang]['nav-works'];
+                if (href.includes('#about')) link.textContent = translations[this.currentLang]['nav-about'];
+                if (href.includes('#contact')) link.textContent = translations[this.currentLang]['nav-contact'];
+            });
+        }
+    },
+
+    setLang(lang) {
+        this.currentLang = lang;
+        localStorage.setItem('jd-lang', lang);
+        this.applyTranslations();
+        this.updateActiveBtn();
+    },
+
+    updateActiveBtn() {
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.getAttribute('data-lang') === this.currentLang);
+        });
+    },
+
+    setupSwitcher() {
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                this.setLang(btn.getAttribute('data-lang'));
+            });
+        });
+    }
+};
+
 document.addEventListener('DOMContentLoaded', () => {
+    i18n.init();
 
     const navBar = document.querySelector('.nav-bar');
-
     // Scroll Effect for Navbar
     window.addEventListener('scroll', () => {
         if (window.scrollY > 20) {
@@ -52,11 +118,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!mobileMenu) {
         mobileMenu = document.createElement('div');
         mobileMenu.classList.add('mobile-menu');
+        // Initial mobile menu content based on current lang
         mobileMenu.innerHTML = `
-            <a href="/">Home</a>
-            <a href="portfolio.html">Portfolio</a>
-            <a href="/#about">Über mich</a>
-            <a href="/#contact">Kontakt</a>
+            <a href="/">${translations[i18n.currentLang]['nav-home']}</a>
+            <a href="portfolio.html">${translations[i18n.currentLang]['nav-works']}</a>
+            <a href="/#about">${translations[i18n.currentLang]['nav-about']}</a>
+            <a href="/#contact">${translations[i18n.currentLang]['nav-contact']}</a>
         `;
         // Insert after nav-bar
         navBar.after(mobileMenu);

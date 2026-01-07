@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <link rel="stylesheet" href="style.css">
+    <script src="translations.js"></script>
 </head>
 
 <body>
@@ -31,22 +32,29 @@
     <nav class="nav-bar">
         <div class="container nav-container">
             <a href="/" class="logo">Jan Dorbath<span style="color:var(--accent-blue);">.</span></a>
-            <div class="mobile-menu-toggle">
-                <i class="fa-solid fa-bars"></i>
-            </div>
-            <div class="nav-links">
-                <a href="portfolio.html">Arbeiten</a>
-                <a href="#about">Über mich</a>
-                <a href="#contact" class="btn-nav">Projekt anfragen</a>
+            <div class="nav-right">
+                <div class="lang-switch">
+                    <button class="lang-btn" data-lang="de">DE</button>
+                    <span class="lang-divider">|</span>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
+                <div class="mobile-menu-toggle">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+                <div class="nav-links">
+                    <a href="portfolio.html" data-i18n="nav-works">Arbeiten</a>
+                    <a href="#about" data-i18n="nav-about">Über mich</a>
+                    <a href="#contact" class="btn-nav" data-i18n="nav-contact">Projekt anfragen</a>
+                </div>
             </div>
         </div>
     </nav>
 
     <section class="hero-section">
         <div class="container hero-container">
-            <span class="badge">Tech-Partner für Agenturen & Kreative</span>
-            <h1 class="headline">Du hast die Vision.<br>Ich baue die Technik dahinter.</h1>
-            <p class="subheadline">
+            <span class="badge" data-i18n="hero-badge">Tech-Partner für Agenturen & Kreative</span>
+            <h1 class="headline" data-i18n="hero-headline">Du hast die Vision.<br>Ich baue die Technik dahinter.</h1>
+            <p class="subheadline" data-i18n="hero-subheadline">
                 Schluss mit "Das geht technisch nicht". Ich bin spezialisiert auf komplexe Matterport-Erlebnisse,
                 Custom E-Commerce und präzise Tracking-Infrastruktur (GA4/Meta).
             </p>
@@ -64,12 +72,13 @@
                     <img src="jan-keller.png" alt="Jan Keller">
                     <img src="kathi.png" alt="Kathi Tippmann">
                 </div>
-                <div class="trust-label">5.0 Sterne von Kunden</div>
+                <div class="trust-label" data-i18n="hero-trust">5.0 Sterne von Kunden</div>
             </div>
 
             <div class="hero-actions">
-                <a href="#contact" class="btn-primary">Tech-Check buchen <i class="fa-solid fa-arrow-right"></i></a>
-                <a href="portfolio.html" class="btn-text">Arbeiten ansehen</a>
+                <a href="#contact" class="btn-primary"><span data-i18n="hero-cta-primary">Tech-Check buchen</span> <i
+                        class="fa-solid fa-arrow-right"></i></a>
+                <a href="portfolio.html" class="btn-text" data-i18n="hero-cta-secondary">Arbeiten ansehen</a>
             </div>
         </div>
     </section>
@@ -80,12 +89,12 @@
                 <img src="jan-matterport-tokyo.jpg" alt="Jan Dorbath" class="jan-image">
             </div>
             <div class="about-text">
-                <h2>Hi, ich bin Jan.</h2>
-                <p>
+                <h2 data-i18n="about-title">Hi, ich bin Jan.</h2>
+                <p data-i18n="about-p1">
                     Ich bin der Übersetzer zwischen Design und Code. Viele Agenturen haben grandiose Ideen, scheitern
                     aber an der technischen Umsetzung komplexer 3D- oder Shop-Projekte.
                 </p>
-                <p>
+                <p data-i18n="about-p2">
                     <strong>Genau da komme ich ins Spiel.</strong>
                     Ich arbeite als Partner im Hintergrund. Als digitaler Nomade (aktuell Australien 🇦🇺) nutze ich den
                     Zeitversatz zu deinem Vorteil: Während dein Team schläft, löse ich die Probleme. Morgens liegt der
@@ -97,19 +106,19 @@
 
     <section id="work" class="work-section">
         <div class="container">
-            <h2 class="section-title">Ausgewählte Projekte</h2>
+            <h2 class="section-title" data-i18n="work-title">Ausgewählte Projekte</h2>
             <div class="bento-grid">
                 <a href="portfolio.html" class="bento-card">
                     <div class="card-visual-area">
                         <img src="pec.png" alt="Porsche Experience Center Tokyo 3D" class="card-image">
                     </div>
                     <div class="card-content">
-                        <h3>Immersive Brand Spaces</h3>
-                        <p>High-End 3D-Integration für <strong>Porsche Tokyo</strong> & <strong>F1 Melbourne</strong>.
+                        <h3 data-i18n="work-3d-title">Immersive Brand Spaces</h3>
+                        <p data-i18n="work-3d-desc">High-End 3D-Integration für <strong>Porsche Tokyo</strong> &
+                            <strong>F1 Melbourne</strong>.
                             Custom UI über dem Matterport SDK.</p>
                         <div class="tags">
-                            <span>Matterport SDK</span>
-                            <span>Three.js</span>
+                            <span data-i18n="tech-tags-3d">Matterport SDK, Three.js</span>
                         </div>
                     </div>
                 </a>
@@ -118,12 +127,12 @@
                         <img src="shop.png" alt="Chiropraktik Training Shop" class="card-image">
                     </div>
                     <div class="card-content">
-                        <h3>Custom E-Commerce</h3>
-                        <p>Für <strong>Chiropraktik Training</strong>. Headless-Ansatz für maximale Performance und
+                        <h3 data-i18n="work-shop-title">Custom E-Commerce</h3>
+                        <p data-i18n="work-shop-desc">Für <strong>Chiropraktik Training</strong>. Headless-Ansatz für
+                            maximale Performance und
                             individuelle User-Flows.</p>
                         <div class="tags">
-                            <span>WooCommerce API</span>
-                            <span>Custom PHP</span>
+                            <span data-i18n="tech-tags-shop">WooCommerce API, Custom PHP</span>
                         </div>
                     </div>
                 </a>
@@ -132,12 +141,12 @@
                         <img src="ai.png" alt="Yagan Square AI Interface" class="card-image">
                     </div>
                     <div class="card-content">
-                        <h3>AI Integration</h3>
-                        <p>Für <strong>Yagan Square</strong>. Digitale Guides im öffentlichen Raum, gesteuert durch
+                        <h3 data-i18n="work-ai-title">AI Integration</h3>
+                        <p data-i18n="work-ai-desc">Für <strong>Yagan Square</strong>. Digitale Guides im öffentlichen
+                            Raum, gesteuert durch
                             KI-Assistenten.</p>
                         <div class="tags">
-                            <span>AI Integration</span>
-                            <span>Python</span>
+                            <span data-i18n="tech-tags-ai">AI Integration, Python</span>
                         </div>
                     </div>
                 </a>
@@ -169,15 +178,17 @@
     <section class="testimonial-section">
         <div class="container">
             <div style="text-align: center; max-width: 600px; margin: 0 auto;">
-                <span class="badge">Referenzen</span>
-                <h2 class="section-title" style="margin-bottom: 10px;">Was Kunden sagen</h2>
+                <span class="badge" data-i18n="testimonial-badge">Referenzen</span>
+                <h2 class="section-title" style="margin-bottom: 10px;" data-i18n="testimonial-title">Was Kunden sagen
+                </h2>
             </div>
             <div class="testimonial-grid">
                 <div class="testimonial-card">
                     <div class="t-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
                             class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
                             class="fa-solid fa-star"></i></div>
-                    <p class="t-text">"Jan ist unser Ass im Ärmel. Wenn Matterport an seine Grenzen kommt, fängt Jan
+                    <p class="t-text" data-i18n="testimonial-1-text">"Jan ist unser Ass im Ärmel. Wenn Matterport an
+                        seine Grenzen kommt, fängt Jan
                         erst an. Absolut reibungslos."</p>
                     <div class="t-author">
                         <img src="uwe.png" class="t-avatar" alt="Uwe">
@@ -190,7 +201,8 @@
                     <div class="t-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
                             class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
                             class="fa-solid fa-star"></i></div>
-                    <p class="t-text">"Jan hat eine komplexe Logik gebaut, die mir täglich Stunden an manueller Arbeit
+                    <p class="t-text" data-i18n="testimonial-2-text">"Jan hat eine komplexe Logik gebaut, die mir
+                        täglich Stunden an manueller Arbeit
                         im Shop spart."</p>
                     <div class="t-author">
                         <img src="jan-keller.png" class="t-avatar" alt="Jan">
@@ -203,7 +215,8 @@
                     <div class="t-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
                             class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
                             class="fa-solid fa-star"></i></div>
-                    <p class="t-text">"Jan hat das Tracking-Setup so aufgesetzt, dass wir endlich verlässliche Daten für
+                    <p class="t-text" data-i18n="testimonial-3-text">"Jan hat das Tracking-Setup so aufgesetzt, dass wir
+                        endlich verlässliche Daten für
                         unsere Ads haben."</p>
                     <div class="t-author">
                         <img src="kathi.png" class="t-avatar" alt="Kathi">
@@ -219,8 +232,8 @@
     <section id="contact" class="contact-section">
         <div class="container contact-container">
             <div class="contact-header">
-                <h2>Lass uns dein Projekt klären.</h2>
-                <p>Buch dir 30 Min. für einen technischen Machbarkeits-Check.</p>
+                <h2 data-i18n="contact-title">Lass uns dein Projekt klären.</h2>
+                <p data-i18n="contact-subtitle">Buch dir 30 Min. für einen technischen Machbarkeits-Check.</p>
             </div>
             <div class="calendar-wrapper">
                 <iframe
@@ -232,7 +245,8 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 Jan Dorbath. <span style="opacity:0.6;">Operated by JDCode LLC.</span></p>
+            <p data-i18n="footer-copy">&copy; 2026 Jan Dorbath. <span style="opacity:0.6;">Operated by JDCode
+                    LLC.</span></p>
         </div>
     </footer>
 
