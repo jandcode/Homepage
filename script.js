@@ -34,10 +34,13 @@ const i18n = {
         if (mobileMenu) {
             mobileMenu.querySelectorAll('a').forEach(link => {
                 const href = link.getAttribute('href');
-                if (href === '/') link.textContent = translations[this.currentLang]['nav-home'];
-                if (href === 'portfolio.html') link.textContent = translations[this.currentLang]['nav-works'];
+                if (href === '/' || href === 'index.html') link.textContent = translations[this.currentLang]['nav-home'];
+                if (href === 'portfolio.html' || href === '#ai-integration') link.textContent = translations[this.currentLang]['nav-works'] || translations[this.currentLang]['nav-ai'];
                 if (href.includes('#about')) link.textContent = translations[this.currentLang]['nav-about'];
                 if (href.includes('#contact')) link.textContent = translations[this.currentLang]['nav-contact'];
+                if (href === '#ecommerce') link.textContent = translations[this.currentLang]['nav-shop'];
+                if (href === '#tracking') link.textContent = translations[this.currentLang]['nav-tracking'];
+                if (href === '#matterport') link.textContent = translations[this.currentLang]['nav-3d'];
             });
         }
     },
