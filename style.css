@@ -118,11 +118,44 @@ body {
     color: var(--text-main);
 }
 
+.mobile-menu {
+    display: none;
+}
+
 /* In deinem Media Query (ganz unten bei @media (max-width: 768px)) */
 @media (max-width: 768px) {
     .mobile-menu-toggle {
         display: block;
         /* Zeigt es nur auf Mobile/Tablet an */
+    }
+
+    .mobile-menu {
+        position: fixed;
+        top: 80px;
+        /* Below navbar */
+        left: 0;
+        width: 100%;
+        background: #fff;
+        display: none;
+        /* Hidden by default, toggled by JS */
+        flex-direction: column;
+        padding: 20px;
+        gap: 15px;
+        border-bottom: 1px solid #eee;
+        z-index: 99;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    .mobile-menu.open {
+        display: flex;
+    }
+
+    .mobile-menu a {
+        text-decoration: none;
+        color: var(--text-main);
+        font-weight: 600;
+        font-size: 1.1rem;
+        padding: 10px 0;
     }
 
     .nav-links {
