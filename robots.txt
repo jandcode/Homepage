@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /cookie-banner-guide.html
+Disallow: /framer-guide-signup.html

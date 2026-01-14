@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Framer Cookie Banner Guide - Premium Anleitung</title>
+    <meta name="description"
+        content="Lerne, wie du einen hochkonvertierenden und designtechnisch perfekten Cookie-Banner in Framer erstellst.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .lead-wrapper {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .lead-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 60px;
+            border-radius: 32px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.05);
+        }
+
+        .input-group {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .email-input {
+            width: 100%;
+            padding: 18px 24px;
+            border-radius: 14px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            font-size: 1rem;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .email-input:focus {
+            border-color: var(--accent-blue);
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: #111;
+            color: #fff;
+            border: none;
+            padding: 18px;
+            border-radius: 14px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            background: #222;
+        }
+
+        .privacy-note {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-liquid">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div class="lead-wrapper">
+        <div class="lead-card">
+            <div class="badge">Kostenloser Guide</div>
+            <h1 class="headline" style="font-size: 2.8rem; margin-bottom: 15px;">Framer Cookie Banner Perfection</h1>
+            <p class="subheadline" style="margin-bottom: 0;">Erhalte die exklusive Anleitung, wie du einen Cookie-Banner
+                baust, der nicht nur rechtlich passt, sondern verdammt gut aussieht.</p>
+
+            <form id="leadForm" class="input-group">
+                <input type="email" id="email" class="email-input" placeholder="Deine E-Mail Adresse" required>
+                <button type="submit" class="submit-btn" id="submitBtn">Anleitung jetzt erhalten</button>
+            </form>
+
+            <p class="privacy-note">Kein Spam. Nur die Anleitung und wertvolle Framer-Tipps.</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('leadForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const emailInput = document.getElementById('email');
+            const email = emailInput.value;
+            const btn = document.getElementById('submitBtn');
+
+            if (email) {
+                btn.innerHTML = 'Wird gesendet...';
+                btn.disabled = true;
+
+                // Senden an Formspree
+                fetch('https://formspree.io/f/maqqnwnk', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        message: 'Neuer Lead für Framer Cookie Guide'
+                    })
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            btn.innerHTML = 'Erfolg! Leite weiter...';
+                            setTimeout(() => {
+                                window.location.href = 'cookie-banner-guide.html';
+                            }, 1000);
+                        } else {
+                            btn.innerHTML = 'Fehler beim Senden';
+                            btn.disabled = false;
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        btn.innerHTML = 'Netzwerkfehler';
+                        btn.disabled = false;
+                    });
+            }
+        });
+    </script>
+</body>
+
+</html>

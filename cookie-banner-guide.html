@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anleitung: High-End Framer Cookie Banner mit GA4 & Meta Logic</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/typescript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <style>
+        :root {
+            --bg-guide: #fbfbfd;
+            --code-bg: #1e1e1e;
+            --accent-orange: #E84511;
+        }
+
+        body {
+            background-color: var(--bg-guide);
+            color: #1d1d1f;
+        }
+
+        .guide-container {
+            max-width: 900px;
+            margin: 120px auto;
+            padding: 0 30px;
+        }
+
+        .guide-header {
+            margin-bottom: 60px;
+            text-align: left;
+        }
+
+        .guide-content h2 {
+            font-size: 2rem;
+            margin: 60px 0 20px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .guide-content h3 {
+            font-size: 1.4rem;
+            margin: 30px 0 15px;
+            font-weight: 600;
+        }
+
+        .guide-content p,
+        .guide-content li {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: #424245;
+            margin-bottom: 20px;
+        }
+
+        .guide-content ul,
+        .guide-content ol {
+            margin-bottom: 25px;
+            padding-left: 20px;
+        }
+
+        .step-box {
+            background: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+        }
+
+        .warning-box {
+            background: #fff5f2;
+            border-left: 4px solid var(--accent-orange);
+            padding: 24px;
+            border-radius: 12px;
+            margin: 25px 0;
+        }
+
+        .warning-box strong {
+            color: var(--accent-orange);
+        }
+
+        pre {
+            background: var(--code-bg);
+            color: #d4d4d4;
+            padding: 24px;
+            border-radius: 16px;
+            overflow-x: auto;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin: 25px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        code {
+            font-family: 'Fira Code', monospace;
+        }
+
+        .accent {
+            color: var(--accent-blue);
+            font-weight: 600;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-bottom: 40px;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--text-main);
+        }
+
+        .copy-hint {
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: -15px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        /* Scrollable Code Window & Copy Button */
+        .code-container {
+            position: relative;
+            margin: 25px 0;
+        }
+
+        pre {
+            background: var(--code-bg);
+            color: #d4d4d4;
+            padding: 24px;
+            border-radius: 16px;
+            overflow: auto;
+            max-height: 400px;
+            /* Kleinere Höhe */
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+        }
+
+        pre::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        pre::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            backdrop-filter: blur(4px);
+            transition: all 0.2s ease;
+            z-index: 10;
+        }
+
+        .copy-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
+        }
+
+        .copy-btn.copied {
+            background: #22c55e;
+            border-color: #22c55e;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-liquid" style="opacity: 0.3;">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2" style="background: var(--accent-orange); opacity: 0.1;"></div>
+    </div>
+
+    <div class="guide-container">
+        <a href="/" class="back-link">← Zurück zur Homepage</a>
+
+        <header class="guide-header">
+            <div class="badge" style="background: rgba(232, 69, 17, 0.1); color: var(--accent-orange);">Advanced Guide
+            </div>
+            <h1 class="headline" style="text-align: left; font-size: 3.5rem;">Framer Cookie Manager Pro.</h1>
+            <p class="subheadline" style="text-align: left; margin-left: 0;">Setup GA4 & Meta Pixel mit einem
+                DSGVO-konformen Slider-System.</p>
+        </header>
+
+        <div class="guide-content">
+            <section class="step-box">
+                <h2>Schritt 1: Code erstellen</h2>
+                <p>Kopiere diesen vollständigen React-Code in eine neue Code-Datei in deinem Framer Projekt (<span
+                        class="accent">Assets > Code > New File</span>).</p>
+
+                <div class="code-container">
+                    <button class="copy-btn" id="copyBtn">Code kopieren</button>
+                    <pre><code id="codeBlock" class="language-typescript">import { useEffect, useState, MouseEvent, useCallback, useMemo } from "react"
+import { addPropertyControls, ControlType } from "framer"
+
+declare global {
+    interface Window {
+        fbq: any
+        _fbq: any
+        dataLayer: any
+    }
+}
+
+export default function CookieManager(props) {
+    // Startet links (0) im Ghost Mode für DSGVO-Konformität
+    const [sliderValue, setSliderValue] = useState(0)
+    const [status, setStatus] = useState&lt;"undecided" | "decided"&gt;("undecided")
+
+    const modeConfig = useMemo(
+        () => [
+            {
+                label: "Ghost Mode",
+                desc: "Maximale Privatsphäre.",
+                emoji: "👻",
+                color: "#EFEBE5", // Dein gewünschter Beige-Ton
+                textColor: "#000000",
+                consent: "false",
+            },
+            {
+                label: "Full Support",
+                desc: "Volle Unterstützung.",
+                emoji: "❤️",
+                color: "#E84511", // Dein Branding-Orange
+                textColor: "#FFFFFF",
+                consent: "true",
+            },
+        ],
+        []
+    )
+
+    const current = modeConfig[sliderValue]
+
+    const loadTrackingScripts = useCallback(() => {
+        if (typeof window === "undefined") return
+
+        // Google Analytics (GA4)
+        if (props.googleAnalyticsID && !document.getElementById("ga-script")) {
+            const s = document.createElement("script")
+            s.id = "ga-script"
+            s.async = true
+            s.src = `https://www.googletagmanager.com/gtag/js?id=${props.googleAnalyticsID}`
+            document.head.appendChild(s)
+            window.dataLayer = window.dataLayer || []
+            const gtag = (...args: any[]) =&gt; window.dataLayer.push(args)
+            gtag("js", new Date())
+            gtag("config", props.googleAnalyticsID)
+        }
+
+        // Meta Pixel
+        if (
+            props.metaPixelID &&
+            !document.getElementById("meta-pixel-marker")
+        ) {
+            !(function (
+                f: any,
+                b: any,
+                e: any,
+                v: any,
+                n: any,
+                t: any,
+                s: any
+            ) {
+                if (f.fbq) return
+                n = f.fbq = function () {
+                    n.callMethod
+                        ? n.callMethod.apply(n, arguments)
+                        : n.queue.push(arguments)
+                }
+                if (!f._fbq) f._fbq = n
+                n.push = n
+                n.loaded = !0
+                n.version = "2.0"
+                n.queue = []
+                t = b.createElement(e)
+                t.async = !0
+                t.src = v
+                s = b.getElementsByTagName(e)[0]
+                s.parentNode.insertBefore(t, s)
+            })(
+                window,
+                document,
+                "script",
+                "https://connect.facebook.net/en_US/fbevents.js"
+            )
+            window.fbq("init", props.metaPixelID)
+            window.fbq("track", "PageView")
+            const m = document.createElement("div")
+            m.id = "meta-pixel-marker"
+            document.body.appendChild(m)
+        }
+    }, [props.googleAnalyticsID, props.metaPixelID])
+
+    useEffect(() =&gt; {
+        const consent = localStorage.getItem("consent_granted")
+        if (consent === "true") {
+            setStatus("decided")
+            loadTrackingScripts()
+        } else if (consent === "false") {
+            setStatus("decided")
+        }
+    }, [loadTrackingScripts])
+
+    const handleConfirm = (e: MouseEvent) =&gt; {
+        e.preventDefault()
+        e.stopPropagation()
+        localStorage.setItem("consent_granted", current.consent)
+        setStatus("decided")
+        if (current.consent === "true") {
+            requestAnimationFrame(() =&gt; setTimeout(loadTrackingScripts, 50))
+        }
+    }
+
+    if (status !== "undecided") return null
+
+    return (
+        &lt;div style={styles.container}&gt;
+            &lt;style&gt;{`
+                .privacy-slider {
+                    -webkit-appearance: none;
+                    width: 100%;
+                    height: 44px;
+                    background: #F1F1F1;
+                    border-radius: 22px;
+                    outline: none;
+                    padding: 0 6px;
+                    cursor: pointer;
+                    transition: background 0.3s ease;
+                }
+                .privacy-slider::-webkit-slider-thumb {
+                    -webkit-appearance: none;
+                    width: 32px;
+                    height: 32px;
+                    background: white;
+                    border-radius: 50%;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                }
+                .privacy-slider::-webkit-slider-thumb:hover { transform: scale(1.1); }
+            `}&lt;/style&gt;
+
+            &lt;div style={styles.header}&gt;
+                &lt;div
+                    style={{
+                        ...styles.emojiBadge,
+                        background: sliderValue === 0 ? "#F8F8F8" : "#E8451115",
+                    }}
+                &gt;
+                    &lt;span style={styles.emoji}&gt;{current.emoji}&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div style={styles.textContainer}&gt;
+                    &lt;h4 style={styles.title}&gt;{current.label}&lt;/h4&gt;
+                    &lt;p style={styles.desc}&gt;{current.desc}&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;input
+                type="range"
+                min="0"
+                max="1"
+                step="1"
+                value={sliderValue}
+                onChange={(e) =&gt; setSliderValue(parseInt(e.target.value))}
+                className="privacy-slider"
+                style={{
+                    background: sliderValue === 1 ? "#E8451125" : "#E5E5E5",
+                }}
+            /&gt;
+
+            &lt;button
+                onClick={handleConfirm}
+                style={{
+                    ...styles.button,
+                    background: current.color,
+                    color: current.textColor,
+                    border: sliderValue === 0 ? "1px solid #E0DCD6" : "none",
+                }}
+            &gt;
+                Auswahl bestätigen
+            &lt;/button&gt;
+        &lt;/div&gt;
+    )
+}
+
+const styles: any = {
+    container: {
+        position: "fixed",
+        bottom: "32px",
+        right: "32px",
+        width: "90%",
+        maxWidth: "320px",
+        background: "#FFFFFF",
+        borderRadius: "32px",
+        boxShadow: "0 25px 50px -12px rgba(0,0,0,0.25)",
+        zIndex: 2147483647,
+        padding: "24px",
+        fontFamily:
+            "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+        display: "flex",
+        flexDirection: "column",
+        gap: "24px",
+        border: "1px solid #F0F0F0",
+    },
+    header: {
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        gap: "16px",
+        textAlign: "left",
+    },
+    emojiBadge: {
+        minWidth: "64px",
+        minHeight: "64px",
+        borderRadius: "20px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        transition: "all 0.4s ease",
+    },
+    emoji: { fontSize: "32px" },
+    textContainer: { display: "flex", flexDirection: "column", gap: "2px" },
+    title: { margin: 0, fontSize: "18px", fontWeight: "800", color: "#000" },
+    desc: { margin: 0, fontSize: "13px", color: "#888", fontWeight: "500" },
+    button: {
+        border: "none",
+        padding: "18px",
+        borderRadius: "20px",
+        cursor: "pointer",
+        fontWeight: "700",
+        fontSize: "15px",
+        transition: "all 0.3s ease",
+        boxShadow: "0 10px 20px rgba(0,0,0,0.1)",
+    },
+}
+
+addPropertyControls(CookieManager, {
+    googleAnalyticsID: { type: ControlType.String, title: "GA4 ID" },
+    metaPixelID: { type: ControlType.String, title: "Meta ID" },
+})</code></pre>
+                </div>
+            </section>
+
+            <section class="step-box">
+                <h2>Schritt 2: Setup in Framer</h2>
+                <h3>1. Komponente platzieren</h3>
+                <p>Ziehe die <span class="accent">CookieManager</span> Komponente auf deinen Canvas.</p>
+                <div class="warning-box">
+                    <strong>Wichtig:</strong> Platziere sie am besten in deiner <strong>Navigation-Komponente</strong>
+                    oder deinem <strong>Footer</strong>. Warum? Diese Komponenten sind meistens auf allen Seiten
+                    vorhanden. Wenn du es nur auf der Home-Seite einfügst, wird das Cookie-Banner auf Unterseiten nicht
+                    geladen (und Analytics auch nicht, selbst wenn Consent da wäre).
+                </div>
+
+                <h3>2. IDs eintragen</h3>
+                <p>Klicke die Komponente an und trage rechts in den Properties deine <code
+                        class="accent">G-XXXXXX</code> und <code class="accent">Meta Pixel ID</code> ein.</p>
+
+                <h3>3. Site Settings säubern (Kritisch!)</h3>
+                <p>Gehe in die Framer Site Settings → General → Custom Code. Lösche alles raus, was mit Google Analytics
+                    oder Meta zu tun hat. Wenn der Code dort drin steht, lädt er sofort beim Seitenstart, egal was dein
+                    React-Code macht. Das ist der häufigste Fehler.</p>
+            </section>
+
+            <section class="step-box">
+                <h2>Schritt 3: Publish & Test</h2>
+                <ol>
+                    <li>Öffne die Seite im <strong>Incognito Tab</strong>.</li>
+                    <li>Banner sollte erscheinen.</li>
+                    <li>Öffne <strong>DevTools (F12) → Network</strong>.</li>
+                    <li>Suche nach "google" oder "collect". Es sollte nichts zu sehen sein.</li>
+                    <li>Klicke <strong>"Auswahl bestätigen"</strong> (im Full Support Modus).</li>
+                    <li>Jetzt sollten die Requests im Network-Tab auftauchen.</li>
+                </ol>
+            </section>
+
+            <section class="step-box">
+                <h2>Erweiterte Dev-Tipps</h2>
+                <ul>
+                    <li><strong>TypeScript Errors:</strong> Framer's Editor meckert manchmal bei
+                        <code>window.dataLayer</code> oder <code>window.fbq</code>. Der Code oben enthält bereits die
+                        <code>declare global</code> Definition, um dies zu fixen.
+                    </li>
+                    <li><strong>GTM (Tag Manager):</strong> Wenn du den Google Tag Manager (GTM) nutzt statt direkt GA4,
+                        änderst du die URL im <code>script.src</code> einfach auf die GTM-Url. Die Logik bleibt
+                        identisch.</li>
+                    <li><strong>Re-Render Safety:</strong> Der <code>useEffect</code> läuft beim Navigieren in Framer
+                        nicht ständig neu, wenn die Komponente im Wrapper (Nav/Footer) liegt, der persistent bleibt. Der
+                        Check auf vorhandene Script-IDs verhindert doppeltes Laden.</li>
+                </ul>
+            </section>
+
+            <footer style="margin-top: 80px; padding: 40px 0; border-top: 1px solid #eee; text-align: center;">
+                <p>Du hast Fragen zum Setup? <a href="/#contact" class="accent">Melde dich bei mir.</a></p>
+            </footer>
+        </div>
+    </div>
+    <script>
+        document.getElementById('copyBtn').addEventListener('click', function () {
+            const code = document.getElementById('codeBlock').innerText;
+            const btn = this;
+
+            navigator.clipboard.writeText(code).then(() => {
+                btn.innerText = 'Kopiert!';
+                btn.classList.add('copied');
+
+                setTimeout(() => {
+                    btn.innerText = 'Code kopieren';
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+
+</html>
