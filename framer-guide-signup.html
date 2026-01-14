@@ -17,23 +17,91 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 40px 20px;
         }
 
         .lead-card {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
             padding: 60px;
-            border-radius: 32px;
-            max-width: 600px;
+            border-radius: 40px;
+            max-width: 1000px;
             width: 100%;
-            text-align: center;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.05);
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px;
+            align-items: center;
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        @media (max-width: 900px) {
+            .lead-card {
+                grid-template-columns: 1fr;
+                padding: 40px;
+                text-align: center;
+                max-width: 500px;
+            }
+
+            .bullet-list {
+                justify-content: center;
+            }
+        }
+
+        .headline {
+            font-size: 3.2rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+            font-weight: 800;
+            color: #111;
+        }
+
+        .subheadline {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        .bullet-list {
+            list-style: none;
+            margin: 30px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .bullet-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #444;
+        }
+
+        .bullet-icon {
+            color: #22c55e;
+            font-size: 1.2rem;
+        }
+
+        .visual-side img {
+            width: 100%;
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
+            transition: transform 0.5s ease;
+        }
+
+        .visual-side:hover img {
+            transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
         }
 
         .input-group {
-            margin-top: 40px;
+            margin-top: 30px;
             display: flex;
             flex-direction: column;
             gap: 15px;
@@ -41,17 +109,20 @@
 
         .email-input {
             width: 100%;
-            padding: 18px 24px;
-            border-radius: 14px;
+            padding: 20px 24px;
+            border-radius: 16px;
             border: 1px solid rgba(0, 0, 0, 0.1);
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-family: inherit;
             outline: none;
-            transition: border-color 0.2s;
+            transition: all 0.2s;
+            background: rgba(255, 255, 255, 0.5);
         }
 
         .email-input:focus {
             border-color: var(--accent-blue);
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.1);
         }
 
         .submit-btn {
@@ -59,23 +130,42 @@
             background: #111;
             color: #fff;
             border: none;
-            padding: 18px;
-            border-radius: 14px;
-            font-weight: 600;
-            font-size: 1rem;
+            padding: 20px;
+            border-radius: 16px;
+            font-weight: 700;
+            font-size: 1.1rem;
             cursor: pointer;
-            transition: transform 0.2s, background 0.2s;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .submit-btn:hover {
-            transform: translateY(-2px);
-            background: #222;
+            transform: translateY(-3px);
+            background: #000;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
 
         .privacy-note {
-            font-size: 0.8rem;
-            color: var(--text-muted);
+            font-size: 0.85rem;
+            color: #888;
             margin-top: 20px;
+        }
+
+        .tech-check-hint {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        .tech-check-hint a {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .accent-orange {
+            color: #E84511;
         }
     </style>
 </head>
@@ -89,17 +179,35 @@
 
     <div class="lead-wrapper">
         <div class="lead-card">
-            <div class="badge">Kostenloser Guide</div>
-            <h1 class="headline" style="font-size: 2.8rem; margin-bottom: 15px;">Framer Cookie Banner Perfection</h1>
-            <p class="subheadline" style="margin-bottom: 0;">Erhalte die exklusive Anleitung, wie du einen Cookie-Banner
-                baust, der nicht nur rechtlich passt, sondern verdammt gut aussieht.</p>
+            <div class="content-side">
+                <div class="badge">Gratis Code & Anleitung</div>
+                <h1 class="headline">Schluss mit hässlichen Cookie-Bannern.</h1>
+                <p class="subheadline">Hol dir den <span class="accent-orange">"Ghost Mode"</span> Code für Framer. 0€
+                    Fixkosten. 100% Design-Kontrolle. DSGVO-konform.</p>
 
-            <form id="leadForm" class="input-group">
-                <input type="email" id="email" class="email-input" placeholder="Deine E-Mail Adresse" required>
-                <button type="submit" class="submit-btn" id="submitBtn">Anleitung jetzt erhalten</button>
-            </form>
+                <ul class="bullet-list">
+                    <li class="bullet-item"><span class="bullet-icon">✅</span> Copy & Paste Code: Kein Dev nötig</li>
+                    <li class="bullet-item"><span class="bullet-icon">✅</span> Spart 240€/Jahr: Nie wieder Abo-Gebühren
+                    </li>
+                    <li class="bullet-item"><span class="bullet-icon">✅</span> Design-Friendly: Dein Style, keine
+                        Kompromisse</li>
+                </ul>
 
-            <p class="privacy-note">Kein Spam. Nur die Anleitung und wertvolle Framer-Tipps.</p>
+                <form id="leadForm" class="input-group">
+                    <input type="email" id="email" class="email-input" placeholder="Deine E-Mail Adresse" required>
+                    <button type="submit" class="submit-btn" id="submitBtn">Den Code jetzt kostenlos erhalten</button>
+                </form>
+
+                <p class="privacy-note">Kein Spam. Nur der Code und exklusive Framer-Tipps.</p>
+
+                <div class="tech-check-hint">
+                    Keine Zeit für den Einbau? <a href="/#contact">Sichere dir einen 15-Min Tech-Check mit Jan →</a>
+                </div>
+            </div>
+
+            <div class="visual-side">
+                <img src="cookie-banner-mockup.jpeg" alt="Framer Cookie Banner Preview">
+            </div>
         </div>
     </div>
 
