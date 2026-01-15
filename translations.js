@@ -69,7 +69,12 @@ const translations = {
         "home-meta-title": "Jan Dorbath | Der Tech-Partner für Agenturen & Kreative",
         "home-meta-desc": "Jan Dorbath - Ich realisiere, was Designer entwerfen. Dein technischer Partner für Matterport SDK, Custom E-Commerce & KI-Integrationen.",
         "portfolio-meta-title": "Arbeiten | Jan Dorbath",
-        "portfolio-meta-desc": "Ausgewählte Arbeiten von Jan Dorbath. Technische Umsetzung von High-End 3D-Erlebnissen und komplexen E-Commerce Systemen für Agenturen."
+        "portfolio-meta-desc": "Ausgewählte Arbeiten von Jan Dorbath. Technische Umsetzung von High-End 3D-Erlebnissen und komplexen E-Commerce Systemen für Agenturen.",
+        "cookie-title": "Privatsphäre-Einstellungen",
+        "cookie-desc": "Wähle deinen Modus. Im Ghost Mode werden keine Skripte geladen. Full Support erlaubt GA4 & Meta Pixel für besseren Service.",
+        "cookie-ghost": "Ghost Mode (👻)",
+        "cookie-full": "Full Support (❤️)",
+        "cookie-confirm": "Auswahl bestätigen"
     },
     en: {
         "nav-home": "Home",
@@ -142,6 +147,11 @@ const translations = {
         "home-meta-title": "Jan Dorbath | The Tech Partner for Agencies & Creatives",
         "home-meta-desc": "Jan Dorbath - I realize what designers design. Your technical partner for Matterport SDK, Custom E-Commerce & AI integrations.",
         "portfolio-meta-title": "Works | Jan Dorbath",
-        "portfolio-meta-desc": "Selected works by Jan Dorbath. Technical implementation of high-end 3D experiences and complex e-commerce systems for agencies & creatives."
+        "portfolio-meta-desc": "Selected works by Jan Dorbath. Technical implementation of high-end 3D experiences and complex e-commerce systems for agencies & creatives.",
+        "cookie-title": "Privacy Settings",
+        "cookie-desc": "Choose your mode. Ghost Mode loads no tracking scripts. Full Support enables GA4 & Meta Pixel for better service.",
+        "cookie-ghost": "Ghost Mode (👻)",
+        "cookie-full": "Full Support (❤️)",
+        "cookie-confirm": "Confirm Selection"
     }
 };

@@ -615,3 +615,127 @@ footer {
         display: none;
     }
 }
+
+/* --- Premium Cookie Banner --- */
+.cookie-banner {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 90%;
+    max-width: 340px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 32px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+    z-index: 999999;
+    padding: 24px;
+    display: none;
+    flex-direction: column;
+    gap: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    animation: cookieSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes cookieSlideUp {
+    from {
+        transform: translateY(100%) scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+.cookie-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-align: left;
+}
+
+.cookie-icon-wrapper {
+    min-width: 56px;
+    min-height: 56px;
+    max-width: 56px;
+    max-height: 56px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #F8F8F8;
+    font-size: 28px;
+    transition: all 0.4s ease;
+}
+
+.cookie-text h4 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #000;
+}
+
+.cookie-text p {
+    margin: 2px 0 0;
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.4;
+}
+
+.cookie-slider-container {
+    padding: 0 5px;
+}
+
+.privacy-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 48px;
+    background: #F1F1F1;
+    border-radius: 24px;
+    outline: none;
+    padding: 0 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.privacy-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 34px;
+    height: 34px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.privacy-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+}
+
+.cookie-btn {
+    border: none;
+    padding: 16px;
+    border-radius: 18px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    background: #111;
+    color: #fff;
+}
+
+.cookie-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 600px) {
+    .cookie-banner {
+        bottom: 20px;
+        right: 20px;
+        left: 20px;
+        width: auto;
+    }
+}

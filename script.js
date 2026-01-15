@@ -157,3 +157,115 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// --- Cookie Manager ---
+const CookieManager = {
+    config: [
+        {
+            label: 'Ghost Mode',
+            emoji: '👻',
+            consent: false,
+            color: '#F8F8F8',
+            textColor: '#000'
+        },
+        {
+            label: 'Full Support',
+            emoji: '❤️',
+            consent: true,
+            color: '#E84511',
+            textColor: '#FFF'
+        }
+    ],
+
+    init() {
+        const consent = localStorage.getItem('jd-consent-choice');
+        if (consent === 'true') {
+            this.loadTracking();
+            return;
+        }
+        if (consent === 'false') return;
+        this.render();
+    },
+
+    render() {
+        const lang = i18n.currentLang;
+        const banner = document.createElement('div');
+        banner.className = 'cookie-banner';
+        banner.style.display = 'flex';
+
+        banner.innerHTML = `
+            <div class="cookie-header">
+                <div class="cookie-icon-wrapper" id="cookieIcon">👻</div>
+                <div class="cookie-text">
+                    <h4 data-i18n="cookie-title">${translations[lang]['cookie-title']}</h4>
+                    <p id="cookieDesc">${translations[lang]['cookie-ghost']}</p>
+                </div>
+            </div>
+            <div class="cookie-slider-container">
+                <input type="range" min="0" max="1" step="1" value="0" class="privacy-slider" id="cookieSlider">
+            </div>
+            <button class="cookie-btn" id="cookieConfirm" data-i18n="cookie-confirm">${translations[lang]['cookie-confirm']}</button>
+        `;
+
+        document.body.appendChild(banner);
+
+        const slider = document.getElementById('cookieSlider');
+        const iconWrapper = document.getElementById('cookieIcon');
+        const descText = document.getElementById('cookieDesc');
+        const confirmBtn = document.getElementById('cookieConfirm');
+
+        slider.addEventListener('input', (e) => {
+            const val = parseInt(e.target.value);
+            const mode = this.config[val];
+
+            iconWrapper.textContent = mode.emoji;
+            iconWrapper.style.background = mode.consent ? `${mode.color}15` : '#F8F8F8';
+            descText.textContent = val === 0 ? translations[lang]['cookie-ghost'] : translations[lang]['cookie-full'];
+
+            confirmBtn.style.background = mode.color;
+            confirmBtn.style.color = mode.textColor;
+        });
+
+        confirmBtn.addEventListener('click', () => {
+            const val = parseInt(slider.value);
+            const choice = this.config[val].consent;
+            localStorage.setItem('jd-consent-choice', choice);
+
+            banner.style.opacity = '0';
+            banner.style.transform = 'translateY(20px)';
+            setTimeout(() => banner.remove(), 600);
+
+            if (choice) {
+                this.loadTracking();
+            }
+        });
+    },
+
+    loadTracking() {
+        if (window.trackingLoaded) return;
+        window.trackingLoaded = true;
+
+        // --- Google Analytics (GA4) ---
+        const gaId = 'G-9QEFT8BN1J';
+        const gaScript = document.createElement('script');
+        gaScript.async = true;
+        gaScript.src = `https://www.googletagmanager.com/gtag/js?id=${gaId}`;
+        document.head.appendChild(gaScript);
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', gaId);
+
+        // --- Vercel Insights ---
+        const vercelScript = document.createElement('script');
+        vercelScript.defer = true;
+        vercelScript.src = '/_vercel/insights/script.js';
+        document.head.appendChild(vercelScript);
+
+        console.log('Tracking infrastructure (GA4 & Vercel) initialized.');
+    }
+};
+
+// Start Cookie Manager after a short delay
+setTimeout(() => CookieManager.init(), 1000);
