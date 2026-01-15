@@ -72,19 +72,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const navBar = document.querySelector('.nav-bar');
     // Scroll Effect for Navbar
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 20) {
-            navBar.style.background = "rgba(255, 255, 255, 0.8)";
-            navBar.style.backdropFilter = "blur(12px)";
-            navBar.style.borderBottom = "1px solid rgba(0,0,0,0.05)";
-            navBar.style.padding = "16px 0"; // shrink slightly
-        } else {
-            navBar.style.background = "rgba(255, 255, 255, 0.5)"; // original transparent
-            navBar.style.backdropFilter = "blur(10px)";
-            navBar.style.borderBottom = "1px solid rgba(0,0,0,0.03)";
-            navBar.style.padding = "24px 0"; // original size
-        }
-    });
+    if (navBar) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navBar.style.background = "rgba(255, 255, 255, 0.8)";
+                navBar.style.backdropFilter = "blur(12px)";
+                navBar.style.borderBottom = "1px solid rgba(0,0,0,0.05)";
+                navBar.style.padding = "16px 0"; // shrink slightly
+            } else {
+                navBar.style.background = "rgba(255, 255, 255, 0.5)"; // original transparent
+                navBar.style.backdropFilter = "blur(10px)";
+                navBar.style.borderBottom = "1px solid rgba(0,0,0,0.03)";
+                navBar.style.padding = "24px 0"; // original size
+            }
+        });
+    }
 
     // Simple fade-in animation for sections (Intersection Observer)
     const observerOptions = {
@@ -128,11 +130,14 @@ document.addEventListener('DOMContentLoaded', () => {
             <a href="/#about">${translations[i18n.currentLang]['nav-about']}</a>
             <a href="/#contact">${translations[i18n.currentLang]['nav-contact']}</a>
         `;
-        // Insert after nav-bar
-        navBar.after(mobileMenu);
+        if (navBar) {
+            navBar.after(mobileMenu);
+        } else {
+            document.body.prepend(mobileMenu);
+        }
     }
 
-    if (menuToggle) {
+    if (menuToggle && mobileMenu) {
         menuToggle.addEventListener('click', () => {
             mobileMenu.classList.toggle('open');
             // Change icon
