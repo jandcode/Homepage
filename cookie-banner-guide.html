@@ -293,6 +293,12 @@ export default function CookieManager(props: Props) {
             window.fbq('init', props.metaPixelID); window.fbq('track', 'PageView')
             const m = document.createElement("div"); m.id = "meta-pixel-marker"; document.body.appendChild(m)
         }
+
+        // Vercel Insights (Optionale Ergänzung)
+        if (!document.querySelector('script[src*="/_vercel/insights/script.js"]')) {
+            const vs = document.createElement("script"); vs.defer = true
+            vs.src = "/_vercel/insights/script.js"; document.head.appendChild(vs)
+        }
     }, [props.googleAnalyticsID, props.metaPixelID])
 
     useEffect(() =&gt; {

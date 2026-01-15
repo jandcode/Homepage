@@ -282,10 +282,12 @@ const CookieManager = {
         gtag('config', gaId);
 
         // --- Vercel Insights ---
-        const vercelScript = document.createElement('script');
-        vercelScript.defer = true;
-        vercelScript.src = '/_vercel/insights/script.js';
-        document.head.appendChild(vercelScript);
+        if (!document.querySelector('script[src*="/_vercel/insights/script.js"]')) {
+            const vercelScript = document.createElement('script');
+            vercelScript.defer = true;
+            vercelScript.src = '/_vercel/insights/script.js';
+            document.head.appendChild(vercelScript);
+        }
 
         console.log('Tracking infrastructure (GA4 & Vercel) initialized.');
     }
