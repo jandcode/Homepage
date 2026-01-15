@@ -216,154 +216,117 @@
 
         <div class="guide-content">
             <section class="step-box">
-                <h2>Schritt 1: Code erstellen</h2>
-                <p>Kopiere diesen vollständigen React-Code in eine neue Code-Datei in deinem Framer Projekt (<span
-                        class="accent">Assets > Code > New File</span>).</p>
+                <h2>Schritt 1: Code erstellen (CookieManager.tsx)</h2>
+                <p>Erstelle ein neues Code-File in Framer (<span class="accent">Assets > Code > New File</span>), nenne
+                    es <span class="accent">CookieManager.tsx</span> und kopiere diesen vollständigen React-Code hinein.
+                </p>
 
                 <div class="code-container">
                     <button class="copy-btn" id="copyBtn">Code kopieren</button>
                     <pre><code id="codeBlock" class="language-typescript">import { useEffect, useState, MouseEvent, useCallback, useMemo } from "react"
 import { addPropertyControls, ControlType } from "framer"
 
+/**
+ * 👻 PRIVACY SLIDER (Community Edition)
+ * Ein "Privacy by Design" Experiment für Framer.
+ * * ANLEITUNG:
+ * 1. Ziehe die Komponente auf dein Overlay oder Footer.
+ * 2. Sidebar: Trage deine GA4 &amp; Pixel IDs ein.
+ * 3. Sidebar: Setze die Links zu Datenschutz &amp; Impressum.
+ */
+
 declare global {
-    interface Window {
-        fbq: any
-        _fbq: any
-        dataLayer: any
-    }
+    interface Window { fbq: any; _fbq: any; dataLayer: any; }
 }
 
-export default function CookieManager(props) {
-    // Startet links (0) im Ghost Mode für DSGVO-Konformität
+interface Props {
+    googleAnalyticsID: string
+    metaPixelID: string
+    accentColor: string
+    privacyLink: string
+    imprintLink: string
+    startClosed: boolean
+}
+
+export default function CookieManager(props: Props) {
+    // Startet immer im Ghost Mode (Privacy by Default)
     const [sliderValue, setSliderValue] = useState(0)
     const [status, setStatus] = useState&lt;"undecided" | "decided"&gt;("undecided")
 
-    const modeConfig = useMemo(
-        () => [
-            {
-                label: "Ghost Mode",
-                desc: "Maximale Privatsphäre.",
-                emoji: "👻",
-                color: "#EFEBE5", // Dein gewünschter Beige-Ton
-                textColor: "#000000",
-                consent: "false",
-            },
-            {
-                label: "Full Support",
-                desc: "Volle Unterstützung.",
-                emoji: "❤️",
-                color: "#E84511", // Dein Branding-Orange
-                textColor: "#FFFFFF",
-                consent: "true",
-            },
-        ],
-        []
-    )
+    const modeConfig = useMemo(() =&gt; [
+        {
+            label: "Ghost Mode",
+            desc: "Kein Tracking. Nur essenzielle Cookies.", 
+            emoji: "👻",
+            color: "#EFEBE5",
+            textColor: "#000000",
+            consent: "false",
+        },
+        {
+            label: "Full Support",
+            desc: "Aktiviert Google Analytics &amp; Meta Pixel.", // Wichtig: Anbieter nennen!
+            emoji: "❤️",
+            color: props.accentColor,
+            textColor: "#FFFFFF",
+            consent: "true",
+        }
+    ], [props.accentColor])
 
     const current = modeConfig[sliderValue]
 
-    const loadTrackingScripts = useCallback(() => {
+    const loadTrackingScripts = useCallback(() =&gt; {
         if (typeof window === "undefined") return
-
-        // Google Analytics (GA4)
+        
+        // GA4 Logic
         if (props.googleAnalyticsID && !document.getElementById("ga-script")) {
-            const s = document.createElement("script")
-            s.id = "ga-script"
-            s.async = true
+            const s = document.createElement("script"); s.id = "ga-script"; s.async = true
             s.src = `https://www.googletagmanager.com/gtag/js?id=${props.googleAnalyticsID}`
             document.head.appendChild(s)
             window.dataLayer = window.dataLayer || []
             const gtag = (...args: any[]) =&gt; window.dataLayer.push(args)
-            gtag("js", new Date())
-            gtag("config", props.googleAnalyticsID)
+            gtag("js", new Date()); gtag("config", props.googleAnalyticsID)
         }
 
-        // Meta Pixel
-        if (
-            props.metaPixelID &&
-            !document.getElementById("meta-pixel-marker")
-        ) {
-            !(function (
-                f: any,
-                b: any,
-                e: any,
-                v: any,
-                n: any,
-                t: any,
-                s: any
-            ) {
-                if (f.fbq) return
-                n = f.fbq = function () {
-                    n.callMethod
-                        ? n.callMethod.apply(n, arguments)
-                        : n.queue.push(arguments)
-                }
-                if (!f._fbq) f._fbq = n
-                n.push = n
-                n.loaded = !0
-                n.version = "2.0"
-                n.queue = []
-                t = b.createElement(e)
-                t.async = !0
-                t.src = v
-                s = b.getElementsByTagName(e)[0]
-                s.parentNode.insertBefore(t, s)
-            })(
-                window,
-                document,
-                "script",
-                "https://connect.facebook.net/en_US/fbevents.js"
-            )
-            window.fbq("init", props.metaPixelID)
-            window.fbq("track", "PageView")
-            const m = document.createElement("div")
-            m.id = "meta-pixel-marker"
-            document.body.appendChild(m)
+        // Meta Pixel Logic
+        if (props.metaPixelID && !document.getElementById("meta-pixel-marker")) {
+            !(function(f:any,b:any,e:any,v:any,n:any,t:any,s:any){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)})(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+            window.fbq('init', props.metaPixelID); window.fbq('track', 'PageView')
+            const m = document.createElement("div"); m.id = "meta-pixel-marker"; document.body.appendChild(m)
         }
     }, [props.googleAnalyticsID, props.metaPixelID])
 
     useEffect(() =&gt; {
         const consent = localStorage.getItem("consent_granted")
-        if (consent === "true") {
-            setStatus("decided")
-            loadTrackingScripts()
-        } else if (consent === "false") {
-            setStatus("decided")
-        }
+        // Logik: Nur anzeigen, wenn noch nicht entschieden
+        if (consent === "true") { setStatus("decided"); loadTrackingScripts() }
+        else if (consent === "false") { setStatus("decided") }
+        else { setStatus("undecided") }
     }, [loadTrackingScripts])
 
     const handleConfirm = (e: MouseEvent) =&gt; {
-        e.preventDefault()
-        e.stopPropagation()
+        e.preventDefault(); e.stopPropagation()
         localStorage.setItem("consent_granted", current.consent)
         setStatus("decided")
-        if (current.consent === "true") {
-            requestAnimationFrame(() =&gt; setTimeout(loadTrackingScripts, 50))
+        
+        if (current.consent === "true") { 
+            requestAnimationFrame(() =&gt; setTimeout(loadTrackingScripts, 50)) 
         }
     }
 
-    if (status !== "undecided") return null
+    // Zeigt Komponente nur, wenn undecided ODER wenn im Editor "Start Closed" deaktiviert ist (zum Testen)
+    if (status !== "undecided" &amp;&amp; !props.startClosed) return null
 
     return (
         &lt;div style={styles.container}&gt;
             &lt;style&gt;{`
                 .privacy-slider {
-                    -webkit-appearance: none;
-                    width: 100%;
-                    height: 44px;
-                    background: #F1F1F1;
-                    border-radius: 22px;
-                    outline: none;
-                    padding: 0 6px;
-                    cursor: pointer;
-                    transition: background 0.3s ease;
+                    -webkit-appearance: none; width: 100%; height: 44px;
+                    background: #F1F1F1; border-radius: 22px; outline: none;
+                    padding: 0 6px; cursor: pointer; transition: background 0.3s ease;
                 }
                 .privacy-slider::-webkit-slider-thumb {
-                    -webkit-appearance: none;
-                    width: 32px;
-                    height: 32px;
-                    background: white;
-                    border-radius: 50%;
+                    -webkit-appearance: none; width: 32px; height: 32px;
+                    background: white; border-radius: 50%;
                     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
                     transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
                 }
@@ -371,12 +334,7 @@ export default function CookieManager(props) {
             `}&lt;/style&gt;
 
             &lt;div style={styles.header}&gt;
-                &lt;div
-                    style={{
-                        ...styles.emojiBadge,
-                        background: sliderValue === 0 ? "#F8F8F8" : "#E8451115",
-                    }}
-                &gt;
+                &lt;div style={{...styles.emojiBadge, background: sliderValue === 0 ? "#F8F8F8" : props.accentColor + "15"}}&gt;
                     &lt;span style={styles.emoji}&gt;{current.emoji}&lt;/span&gt;
                 &lt;/div&gt;
                 &lt;div style={styles.textContainer}&gt;
@@ -385,94 +343,110 @@ export default function CookieManager(props) {
                 &lt;/div&gt;
             &lt;/div&gt;
 
-            &lt;input
-                type="range"
-                min="0"
-                max="1"
-                step="1"
+            &lt;input 
+                type="range" min="0" max="1" step="1" 
                 value={sliderValue}
                 onChange={(e) =&gt; setSliderValue(parseInt(e.target.value))}
                 className="privacy-slider"
-                style={{
-                    background: sliderValue === 1 ? "#E8451125" : "#E5E5E5",
-                }}
+                style={{ background: sliderValue === 1 ? props.accentColor + "25" : "#E5E5E5" }}
             /&gt;
 
             &lt;button
                 onClick={handleConfirm}
-                style={{
-                    ...styles.button,
-                    background: current.color,
+                style={{ 
+                    ...styles.button, 
+                    background: current.color, 
                     color: current.textColor,
-                    border: sliderValue === 0 ? "1px solid #E0DCD6" : "none",
+                    border: sliderValue === 0 ? "1px solid #E0DCD6" : "none"
                 }}
             &gt;
                 Auswahl bestätigen
             &lt;/button&gt;
+
+            &lt;div style={styles.footerLinks}&gt;
+                &lt;a href={props.privacyLink} style={styles.link}&gt;Datenschutz&lt;/a&gt;
+                &lt;span style={{color: "#ccc"}}&gt;•&lt;/span&gt;
+                &lt;a href={props.imprintLink} style={styles.link}&gt;Impressum&lt;/a&gt;
+            &lt;/div&gt;
         &lt;/div&gt;
     )
 }
 
 const styles: any = {
     container: {
-        position: "fixed",
-        bottom: "32px",
-        right: "32px",
-        width: "90%",
-        maxWidth: "320px",
-        background: "#FFFFFF",
-        borderRadius: "32px",
-        boxShadow: "0 25px 50px -12px rgba(0,0,0,0.25)",
-        zIndex: 2147483647,
-        padding: "24px",
-        fontFamily:
-            "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
-        display: "flex",
-        flexDirection: "column",
-        gap: "24px",
-        border: "1px solid #F0F0F0",
+        position: "fixed", bottom: "32px", right: "32px", 
+        width: "90%", maxWidth: "320px", background: "#FFFFFF",
+        borderRadius: "32px", boxShadow: "0 25px 60px rgba(0,0,0,0.2)",
+        zIndex: 2147483647, padding: "24px", 
+        fontFamily: "-apple-system, BlinkMacSystemFont, sans-serif",
+        display: "flex", flexDirection: "column", gap: "20px",
+        border: "1px solid #F0F0F0"
     },
-    header: {
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
-        gap: "16px",
-        textAlign: "left",
-    },
-    emojiBadge: {
-        minWidth: "64px",
-        minHeight: "64px",
-        borderRadius: "20px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        transition: "all 0.4s ease",
-    },
+    header: { display: "flex", flexDirection: "row", alignItems: "center", gap: "16px" },
+    emojiBadge: { minWidth: "64px", minHeight: "64px", borderRadius: "20px", display: "flex", alignItems: "center", justifyContent: "center", transition: "all 0.3s" },
     emoji: { fontSize: "32px" },
     textContainer: { display: "flex", flexDirection: "column", gap: "2px" },
     title: { margin: 0, fontSize: "18px", fontWeight: "800", color: "#000" },
-    desc: { margin: 0, fontSize: "13px", color: "#888", fontWeight: "500" },
-    button: {
-        border: "none",
-        padding: "18px",
-        borderRadius: "20px",
-        cursor: "pointer",
-        fontWeight: "700",
-        fontSize: "15px",
-        transition: "all 0.3s ease",
-        boxShadow: "0 10px 20px rgba(0,0,0,0.1)",
-    },
+    desc: { margin: 0, fontSize: "13px", color: "#888", fontWeight: "500", lineHeight: "1.4" },
+    button: { border: "none", padding: "16px", borderRadius: "18px", cursor: "pointer", fontWeight: "700", fontSize: "14px", transition: "all 0.3s ease", marginTop: "4px" },
+    footerLinks: { display: "flex", justifyContent: "center", gap: "8px", fontSize: "11px", color: "#999", marginTop: "4px" },
+    link: { color: "#999", textDecoration: "none", cursor: "pointer" }
 }
 
 addPropertyControls(CookieManager, {
-    googleAnalyticsID: { type: ControlType.String, title: "GA4 ID" },
-    metaPixelID: { type: ControlType.String, title: "Meta ID" },
+    googleAnalyticsID: { type: ControlType.String, title: "GA4 ID", placeholder: "G-XXXXXXXX" },
+    metaPixelID: { type: ControlType.String, title: "Meta Pixel", placeholder: "12345678" },
+    accentColor: { type: ControlType.Color, title: "Brand Color", defaultValue: "#E84511" },
+    privacyLink: { type: ControlType.String, title: "Privacy Link", defaultValue: "/datenschutz" },
+    imprintLink: { type: ControlType.String, title: "Imprint Link", defaultValue: "/impressum" },
+    startClosed: { type: ControlType.Boolean, title: "Debug: Show?", defaultValue: false, enabledTitle: "Force Show", disabledTitle: "Auto" },
 })</code></pre>
                 </div>
             </section>
 
             <section class="step-box">
-                <h2>Schritt 2: Setup in Framer</h2>
+                <h2>Schritt 2: Der Widerruf (Footer Reset)</h2>
+                <p>Damit es DSGVO-konform ist (Widerrufsrecht), muss der Nutzer seine Entscheidung jederzeit ändern
+                    können.</p>
+                <p>Erstelle eine neue Code Datei in <strong>Overrides</strong> (z.B. <span
+                        class="accent">CookieReset.tsx</span>) und füge diesen Code ein:</p>
+                <div class="code-container">
+                    <pre><code class="language-typescript">import { ComponentType } from "react"
+
+export function CookieReset(Component): ComponentType {
+    return (props: any) =&gt; {
+        return (
+            &lt;Component
+                {...props}
+                style={{ ...props.style, cursor: "pointer" }}
+                onClick={(e: any) =&gt; {
+                    e.preventDefault()
+                    // Löscht die Entscheidung
+                    localStorage.removeItem("consent_granted")
+                    // Lädt die Seite neu -&gt; Banner erscheint
+                    window.location.reload()
+                }}
+            /&gt;
+        )
+    }
+}</code></pre>
+                </div>
+                <h3>Verbindung in Framer:</h3>
+                <ol>
+                    <li><strong>Textzeile einfügen:</strong> Schreibe irgendwo in deinen Footer einen Text wie
+                        "Cookie-Einstellungen".</li>
+                    <li><strong>Text auswählen:</strong> Klicke diesen Text auf dem Canvas an.</li>
+                    <li><strong>Code Overrides finden:</strong> Schau ganz unten rechts in der Seitenleiste nach der
+                        Sektion "Code Overrides".</li>
+                    <li><strong>Override hinzufügen:</strong> Klicke auf das kleine <strong>+</strong> Zeichen.</li>
+                    <li><strong>Einstellen:</strong> Wähle bei File: <strong>CookieReset</strong> und bei Override:
+                        <strong>CookieReset</strong>.
+                    </li>
+                </ol>
+            </section>
+
+            <section class="step-box">
+                <h2>Schritt 3: Setup in Framer</h2>
                 <h3>1. Komponente platzieren</h3>
                 <p>Ziehe die <span class="accent">CookieManager</span> Komponente auf deinen Canvas.</p>
                 <div class="warning-box">
@@ -493,7 +467,7 @@ addPropertyControls(CookieManager, {
             </section>
 
             <section class="step-box">
-                <h2>Schritt 3: Publish & Test</h2>
+                <h2>Schritt 4: Publish & Test</h2>
                 <ol>
                     <li>Öffne die Seite im <strong>Incognito Tab</strong>.</li>
                     <li>Banner sollte erscheinen.</li>
@@ -538,6 +512,7 @@ addPropertyControls(CookieManager, {
             <footer
                 style="margin-top: 80px; padding: 40px 0; border-top: 1px solid rgba(0,0,0,0.05); text-align: center;">
                 <p>Tech-Support von <a href="/" class="accent" style="color: #111;">Jan Dorbath</a></p>
+                <a class="cookie-reset-link" style="margin-top: 20px;">Cookie-Einstellungen</a>
             </footer>
         </div>
     </div>

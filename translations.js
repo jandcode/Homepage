@@ -34,7 +34,7 @@ const translations = {
         "testimonial-3-text": "\"Jan hat das Tracking-Setup so aufgesetzt, dass wir endlich verlässliche Daten für unsere Ads haben.\"",
         "contact-title": "Lass uns dein Projekt klären.",
         "contact-subtitle": "Buch dir 30 Min. für einen technischen Machbarkeits-Check.",
-        "footer-copy": "&copy; 2026 Jan Dorbath. <span style=\"opacity:0.6;\">Operated by JDCode LLC.</span>",
+        "footer-copy": "&copy; 2026 Jan Dorbath. <span style=\"opacity:0.6;\">Operated by JDCode.</span>",
         "portfolio-headline": "Ausgewählte Arbeiten",
         "portfolio-subheadline": "Technische Lösungen für komplexe Design-Anforderungen.",
         "portfolio-ai-title": "AI Integration",
@@ -74,7 +74,8 @@ const translations = {
         "cookie-desc": "Wähle deinen Modus. Im Ghost Mode werden keine Skripte geladen. Full Support erlaubt GA4 & Meta Pixel für besseren Service.",
         "cookie-ghost": "Ghost Mode (👻)",
         "cookie-full": "Full Support (❤️)",
-        "cookie-confirm": "Auswahl bestätigen"
+        "cookie-confirm": "Auswahl bestätigen",
+        "cookie-reset": "Cookie-Einstellungen"
     },
     en: {
         "nav-home": "Home",
@@ -111,7 +112,7 @@ const translations = {
         "testimonial-3-text": "\"Jan set up the tracking in such a way that we finally have reliable data for our ads.\"",
         "contact-title": "Let's clarify your project.",
         "contact-subtitle": "Book 30 mins for a technical feasibility check.",
-        "footer-copy": "&copy; 2026 Jan Dorbath. <span style=\"opacity:0.6;\">Operated by JDCode LLC.</span>",
+        "footer-copy": "&copy; 2026 Jan Dorbath. <span style=\"opacity:0.6;\">Operated by JDCode.</span>",
         "portfolio-headline": "Selected Works",
         "portfolio-subheadline": "Technical solutions for complex design requirements.",
         "portfolio-ai-title": "AI Integration",
@@ -152,6 +153,7 @@ const translations = {
         "cookie-desc": "Choose your mode. Ghost Mode loads no tracking scripts. Full Support enables GA4 & Meta Pixel for better service.",
         "cookie-ghost": "Ghost Mode (👻)",
         "cookie-full": "Full Support (❤️)",
-        "cookie-confirm": "Confirm Selection"
+        "cookie-confirm": "Confirm Selection",
+        "cookie-reset": "Cookie Settings"
     }
 };

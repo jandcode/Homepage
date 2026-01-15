@@ -171,24 +171,43 @@ const CookieManager = {
             emoji: '👻',
             consent: false,
             color: '#F8F8F8',
-            textColor: '#000'
+            textColor: '#000',
+            desc: {
+                de: 'Kein Tracking. Nur essenzielle Cookies.',
+                en: 'No tracking. Essential cookies only.'
+            }
         },
         {
             label: 'Full Support',
             emoji: '❤️',
             consent: true,
             color: '#E84511',
-            textColor: '#FFF'
+            textColor: '#FFF',
+            desc: {
+                de: 'Aktiviert Google Analytics & Meta Pixel.',
+                en: 'Enables Google Analytics & Meta Pixel.'
+            }
         }
     ],
 
     init() {
-        const consent = localStorage.getItem('jd-consent-choice');
+        const consent = localStorage.getItem('consent_granted');
+
+        // Listen for reset clicks on any page
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.cookie-reset-link')) {
+                e.preventDefault();
+                localStorage.removeItem('consent_granted');
+                window.location.reload();
+            }
+        });
+
         if (consent === 'true') {
             this.loadTracking();
             return;
         }
         if (consent === 'false') return;
+
         this.render();
     },
 
@@ -203,7 +222,7 @@ const CookieManager = {
                 <div class="cookie-icon-wrapper" id="cookieIcon">👻</div>
                 <div class="cookie-text">
                     <h4 data-i18n="cookie-title">${translations[lang]['cookie-title']}</h4>
-                    <p id="cookieDesc">${translations[lang]['cookie-ghost']}</p>
+                    <p id="cookieDesc">${this.config[0].desc[lang]}</p>
                 </div>
             </div>
             <div class="cookie-slider-container">
@@ -225,7 +244,7 @@ const CookieManager = {
 
             iconWrapper.textContent = mode.emoji;
             iconWrapper.style.background = mode.consent ? `${mode.color}15` : '#F8F8F8';
-            descText.textContent = val === 0 ? translations[lang]['cookie-ghost'] : translations[lang]['cookie-full'];
+            descText.textContent = mode.desc[lang];
 
             confirmBtn.style.background = mode.color;
             confirmBtn.style.color = mode.textColor;
@@ -234,7 +253,7 @@ const CookieManager = {
         confirmBtn.addEventListener('click', () => {
             const val = parseInt(slider.value);
             const choice = this.config[val].consent;
-            localStorage.setItem('jd-consent-choice', choice);
+            localStorage.setItem('consent_granted', choice);
 
             banner.style.opacity = '0';
             banner.style.transform = 'translateY(20px)';

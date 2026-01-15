@@ -739,3 +739,35 @@ footer {
         width: auto;
     }
 }
+
+.cookie-footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    font-size: 11px;
+    color: #999;
+}
+
+.cookie-footer-links a {
+    color: #999;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.cookie-footer-links a:hover {
+    color: #666;
+}
+
+.cookie-reset-link {
+    display: inline-block;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+    font-size: 0.85rem;
+    text-decoration: underline;
+    margin-top: 10px;
+}
+
+.cookie-reset-link:hover {
+    opacity: 1;
+}
