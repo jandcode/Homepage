@@ -255,7 +255,7 @@ h1, h2, h3, h4 {
 
 /* Hero Section */
 .hero-section {
-    padding: 160px 0 80px;
+    padding: 140px 0 32px;
     text-align: center;
 }
 
@@ -599,7 +599,7 @@ h1, h2, h3, h4 {
 
 /* Contact */
 .contact-section {
-    padding: 100px 0;
+    padding: 32px 0 80px;
     text-align: center;
 }
 
