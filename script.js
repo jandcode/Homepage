@@ -181,7 +181,7 @@ const CookieManager = {
             label: 'Full Support',
             emoji: '❤️',
             consent: true,
-            color: '#3D4A2E',
+            color: '#14213D',
             textColor: '#FFFCF6',
             desc: {
                 de: 'Aktiviert Google Analytics & Meta Pixel.',
