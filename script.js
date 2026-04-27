@@ -75,14 +75,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (navBar) {
         window.addEventListener('scroll', () => {
             if (window.scrollY > 20) {
-                navBar.style.background = "rgba(255, 255, 255, 0.8)";
+                navBar.style.background = "rgba(237, 230, 216, 0.88)";
                 navBar.style.backdropFilter = "blur(12px)";
-                navBar.style.borderBottom = "1px solid rgba(0,0,0,0.05)";
+                navBar.style.borderBottom = "1px solid rgba(31, 61, 79, 0.10)";
                 navBar.style.padding = "16px 0"; // shrink slightly
             } else {
-                navBar.style.background = "rgba(255, 255, 255, 0.5)"; // original transparent
+                navBar.style.background = "rgba(237, 230, 216, 0.65)"; // original transparent
                 navBar.style.backdropFilter = "blur(10px)";
-                navBar.style.borderBottom = "1px solid rgba(0,0,0,0.03)";
+                navBar.style.borderBottom = "1px solid rgba(31, 61, 79, 0.05)";
                 navBar.style.padding = "24px 0"; // original size
             }
         });
@@ -170,8 +170,8 @@ const CookieManager = {
             label: 'Ghost Mode',
             emoji: '👻',
             consent: false,
-            color: '#F8F8F8',
-            textColor: '#000',
+            color: '#F4EFE3',
+            textColor: '#1F3D4F',
             desc: {
                 de: 'Kein Tracking. Nur essenzielle Cookies.',
                 en: 'No tracking. Essential cookies only.'
@@ -181,8 +181,8 @@ const CookieManager = {
             label: 'Full Support',
             emoji: '❤️',
             consent: true,
-            color: '#E84511',
-            textColor: '#FFF',
+            color: '#3D4A2E',
+            textColor: '#FFFCF6',
             desc: {
                 de: 'Aktiviert Google Analytics & Meta Pixel.',
                 en: 'Enables Google Analytics & Meta Pixel.'
@@ -243,7 +243,7 @@ const CookieManager = {
             const mode = this.config[val];
 
             iconWrapper.textContent = mode.emoji;
-            iconWrapper.style.background = mode.consent ? `${mode.color}15` : '#F8F8F8';
+            iconWrapper.style.background = mode.consent ? `${mode.color}26` : 'rgba(61, 74, 46, 0.10)';
             descText.textContent = mode.desc[lang];
 
             confirmBtn.style.background = mode.color;

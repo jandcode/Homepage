@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title>Audit-Simulator: Tracking-Parameter-Check | Jan Dorbath</title>
+    <meta name="description"
+        content="Live-Demo: Was passiert mit UTM- und Click-IDs beim Klick auf eine externe Subdomain — und wie man den Datenverlust verhindert.">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 60px 24px 0;
+            background: #EDE6D8;
+            color: #1F3D4F;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Fraunces', Georgia, serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            letter-spacing: -0.4px;
+            line-height: 1.2;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: rgba(31, 61, 79, 0.65);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 32px;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: #1F3D4F;
+        }
+
+        .demo-header {
+            margin-bottom: 48px;
+        }
+
+        .demo-header .badge {
+            display: inline-block;
+            background: rgba(61, 74, 46, 0.10);
+            color: #3D4A2E;
+            padding: 6px 14px;
+            border-radius: 99px;
+            font-size: 0.78rem;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .demo-header h1 {
+            font-size: 2.4rem;
+            margin: 0 0 16px;
+            letter-spacing: -1px;
+        }
+
+        .demo-header .lead {
+            font-size: 1.1rem;
+            color: rgba(31, 61, 79, 0.75);
+            max-width: 640px;
+            margin: 0;
+        }
+
+        .card {
+            background: #FFFCF6;
+            padding: 32px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(31, 61, 79, 0.05);
+            border: 1px solid rgba(31, 61, 79, 0.08);
+            margin-bottom: 24px;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            margin: 0 0 16px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .step-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: #3D4A2E;
+            color: #FFFCF6;
+            border-radius: 50%;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .card p {
+            margin: 0 0 16px;
+        }
+
+        .current-url {
+            background: rgba(31, 61, 79, 0.04);
+            padding: 14px 18px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            border-left: 4px solid #3D4A2E;
+            border-radius: 8px;
+            word-break: break-all;
+            color: rgba(31, 61, 79, 0.85);
+            margin: 12px 0 20px;
+        }
+
+        .variant {
+            padding: 20px 0;
+        }
+
+        .variant + .variant {
+            border-top: 1px solid rgba(31, 61, 79, 0.08);
+            margin-top: 8px;
+        }
+
+        .variant h4 {
+            font-size: 1.05rem;
+            font-weight: 400;
+            margin: 0 0 4px;
+        }
+
+        .variant .hint {
+            font-size: 0.88rem;
+            color: rgba(31, 61, 79, 0.6);
+            margin: 0 0 14px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 22px;
+            color: #FFFCF6;
+            text-decoration: none;
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-broken {
+            background: #c0392b;
+            box-shadow: 0 4px 12px rgba(192, 57, 43, 0.20);
+        }
+
+        .btn-broken:hover {
+            box-shadow: 0 8px 20px rgba(192, 57, 43, 0.28);
+        }
+
+        .btn-fixed {
+            background: #1e8449;
+            box-shadow: 0 4px 12px rgba(30, 132, 73, 0.20);
+        }
+
+        .btn-fixed:hover {
+            box-shadow: 0 8px 20px rgba(30, 132, 73, 0.28);
+        }
+
+        .btn-secondary {
+            background: rgba(61, 74, 46, 0.10);
+            color: #3D4A2E;
+            font-weight: 600;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(61, 74, 46, 0.16);
+        }
+
+        .result-card {
+            display: none;
+            border: 1px solid rgba(30, 132, 73, 0.30);
+            background: rgba(30, 132, 73, 0.06);
+            animation: slideIn 0.4s ease-out;
+        }
+
+        .result-card.is-error {
+            border-color: rgba(192, 57, 43, 0.30);
+            background: rgba(192, 57, 43, 0.06);
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        code {
+            background: rgba(61, 74, 46, 0.10);
+            color: #3D4A2E;
+            padding: 2px 7px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.88em;
+        }
+
+        .result-card code {
+            display: inline-block;
+            margin: 8px 0;
+            word-break: break-all;
+            white-space: normal;
+            max-width: 100%;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 32px 16px 0;
+            }
+
+            .demo-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .card {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="/" class="back-link">← Zurück zur Hauptseite</a>
+
+    <header class="demo-header">
+        <span class="badge">Live Demo</span>
+        <h1>Audit-Simulator: Tracking-Parameter-Check</h1>
+        <p class="lead">Was passiert mit UTM- und Click-IDs, wenn ein User auf einer externen Subdomain landet — und wie
+            verhindert man den Datenverlust? Spiel es selbst durch.</p>
+    </header>
+
+    <div class="card">
+        <h3><span class="step-num">1</span> Aktueller Status der Seite</h3>
+        <p>Simulierte URL-Parameter in der Adresszeile:</p>
+        <div id="urlDisplay" class="current-url">Keine Parameter vorhanden</div>
+        <button class="btn btn-secondary" onclick="addParams()">Simuliere Google-Ads Klick</button>
+    </div>
+
+    <div class="card">
+        <h3><span class="step-num">2</span> Der Test &mdash; Klick zur externen App</h3>
+        <p>Stell dir vor, die Buttons f&uuml;hren zur Subdomain <code>forms.deinebrand.de</code> (z.&nbsp;B. eine
+            externe React-App oder Funnel):</p>
+
+        <div class="variant">
+            <h4>Variante A: Standard-Link (Statisch)</h4>
+            <p class="hint">Ohne Tracking-Logik &mdash; in vielen Setups so verbaut.</p>
+            <a href="https://forms.deinebrand.de/start" id="brokenLink" class="btn btn-broken">Pr&uuml;fung
+                starten (Broken)</a>
+        </div>
+
+        <div class="variant">
+            <h4>Variante B: Mit Passthrough-Skript (Dynamisch)</h4>
+            <p class="hint">Das Skript h&auml;ngt die Parameter beim Klick automatisch an.</p>
+            <a href="https://forms.deinebrand.de/start" id="fixedLink" class="btn btn-fixed">Pr&uuml;fung starten
+                (Fixed)</a>
+        </div>
+    </div>
+
+    <div class="card result-card" id="resultCard">
+        <h3><span class="step-num">3</span> Ergebnis auf der Zielseite</h3>
+        <p id="resultText"></p>
+    </div>
+
+    <script>
+        const TARGET_BASE = "https://forms.deinebrand.de/start";
+
+        function addParams() {
+            const newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?utm_source=google&utm_medium=cpc&gclid=ABC-123-XYZ&test=jan';
+            window.history.pushState({ path: newurl }, '', newurl);
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            document.getElementById('urlDisplay').innerText = window.location.href;
+            applyPassthrough();
+        }
+
+        function applyPassthrough() {
+            const currentParams = window.location.search;
+            const fixedLink = document.getElementById('fixedLink');
+
+            if (currentParams) {
+                fixedLink.setAttribute('href', TARGET_BASE + currentParams);
+            } else {
+                fixedLink.setAttribute('href', TARGET_BASE);
+            }
+        }
+
+        document.querySelectorAll('.btn-broken, .btn-fixed').forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = this.getAttribute('href');
+                const resultCard = document.getElementById('resultCard');
+                const resultText = document.getElementById('resultText');
+
+                resultCard.style.display = "block";
+
+                if (target.includes('?')) {
+                    resultCard.classList.remove('is-error');
+                    resultText.innerHTML = "<strong>&#10003; Erfolg.</strong> Die Parameter wurden &uuml;bertragen:<br><code>" + target + "</code><br><br>Das Marketing-Team kann diesen Lead jetzt der Quelle (Google Ads) zuordnen.";
+                } else {
+                    resultCard.classList.add('is-error');
+                    resultText.innerHTML = "<strong>&times; Datenverlust.</strong> Die Ziel-URL lautet nur:<br><code>" + target + "</code><br><br>Die Marketing-Informationen sind weg. Der User ist nun &bdquo;anonym&ldquo;.";
+                }
+                resultCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            });
+        });
+
+        window.onload = updateDisplay;
+    </script>
+
+    <footer style="margin-top: 80px; padding: 40px 0; border-top: 1px solid rgba(31, 61, 79, 0.10); text-align: center; font-size: 0.9rem;">
+        <nav class="footer-links" aria-label="Footer">
+            <a href="/">Home</a>
+            <a href="portfolio.html">Arbeiten</a>
+            <a href="framer-guide-signup.html">Framer Cookie Guide</a>
+            <a href="cookie-banner-guide.html">Cookie Banner Code</a>
+        </nav>
+        <p>&copy; 2026 Jan Dorbath. <span style="opacity:0.6;">Operated by JDCode.</span></p>
+    </footer>
+</body>
+
+</html>

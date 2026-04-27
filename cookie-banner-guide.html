@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400&family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
@@ -18,14 +18,14 @@
     <script>hljs.highlightAll();</script>
     <style>
         :root {
-            --bg-guide: #fbfbfd;
+            --bg-guide: #EDE6D8;
             --code-bg: #1e1e1e;
-            --accent-orange: #E84511;
+            --accent-orange: #3D4A2E;
         }
 
         body {
             background-color: var(--bg-guide);
-            color: #1d1d1f;
+            color: #1F3D4F;
         }
 
         .guide-container {
@@ -39,10 +39,18 @@
             text-align: left;
         }
 
+        .guide-content h1,
+        .guide-content h2,
+        .guide-content h3,
+        .guide-header h1 {
+            font-family: 'Fraunces', Georgia, serif;
+            font-optical-sizing: auto;
+        }
+
         .guide-content h2 {
             font-size: 2rem;
             margin: 20px 0 20px;
-            font-weight: 700;
+            font-weight: 400;
             letter-spacing: -0.5px;
         }
 
@@ -53,14 +61,14 @@
         .guide-content h3 {
             font-size: 1.4rem;
             margin: 30px 0 15px;
-            font-weight: 600;
+            font-weight: 400;
         }
 
         .guide-content p,
         .guide-content li {
             font-size: 1.15rem;
             line-height: 1.7;
-            color: #424245;
+            color: rgba(31, 61, 79, 0.8);
             margin-bottom: 20px;
         }
 
@@ -71,16 +79,16 @@
         }
 
         .step-box {
-            background: #fff;
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            background: #FFFCF6;
+            border: 1px solid rgba(31, 61, 79, 0.08);
             border-radius: 24px;
             padding: 40px;
             margin-bottom: 40px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+            box-shadow: 0 4px 20px rgba(31, 61, 79, 0.04);
         }
 
         .warning-box {
-            background: #fff5f2;
+            background: rgba(61, 74, 46, 0.08);
             border-left: 4px solid var(--accent-orange);
             padding: 24px;
             border-radius: 12px;
@@ -109,7 +117,7 @@
         }
 
         .accent {
-            color: var(--accent-blue);
+            color: var(--accent-orange);
             font-weight: 600;
         }
 
@@ -130,7 +138,7 @@
 
         .copy-hint {
             font-size: 0.8rem;
-            color: #888;
+            color: rgba(31, 61, 79, 0.55);
             margin-top: -15px;
             margin-bottom: 20px;
             display: block;
@@ -200,14 +208,14 @@
 <body>
     <div class="background-liquid" style="opacity: 0.3;">
         <div class="blob blob-1"></div>
-        <div class="blob blob-2" style="background: var(--accent-orange); opacity: 0.1;"></div>
+        <div class="blob blob-2" style="background: var(--accent-orange); opacity: 0.18;"></div>
     </div>
 
     <div class="guide-container">
         <a href="/" class="back-link">← Zurück zur Homepage</a>
 
         <header class="guide-header">
-            <div class="badge" style="background: rgba(232, 69, 17, 0.1); color: var(--accent-orange);">Advanced Guide
+            <div class="badge" style="background: rgba(61, 74, 46, 0.10); color: var(--accent-orange);">Advanced Guide
             </div>
             <h1 class="headline" style="text-align: left; font-size: 3.5rem;">Framer Cookie Manager Pro.</h1>
             <p class="subheadline" style="text-align: left; margin-left: 0;">Setup GA4 & Meta Pixel mit einem
@@ -500,24 +508,30 @@ export function CookieReset(Component): ComponentType {
                 </ul>
             </section>
 
-            <section class="step-box" style="background: #111; color: #fff; border: none; margin-top: 80px;">
-                <h2 style="color: #fff; margin-top: 0;">Keine Zeit für den Einbau?</h2>
-                <p style="color: #ccc;">
+            <section class="step-box" style="background: #1F3D4F; color: #FFFCF6; border: none; margin-top: 80px;">
+                <h2 style="color: #FFFCF6; margin-top: 0;">Keine Zeit für den Einbau?</h2>
+                <p style="color: rgba(255, 252, 246, 0.8);">
                     Oder hast du ein komplexeres Problem in Framer, Shopify oder bei deinem Tracking-Setup?
                     Ich begleite Agenturen und Marken als Tech-Partner bei der Umsetzung anspruchsvoller Web-Projekte.
                 </p>
                 <div style="margin-top: 30px; display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
                     <a href="/#contact" class="btn-primary"
-                        style="background: var(--accent-orange); color: #fff; padding: 16px 32px; border-radius: 12px; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 10px;">
+                        style="background: var(--accent-orange); color: #FFFCF6; padding: 16px 32px; border-radius: 12px; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 10px;">
                         15-Min Tech-Check buchen →
                     </a>
-                    <p style="margin: 0; font-size: 0.9rem; color: #888;">Komplett kostenlos & unverbindlich.</p>
+                    <p style="margin: 0; font-size: 0.9rem; color: rgba(255, 252, 246, 0.6);">Komplett kostenlos & unverbindlich.</p>
                 </div>
             </section>
 
             <footer
-                style="margin-top: 80px; padding: 40px 0; border-top: 1px solid rgba(0,0,0,0.05); text-align: center;">
-                <p>Tech-Support von <a href="/" class="accent" style="color: #111;">Jan Dorbath</a></p>
+                style="margin-top: 80px; padding: 40px 0; border-top: 1px solid rgba(31, 61, 79, 0.10); text-align: center;">
+                <nav class="footer-links" aria-label="Footer">
+                    <a href="/" data-i18n="nav-home">Home</a>
+                    <a href="portfolio.html" data-i18n="footer-link-works">Arbeiten</a>
+                    <a href="framer-guide-signup.html" data-i18n="footer-link-framer-guide">Framer Cookie Guide</a>
+                    <a href="tracking-audit-demo.html" data-i18n="footer-link-audit">Audit Simulator</a>
+                </nav>
+                <p>Tech-Support von <a href="/" class="accent" style="color: #1F3D4F;">Jan Dorbath</a></p>
                 <a class="cookie-reset-link" style="margin-top: 20px;">Cookie-Einstellungen</a>
             </footer>
         </div>
