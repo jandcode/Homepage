@@ -35,6 +35,9 @@ const i18n = {
             mobileMenu.querySelectorAll('a').forEach(link => {
                 const href = link.getAttribute('href');
                 if (href === '/' || href === 'index.html') link.textContent = translations[this.currentLang]['nav-home'];
+                if (href.includes('#ki-hebel')) link.textContent = translations[this.currentLang]['nav-ki'];
+                if (href.includes('#angebot')) link.textContent = translations[this.currentLang]['nav-services'];
+                if (href.includes('#referenzen')) link.textContent = translations[this.currentLang]['nav-references'];
                 if (href === 'portfolio.html' || href === '#ai-integration') link.textContent = translations[this.currentLang]['nav-works'] || translations[this.currentLang]['nav-ai'];
                 if (href.includes('#about')) link.textContent = translations[this.currentLang]['nav-about'];
                 if (href.includes('#contact')) link.textContent = translations[this.currentLang]['nav-contact'];
@@ -50,6 +53,7 @@ const i18n = {
         localStorage.setItem('jd-lang', lang);
         this.applyTranslations();
         this.updateActiveBtn();
+        if (typeof Counters !== 'undefined') Counters.refresh();
     },
 
     updateActiveBtn() {
@@ -126,8 +130,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Initial mobile menu content based on current lang
         mobileMenu.innerHTML = `
             <a href="/">${translations[i18n.currentLang]['nav-home']}</a>
-            <a href="portfolio.html">${translations[i18n.currentLang]['nav-works']}</a>
-            <a href="/#about">${translations[i18n.currentLang]['nav-about']}</a>
+            <a href="/#ki-hebel">${translations[i18n.currentLang]['nav-ki']}</a>
+            <a href="/#angebot">${translations[i18n.currentLang]['nav-services']}</a>
+            <a href="/#referenzen">${translations[i18n.currentLang]['nav-references']}</a>
             <a href="/#contact">${translations[i18n.currentLang]['nav-contact']}</a>
         `;
         if (navBar) {
@@ -162,6 +167,106 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// --- Scroll FX: thread progress + blur-to-sharp reveals ---
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Scroll progress (0 → 1) drives the thread drawing and calms the blobs.
+    if (prefersReducedMotion) {
+        document.documentElement.style.setProperty('--scroll-p', '1');
+    } else {
+        let ticking = false;
+        const updateProgress = () => {
+            const max = document.documentElement.scrollHeight - window.innerHeight;
+            const p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+            document.documentElement.style.setProperty('--scroll-p', p.toFixed(4));
+            ticking = false;
+        };
+        const onScroll = () => {
+            if (!ticking) {
+                ticking = true;
+                requestAnimationFrame(updateProgress);
+            }
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onScroll);
+        updateProgress();
+    }
+
+    // 2. Blur-to-sharp reveals for elements with .reveal
+    if (!prefersReducedMotion) {
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    } else {
+        document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+    }
+
+    Counters.init();
+});
+
+// --- Counters: precise numbers, counted up like an instrument ---
+const Counters = {
+    format(value, decimals) {
+        const s = Number(value).toFixed(decimals);
+        return i18n.currentLang === 'de' ? s.replace('.', ',') : s;
+    },
+
+    animate(el) {
+        const target = parseFloat(el.getAttribute('data-count'));
+        const decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
+        const duration = 1200;
+        const start = performance.now();
+
+        const step = (now) => {
+            const t = Math.min(1, (now - start) / duration);
+            const eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
+            el.textContent = this.format(target * eased, decimals);
+            if (t < 1) requestAnimationFrame(step);
+            else el.dataset.done = 'true';
+        };
+        requestAnimationFrame(step);
+    },
+
+    init() {
+        const els = document.querySelectorAll('.stat-num[data-count]');
+        if (!els.length) return;
+
+        if (prefersReducedMotion) {
+            els.forEach(el => {
+                el.textContent = this.format(el.getAttribute('data-count'), parseInt(el.getAttribute('data-decimals') || '0', 10));
+                el.dataset.done = 'true';
+            });
+            return;
+        }
+
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    this.animate(entry.target);
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.6 });
+
+        els.forEach(el => counterObserver.observe(el));
+    },
+
+    // Re-render finished counters after a language switch (decimal comma vs. point)
+    refresh() {
+        document.querySelectorAll('.stat-num[data-count][data-done="true"]').forEach(el => {
+            el.textContent = this.format(el.getAttribute('data-count'), parseInt(el.getAttribute('data-decimals') || '0', 10));
+        });
+    }
+};
 
 // --- Cookie Manager ---
 const CookieManager = {

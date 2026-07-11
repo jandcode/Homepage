@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jan Dorbath — Senior Tech-Beratung für skalierbare Projekte</title>
+    <title>Jan Dorbath — Technische Betreuung &amp; KI-Beratung</title>
     <meta name="description"
-        content="Senior Tech-Beratung für Gründer und Agenturen. GDPR-konforme Tracking-Infrastruktur, AI-Integration und Tech-Stack-Strategie für Projekte, die mitskalieren sollen.">
+        content="Technik, die einfach läuft: Websites ab 700 €, DSGVO-konformes Tracking und laufender Support. Plus KI, die im Alltag wirklich Zeit spart — ohne Hype.">
     <meta name="author" content="Jan Dorbath">
     <link rel="canonical" href="https://jdcode.dev/">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400&family=Inter:wght@400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -25,19 +25,38 @@
     <!-- Social Media Meta Tags -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://jdcode.dev/">
-    <meta property="og:title" content="Jan Dorbath — Senior Tech-Beratung für skalierbare Projekte">
+    <meta property="og:title" content="Jan Dorbath — Technische Betreuung &amp; KI-Beratung">
     <meta property="og:description"
-        content="Tech-Entscheidungen, die in zwei Jahren noch tragen. GDPR-konformes Tracking, AI-Integration und Tech-Stack-Strategie für Gründer und Agenturen.">
+        content="Sie haben ein Unternehmen zu führen. Keinen IT-Helpdesk. Websites ab 700 €, sauberes Tracking, laufender Support — und KI, die wirklich Zeit spart.">
     <meta property="og:image" content="https://jdcode.dev/Thats%20me-Cover.jpg">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Jan Dorbath — Senior Tech Advisory for Projects Built to Scale">
+    <meta name="twitter:title" content="Jan Dorbath — Tech Care &amp; AI Consulting">
     <meta name="twitter:description"
-        content="Tech decisions that still hold up two years from now. GDPR-compliant tracking, AI integration, and tech-stack strategy for founders and agencies.">
+        content="You've got a business to run. Not an IT helpdesk. Websites from €700, clean tracking, ongoing support — and AI that actually saves time.">
     <meta name="twitter:image" content="https://jdcode.dev/Thats%20me-Cover.jpg">
 </head>
 
 <body>
+
+    <!-- The thread: tangled in the hero, straight by the CTA. Drawn via --scroll-p. -->
+    <div class="thread-layer" aria-hidden="true">
+        <svg class="thread-svg" viewBox="0 0 1440 5400" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path class="thread-path" pathLength="1" d="M 240 -20
+                C 520 260, 980 120, 900 420
+                C 840 640, 1180 620, 1080 400
+                C 1010 240, 660 260, 740 520
+                C 810 760, 430 700, 520 950
+                C 600 1170, 1020 1080, 960 1360
+                C 910 1600, 560 1540, 600 1820
+                C 640 2080, 900 2040, 880 2320
+                C 864 2560, 660 2520, 680 2800
+                C 696 3040, 800 3010, 790 3280
+                C 782 3520, 730 3500, 726 3760
+                C 723 3980, 721 4000, 720 4240
+                L 720 5400" />
+        </svg>
+    </div>
 
     <div class="background-liquid">
         <div class="blob blob-2"></div>
@@ -46,14 +65,15 @@
 
     <nav class="nav-bar">
         <div class="container nav-container">
-            <a href="/" class="logo">Jan Dorbath<span style="color:var(--accent-olive);">.</span></a>
+            <a href="/" class="logo">Jan Dorbath<span style="color:var(--accent-glut);">.</span></a>
             <div class="mobile-menu-toggle">
                 <i class="fa-solid fa-bars"></i>
             </div>
             <div class="nav-links">
-                <!-- <a href="portfolio.html" data-i18n="nav-works">Arbeiten</a> -->
-                <!-- <a href="#about" data-i18n="nav-about">Über mich</a> -->
-                <!-- <a href="#contact" class="btn-nav" data-i18n="nav-contact">Projekt anfragen</a> -->
+                <a href="#ki-hebel" data-i18n="nav-ki">KI im Alltag</a>
+                <a href="#angebot" data-i18n="nav-services">Angebot</a>
+                <a href="#referenzen" data-i18n="nav-references">Referenzen</a>
+                <a href="#contact" class="btn-nav-cta" data-i18n="nav-contact">Erstgespräch</a>
             </div>
             <div class="nav-right">
                 <div class="lang-switch">
@@ -65,15 +85,24 @@
         </div>
     </nav>
 
+    <!-- Sektion 1: Hero — Der Spiegel -->
     <section class="hero-section">
         <div class="container hero-container">
-            <span class="badge" data-i18n="hero-badge">Senior Tech-Beratung</span>
-            <h1 class="headline" data-i18n="hero-headline">Strategische Tech-Beratung <br>für Gründer &amp; Agenturen.
-            </h1>
+            <span class="hero-kicker" data-i18n="hero-badge">Technische Betreuung &amp; KI-Beratung</span>
+            <h1 class="headline" data-i18n="hero-headline">Sie haben ein Unternehmen zu führen.<br><em>Keinen
+                    IT-Helpdesk.</em></h1>
             <p class="subheadline" data-i18n="hero-subheadline">
-                Expertise in GDPR-konformer Tracking-Infrastruktur, AI-Integration und Tech-Stack-Strategie — für
-                Projekte, die mitskalieren sollen.
+                Die Website zickt, das Tracking lügt, und irgendwer sagt ständig, Sie müssten „jetzt was mit KI
+                machen“. Muss nicht Ihr Problem sein. Ich bin die eine Nummer, die Sie für all das anrufen — und
+                danach läuft es einfach.
             </p>
+
+            <div class="hero-actions">
+                <a href="#contact" class="btn-glut"><span data-i18n="hero-cta-primary">30 Minuten reden — kostenlos,
+                        ohne Pitch</span> <span aria-hidden="true">→</span></a>
+                <a href="#ki-hebel" class="hero-secondary" data-i18n="hero-cta-secondary">Erstmal schauen, was ich
+                    mache ↓</a>
+            </div>
 
             <div class="hero-trust">
                 <div class="hero-stars">
@@ -88,129 +117,150 @@
                     <img src="jan-keller.png" alt="Jan Keller">
                     <img src="kathi.png" alt="Kathi Tippmann">
                 </div>
-                <div class="trust-label" data-i18n="hero-trust">5.0 Sterne von Kunden</div>
+                <div class="trust-label" data-i18n="hero-trust">5,0 Sterne von Kunden</div>
             </div>
-
-            <!-- <div class="hero-actions">
-                <a href="#contact" class="hero-link"><span data-i18n="hero-cta-primary">30 Min. Tech-Sparring buchen</span> <span aria-hidden="true">→</span></a>
-            </div> -->
         </div>
     </section>
-    <!-- 
-    <section id="about" class="about-section">
-        <div class="container about-container">
-            <div class="about-text">
-                <h2 data-i18n="about-title">Hi, ich bin Jan.</h2>
-                <div class="about-image-wrapper">
-                    <video src="Thats%20me.mp4" class="jan-video" playsinline controls
-                        poster="Thats%20me-Cover.jpg"></video>
+
+    <!-- Sektion 1b: Das Nadelöhr -->
+    <section class="pain-section">
+        <div class="container pain-container">
+            <p class="pain-line reveal" data-i18n="pain-1">„Kurze Frage, ist bestimmt schnell gemacht …“<span
+                    class="pain-src">— Ihre dritte Technik-Mail diese Woche.</span></p>
+            <p class="pain-line reveal" style="transition-delay:.12s" data-i18n="pain-2">„Das Formular geht seit wann
+                nicht mehr?!“<span class="pain-src">— Freitag, 17:42 Uhr.</span></p>
+            <p class="pain-line reveal" style="transition-delay:.24s" data-i18n="pain-3">„Wir müssten auch mal was mit
+                KI …“<span class="pain-src">— jedes Meeting seit zwei Jahren.</span></p>
+            <p class="pain-outro reveal" style="transition-delay:.4s" data-i18n="pain-outro"><em>Kommt Ihnen bekannt
+                    vor? Dann sind Sie hier richtig.</em></p>
+        </div>
+    </section>
+
+    <!-- Sektion 2: Der KI-Hebel — KI ohne Theater -->
+    <section id="ki-hebel" class="ki-section">
+        <div class="container">
+            <div class="ki-grid">
+                <div class="ki-sticky">
+                    <span class="kicker" data-i18n="ki-kicker">KI ohne Theater</span>
+                    <h2 class="section-headline" data-i18n="ki-title">Vergessen Sie den KI-Hype.<br>Behalten Sie die
+                        6 Stunden pro Woche.</h2>
+                    <p class="ki-intro" data-i18n="ki-intro">
+                        KI ist kein Zauberstab und kein Weltuntergang. Sie ist ein Werkzeug — und wie jedes Werkzeug
+                        ist sie nur so gut wie die Hand, die sie einrichtet. Ich zeige Ihnen die zwei, drei Stellen
+                        in <em>Ihrem</em> Alltag, an denen KI wirklich Zeit spart. Den Rest lassen wir weg.
+                    </p>
+                    <p class="ki-sticky-label mono-label" data-i18n="ki-label">Was KI bei meinen Kunden wirklich
+                        tut:</p>
                 </div>
-                <p data-i18n="about-p1">
-                    Ich arbeite an der Schnittstelle von Software, Performance und Produkt.
-                    Mein Ansatz: Die meisten Projekte scheitern nicht an Umsetzung, sondern an Entscheidungen, die zu
-                    früh oder zu eng getroffen wurden. Da setze ich an.
-                </p>
-            </div>
-        </div>
-    </section> -->
-
-    <!-- <section id="work" class="work-section">
-        <div class="container">
-            <h2 class="section-title" data-i18n="work-title">Ausgewählte Projekte</h2>
-            <div class="bento-grid">
-                <a href="portfolio.html#ai-integration" class="bento-card">
-                    <div class="card-visual-area">
-                        <img src="ai.png" alt="Yagan Square AI Interface" class="card-image">
-                    </div>
-                    <div class="card-content">
-                        <h3 data-i18n="work-ai-title">AI Integration</h3>
-                        <p data-i18n="work-ai-desc">Für <strong>Yagan Square</strong>. Digitale Guides im öffentlichen
-                            Raum, gesteuert durch
-                            KI-Assistenten.</p>
-                        <div class="tags">
-                            <span data-i18n="tech-tags-ai">AI Integration, Python</span>
-                        </div>
-                    </div>
-                </a>
-                <a href="portfolio.html#ecommerce" class="bento-card">
-                    <div class="card-visual-area">
-                        <img src="shop.png" alt="Chiropraktik Training Shop" class="card-image">
-                    </div>
-                    <div class="card-content">
-                        <h3 data-i18n="work-shop-title">Online Shop</h3>
-                        <p data-i18n="work-shop-desc">Für <strong>Chiropraktik Training</strong>. Headless-Ansatz für
-                            maximale Performance und
-                            individuelle User-Flows.</p>
-                        <div class="tags">
-                            <span data-i18n="tech-tags-shop">WooCommerce API, Custom PHP</span>
-                        </div>
-                    </div>
-                </a>
-                <a href="portfolio.html#matterport" class="bento-card">
-                    <div class="card-visual-area">
-                        <img src="pec.png" alt="Porsche Experience Center Tokyo 3D" class="card-image">
-                    </div>
-                    <div class="card-content">
-                        <h3 data-i18n="work-3d-title">Immersive Brand Spaces</h3>
-                        <p data-i18n="work-3d-desc">High-End 3D-Integration für <strong>Porsche Tokyo</strong> &
-                            <strong>F1 Melbourne</strong>.
-                            Custom UI über dem Matterport SDK.
+                <div class="ki-cases">
+                    <article class="ki-card reveal">
+                        <span class="ki-card-num" aria-hidden="true">01</span>
+                        <h3 data-i18n="ki-card-1-title">Der Posteingang</h3>
+                        <p class="ki-step"><span class="ki-tag" data-i18n="ki-tag-before">Vorher</span> <span
+                                data-i18n="ki-card-1-before">40 Anfragen täglich, von Hand sortiert und
+                                beantwortet.</span></p>
+                        <p class="ki-step"><span class="ki-tag ki-tag-after" data-i18n="ki-tag-after">Nachher</span>
+                            <span data-i18n="ki-card-1-after">KI kategorisiert und entwirft Antworten. Sie geben nur
+                                noch frei.</span>
                         </p>
-                        <div class="tags">
-                            <span data-i18n="tech-tags-3d">Matterport SDK, Three.js</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section> -->
-
-    <!-- <section class="tech-stack-section">
-        <div class="tech-slider">
-            <div class="tech-track">
-                <div class="tech-item"><i class="fa-solid fa-cube"></i><span>Matterport SDK</span></div>
-                <div class="tech-item"><i class="fa-brands fa-python"></i><span>Python AI</span></div>
-                <div class="tech-item"><i class="fa-brands fa-php"></i><span>PHP Custom</span></div>
-                <div class="tech-item"><i class="fa-brands fa-js"></i><span>JavaScript</span></div>
-                <div class="tech-item"><i class="fa-brands fa-react"></i><span>React</span></div>
-                <div class="tech-item"><i class="fa-brands fa-woocommerce"></i><span>WooCommerce API</span></div>
-                <div class="tech-item"><i class="fa-brands fa-wordpress"></i><span>WordPress</span></div>
-                <div class="tech-item"><i class="fa-brands fa-shopify"></i><span>Shopify</span></div>
-                <div class="tech-item"><i class="fa-solid fa-tag"></i><span>GTM / Tracking</span></div>
-                <div class="tech-item"><i class="fa-solid fa-cube"></i><span>Matterport SDK</span></div>
-                <div class="tech-item"><i class="fa-brands fa-python"></i><span>Python AI</span></div>
-                <div class="tech-item"><i class="fa-brands fa-php"></i><span>PHP Custom</span></div>
-                <div class="tech-item"><i class="fa-brands fa-js"></i><span>JavaScript</span></div>
-                <div class="tech-item"><i class="fa-solid fa-tag"></i><span>GTM / Tracking</span></div>
-            </div>
-        </div>
-    </section> -->
-
-
-
-    <section id="contact" class="contact-section">
-        <div class="container contact-container">
-            <div class="contact-header">
-                <h2 data-i18n="contact-title">Lass uns 30 Minuten reden.</h2>
-                <p data-i18n="contact-subtitle">Tech-Sparring. Klare Antwort. Kein Sales-Pitch.</p>
-            </div>
-            <div class="calendar-wrapper">
-                <iframe
-                    src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0tMtOl7-WKsatAV-S0bjpJpwHWAYaDK8Gtsu4cq2G4IbGzz0L1dXiskyHFkQLCS_0bF8ohz4mY?gv=true"
-                    style="border: 0" width="100%" height="600" frameborder="0"></iframe>
+                        <div class="ki-stat" data-i18n="ki-card-1-stat">~5 Std/Woche gespart</div>
+                    </article>
+                    <article class="ki-card reveal">
+                        <span class="ki-card-num" aria-hidden="true">02</span>
+                        <h3 data-i18n="ki-card-2-title">Die Angebots-Maschine</h3>
+                        <p class="ki-step"><span class="ki-tag" data-i18n="ki-tag-before">Vorher</span> <span
+                                data-i18n="ki-card-2-before">Jedes Angebot beginnt bei null. Zwei Stunden, jedes
+                                Mal.</span></p>
+                        <p class="ki-step"><span class="ki-tag ki-tag-after" data-i18n="ki-tag-after">Nachher</span>
+                            <span data-i18n="ki-card-2-after">KI baut den Entwurf aus Ihren alten Angeboten. Sie
+                                feilen 10 Minuten.</span>
+                        </p>
+                        <div class="ki-stat" data-i18n="ki-card-2-stat">Angebot in 15 Min statt 2 Std</div>
+                    </article>
+                    <article class="ki-card reveal">
+                        <span class="ki-card-num" aria-hidden="true">03</span>
+                        <h3 data-i18n="ki-card-3-title">Das Website-Update</h3>
+                        <p class="ki-step"><span class="ki-tag" data-i18n="ki-tag-before">Vorher</span> <span
+                                data-i18n="ki-card-3-before">„Dafür brauchen wir die Agentur, dauert zwei
+                                Wochen.“</span></p>
+                        <p class="ki-step"><span class="ki-tag ki-tag-after" data-i18n="ki-tag-after">Nachher</span>
+                            <span data-i18n="ki-card-3-after">Texte, Bilder, kleine Änderungen — selbst gemacht, mit
+                                dem Workflow, den ich Ihnen einrichte.</span>
+                        </p>
+                        <div class="ki-stat" data-i18n="ki-card-3-stat">0 € Agentur-Warteschleife</div>
+                    </article>
+                    <p class="ki-outro reveal" data-i18n="ki-outro">Keine Tool-Liste. Kein Prompt-Kurs. Ich richte es
+                        ein, es läuft, Sie sparen Zeit. Das ist der ganze Trick.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="testimonial-section">
+    <!-- Sektion 3: Das Angebot — Drei Wege, ein Ansprechpartner -->
+    <section id="angebot" class="offers-section">
         <div class="container">
-            <div style="text-align: center; max-width: 600px; margin: 0 auto;">
-                <span class="badge" data-i18n="testimonial-badge">Referenzen</span>
-                <h2 class="section-title" style="margin-bottom: 10px;" data-i18n="testimonial-title">Was Kunden sagen
+            <div class="offers-header">
+                <span class="kicker" data-i18n="offers-kicker">Angebot</span>
+                <h2 class="section-headline" data-i18n="offers-title">Kein Projektdschungel.<br>Drei klare Angebote.
                 </h2>
             </div>
+            <div class="offers-grid">
+                <article class="offer-card reveal">
+                    <span class="offer-kicker" data-i18n="offer-1-kicker">Website</span>
+                    <h3 data-i18n="offer-1-name">Die Website, die einfach läuft.</h3>
+                    <div class="offer-price" data-i18n="offer-1-price">ab 700 €</div>
+                    <div class="offer-price-note" data-i18n="offer-1-note">einmalig, inkl. Einweisung</div>
+                    <p class="offer-desc" data-i18n="offer-1-desc">Modern, schnell, rechtssicher — und so gebaut,
+                        dass Sie sie selbst pflegen können. Inklusive Einweisung, bei der Sie nichts kaputtmachen
+                        können. Versprochen.</p>
+                    <p class="offer-for" data-i18n="offer-1-for"><em>Für alle, die seit zwei Jahren „eigentlich mal
+                            die Website erneuern“ wollen.</em></p>
+                    <a href="#contact" class="offer-link" data-i18n="offers-cta">Erstgespräch buchen →</a>
+                </article>
+                <article class="offer-card offer-featured reveal" style="transition-delay:.12s">
+                    <span class="offer-flag" data-i18n="offer-2-badge">⭐ Meistgewählt</span>
+                    <span class="offer-kicker" data-i18n="offer-2-kicker">Tracking &amp; Datenschutz</span>
+                    <h3 data-i18n="offer-2-name">Wissen, was wirklich passiert.</h3>
+                    <div class="offer-price" data-i18n="offer-2-price">Festpreis</div>
+                    <div class="offer-price-note" data-i18n="offer-2-note">nach kostenlosem Kurz-Audit</div>
+                    <p class="offer-desc" data-i18n="offer-2-desc">Saubere Web-Analyse, DSGVO-konform eingerichtet.
+                        Sie sehen endlich, was Ihre Website bringt — ohne Abmahn-Bauchschmerzen und ohne
+                        Zahlenfriedhof.</p>
+                    <p class="offer-for" data-i18n="offer-2-for"><em>Für alle, die Marketing-Geld ausgeben und nicht
+                            wissen, was ankommt.</em></p>
+                    <a href="#contact" class="offer-link" data-i18n="offers-cta">Erstgespräch buchen →</a>
+                </article>
+                <article class="offer-card reveal" style="transition-delay:.24s">
+                    <span class="offer-kicker" data-i18n="offer-3-kicker">Laufender Support</span>
+                    <h3 data-i18n="offer-3-name">Der Fels in der Brandung.</h3>
+                    <div class="offer-price" data-i18n="offer-3-price">monatlich</div>
+                    <div class="offer-price-note" data-i18n="offer-3-note">jederzeit kündbar</div>
+                    <p class="offer-desc" data-i18n="offer-3-desc">Eine Nummer für alles Technische. Updates,
+                        Notfälle, „können Sie mal kurz schauen“, KI-Fragen. Antwort in unter 24 Stunden — meistens
+                        deutlich schneller.</p>
+                    <p class="offer-for" data-i18n="offer-3-for"><em>Für alle, die nachts lieber schlafen als
+                            googeln.</em></p>
+                    <a href="#contact" class="offer-link" data-i18n="offers-cta">Erstgespräch buchen →</a>
+                </article>
+            </div>
+            <p class="offers-note reveal" data-i18n="offers-note">Nicht sicher, was Sie brauchen? Genau dafür ist das
+                kostenlose Erstgespräch da. Ich verkaufe Ihnen nichts, was Sie nicht brauchen — das spricht sich
+                nämlich rum.</p>
+        </div>
+    </section>
+
+    <!-- Sektion 4: Social Proof — Beweise statt Behauptungen -->
+    <section id="referenzen" class="testimonial-section">
+        <div class="container">
+            <div class="proof-header">
+                <span class="kicker" data-i18n="testimonial-badge">Referenzen</span>
+                <h2 class="proof-quote" data-i18n="proof-title">„Jans Stärke ist nicht, was er baut — sondern wovor
+                    er warnt.“</h2>
+                <p class="proof-sub" data-i18n="proof-subtitle">— Uwe Schaefer, Eventspace3D. Und ja, das nehme ich
+                    als Kompliment.</p>
+            </div>
             <div class="testimonial-grid">
-                <div class="testimonial-card">
+                <div class="testimonial-card reveal">
                     <div class="t-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
                             class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
                             class="fa-solid fa-star"></i></div>
@@ -224,7 +274,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-card">
+                <div class="testimonial-card reveal" style="transition-delay:.12s">
                     <div class="t-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
                             class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
                             class="fa-solid fa-star"></i></div>
@@ -238,7 +288,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-card">
+                <div class="testimonial-card reveal" style="transition-delay:.24s">
                     <div class="t-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
                             class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
                             class="fa-solid fa-star"></i></div>
@@ -253,6 +303,42 @@
                     </div>
                 </div>
             </div>
+            <div class="trust-strip reveal">
+                <div class="strip-item">
+                    <span class="stat-num" data-count="5.0" data-decimals="1">0,0</span>
+                    <span class="strip-label" data-i18n="strip-rating">★ Kundenbewertung</span>
+                </div>
+                <div class="strip-divider" aria-hidden="true"></div>
+                <div class="strip-item">
+                    <span class="strip-label" data-i18n="strip-projects">Projekte u.&nbsp;a. für Porsche Tokyo &amp;
+                        F1 Melbourne</span>
+                </div>
+                <div class="strip-divider" aria-hidden="true"></div>
+                <div class="strip-item">
+                    <span class="stat-wrap">&lt;&nbsp;<span class="stat-num" data-count="24"
+                            data-decimals="0">0</span></span>
+                    <span class="strip-label" data-i18n="strip-response">Std Antwortzeit</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sektion 5: Call to Action — Der ruhigste Ort der Seite -->
+    <section id="contact" class="contact-section">
+        <div class="container contact-container">
+            <div class="contact-header">
+                <h2 data-i18n="contact-title">Der erste Schritt dauert 30 Minuten. Und kostet nichts.</h2>
+                <p data-i18n="contact-subtitle">Erzählen Sie mir, was nervt. Ich sage Ihnen ehrlich, was ich tun
+                    würde — auch wenn die Antwort lautet: „Das brauchen Sie gar nicht.“ Kein Verkaufsgespräch, keine
+                    Folien, kein Fachchinesisch.</p>
+            </div>
+            <div class="calendar-wrapper">
+                <iframe
+                    src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0tMtOl7-WKsatAV-S0bjpJpwHWAYaDK8Gtsu4cq2G4IbGzz0L1dXiskyHFkQLCS_0bF8ohz4mY?gv=true"
+                    style="border: 0" width="100%" height="600" frameborder="0"></iframe>
+            </div>
+            <p class="contact-assurance" data-i18n="contact-assurance">Kein Abo-Zwang · Keine Vorbereitung nötig ·
+                Sie müssen nichts Technisches erklären können</p>
         </div>
     </section>
 
