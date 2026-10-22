@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" data-static-lang>
 
 <head>
     <meta charset="UTF-8">
@@ -9,6 +9,9 @@
         content="Technik, die einfach läuft: Websites ab 700 €, DSGVO-konformes Tracking und laufender Support. Plus KI, die im Alltag wirklich Zeit spart — ohne Hype.">
     <meta name="author" content="Jan Dorbath">
     <link rel="canonical" href="https://jdcode.dev/">
+    <link rel="alternate" hreflang="de" href="https://jdcode.dev/">
+    <link rel="alternate" hreflang="en" href="https://jdcode.dev/en">
+    <link rel="alternate" hreflang="x-default" href="https://jdcode.dev/">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,17 +27,70 @@
 
     <!-- Social Media Meta Tags -->
     <meta property="og:type" content="website">
+    <meta property="og:locale" content="de_DE">
+    <meta property="og:locale:alternate" content="en_US">
     <meta property="og:url" content="https://jdcode.dev/">
     <meta property="og:title" content="Jan Dorbath — Technische Betreuung &amp; KI-Beratung">
     <meta property="og:description"
         content="Sie haben ein Unternehmen zu führen. Keinen IT-Helpdesk. Websites ab 700 €, sauberes Tracking, laufender Support — und KI, die wirklich Zeit spart.">
-    <meta property="og:image" content="https://jdcode.dev/Thats%20me-Cover.jpg">
+    <meta property="og:image" content="https://jdcode.dev/og-cover.jpg">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Jan Dorbath — Tech Care &amp; AI Consulting">
     <meta name="twitter:description"
         content="You've got a business to run. Not an IT helpdesk. Websites from €700, clean tracking, ongoing support — and AI that actually saves time.">
-    <meta name="twitter:image" content="https://jdcode.dev/Thats%20me-Cover.jpg">
+    <meta name="twitter:image" content="https://jdcode.dev/og-cover.jpg">
+    <!-- Structured data. TODO Jan: sameAs-Links (z. B. LinkedIn/GitHub) ergänzen — aktuell sind keine Profil-Links auf der Seite vorhanden. -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": [
+        "ProfessionalService",
+        "Organization"
+      ],
+      "@id": "https://jdcode.dev/#org",
+      "name": "JDCODE LLC",
+      "alternateName": "JDCODE",
+      "url": "https://jdcode.dev/",
+      "logo": "https://jdcode.dev/favicon.svg",
+      "image": "https://jdcode.dev/og-cover.jpg",
+      "description": "Technische Betreuung, Web-Tracking und KI-Beratung für Unternehmen.",
+      "founder": {
+        "@id": "https://jdcode.dev/#jan"
+      },
+      "areaServed": "Worldwide",
+      "knowsAbout": [
+        "AI integration",
+        "Web analytics",
+        "Conversion tracking",
+        "Web development"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://jdcode.dev/#jan",
+      "name": "Jan Dorbath",
+      "url": "https://jdcode.dev/",
+      "image": "https://jdcode.dev/profile.png",
+      "jobTitle": "Founder",
+      "worksFor": {
+        "@id": "https://jdcode.dev/#org"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://jdcode.dev/#webpage",
+      "url": "https://jdcode.dev/",
+      "inLanguage": "de",
+      "about": {
+        "@id": "https://jdcode.dev/#org"
+      }
+    }
+  ]
+}
+    </script>
 </head>
 
 <body>
@@ -77,9 +133,9 @@
             </div>
             <div class="nav-right">
                 <div class="lang-switch">
-                    <button class="lang-btn" data-lang="de">DE</button>
+                    <a class="lang-btn active" data-lang="de" href="/" hreflang="de" lang="de" style="text-decoration:none" aria-current="page">DE</a>
                     <span class="lang-divider">|</span>
-                    <button class="lang-btn" data-lang="en">EN</button>
+                    <a class="lang-btn" data-lang="en" href="/en" hreflang="en" lang="en" style="text-decoration:none">EN</a>
                 </div>
             </div>
         </div>
@@ -305,7 +361,7 @@
             </div>
             <div class="trust-strip reveal">
                 <div class="strip-item">
-                    <span class="stat-num" data-count="5.0" data-decimals="1">0,0</span>
+                    <span class="stat-num" data-count="5.0" data-decimals="1">5,0</span>
                     <span class="strip-label" data-i18n="strip-rating">★ Kundenbewertung</span>
                 </div>
                 <div class="strip-divider" aria-hidden="true"></div>
@@ -316,7 +372,7 @@
                 <div class="strip-divider" aria-hidden="true"></div>
                 <div class="strip-item">
                     <span class="stat-wrap">&lt;&nbsp;<span class="stat-num" data-count="24"
-                            data-decimals="0">0</span></span>
+                            data-decimals="0">24</span></span>
                     <span class="strip-label" data-i18n="strip-response">Std Antwortzeit</span>
                 </div>
             </div>
