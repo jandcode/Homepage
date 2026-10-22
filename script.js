@@ -1,6 +1,12 @@
 // i18n Logic starts here
 const i18n = {
-    currentLang: localStorage.getItem('jd-lang') || (navigator.language.startsWith('de') ? 'de' : 'en'),
+    // Pages with <html data-static-lang> have their language baked into the static HTML
+    // (/ = DE, /en = EN). There, the language comes from <html lang> and the switcher
+    // buttons are real links to the other URL — no runtime text replacement.
+    staticLang: document.documentElement.hasAttribute('data-static-lang'),
+    currentLang: document.documentElement.hasAttribute('data-static-lang')
+        ? document.documentElement.lang
+        : (localStorage.getItem('jd-lang') || (navigator.language.startsWith('de') ? 'de' : 'en')),
 
     init() {
         this.applyTranslations();
@@ -9,6 +15,7 @@ const i18n = {
     },
 
     applyTranslations() {
+        if (this.staticLang) return;
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
             if (translations[this.currentLang] && translations[this.currentLang][key]) {
@@ -63,6 +70,12 @@ const i18n = {
     },
 
     setupSwitcher() {
+        if (this.staticLang) {
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.addEventListener('click', () => localStorage.setItem('jd-lang', btn.getAttribute('data-lang')));
+            });
+            return;
+        }
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 this.setLang(btn.getAttribute('data-lang'));
@@ -128,12 +141,13 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileMenu = document.createElement('div');
         mobileMenu.classList.add('mobile-menu');
         // Initial mobile menu content based on current lang
+        const base = (i18n.staticLang && i18n.currentLang === 'en') ? '/en' : '/';
         mobileMenu.innerHTML = `
-            <a href="/">${translations[i18n.currentLang]['nav-home']}</a>
-            <a href="/#ki-hebel">${translations[i18n.currentLang]['nav-ki']}</a>
-            <a href="/#angebot">${translations[i18n.currentLang]['nav-services']}</a>
-            <a href="/#referenzen">${translations[i18n.currentLang]['nav-references']}</a>
-            <a href="/#contact">${translations[i18n.currentLang]['nav-contact']}</a>
+            <a href="${base}">${translations[i18n.currentLang]['nav-home']}</a>
+            <a href="${base}#ki-hebel">${translations[i18n.currentLang]['nav-ki']}</a>
+            <a href="${base}#angebot">${translations[i18n.currentLang]['nav-services']}</a>
+            <a href="${base}#referenzen">${translations[i18n.currentLang]['nav-references']}</a>
+            <a href="${base}#contact">${translations[i18n.currentLang]['nav-contact']}</a>
         `;
         if (navBar) {
             navBar.after(mobileMenu);
