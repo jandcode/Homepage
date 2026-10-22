@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -91,6 +91,8 @@
   ]
 }
     </script>
+    <!-- Redesign layer (AI-first studio look) -->
+    <link rel="stylesheet" href="/redesign.css">
 </head>
 
 <body>
@@ -128,6 +130,7 @@
             <div class="nav-links">
                 <a href="#ki-hebel" data-i18n="nav-ki">KI im Alltag</a>
                 <a href="#angebot" data-i18n="nav-services">Angebot</a>
+                <a href="#work">Arbeiten</a>
                 <a href="#referenzen" data-i18n="nav-references">Referenzen</a>
                 <a href="#contact" class="btn-nav-cta" data-i18n="nav-contact">Erstgespräch</a>
             </div>
@@ -174,6 +177,19 @@
                     <img src="kathi.png" alt="Kathi Tippmann">
                 </div>
                 <div class="trust-label" data-i18n="hero-trust">5,0 Sterne von Kunden</div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Redesign: capability overview -->
+    <section class="capabilities" aria-label="Leistungen">
+        <div class="container">
+            <div class="cap-grid">
+                <div class="cap"><span class="cap-idx">01</span><h3>KI-Integrationen</h3><p>LLM-Assistenten, Automationen und KI-Workflows, die in Ihre Prozesse passen.</p></div>
+                <div class="cap"><span class="cap-idx">02</span><h3>Web-Apps &amp; Funnels</h3><p>Individuelle Web-Anwendungen, Shops und Bewerbungs-/Lead-Funnels.</p></div>
+                <div class="cap"><span class="cap-idx">03</span><h3>Tracking &amp; Analytics</h3><p>GTM, GA4, Server-Side, Consent &amp; Conversion-APIs — sauber und DSGVO-bewusst.</p></div>
+                <div class="cap"><span class="cap-idx">04</span><h3>3D &amp; Interaktiv</h3><p>Digitale Zwillinge, Matterport SDK, Three.js und immersive Erlebnisse.</p></div>
             </div>
         </div>
     </section>
@@ -305,6 +321,44 @@
         </div>
     </section>
 
+    <!-- Redesign: Selected work -->
+    <section id="work" class="work-section">
+        <div class="container">
+            <div class="work-header">
+                <div><span class="kicker">Ausgewählte Arbeiten</span><h2 class="section-headline">Ausgewählte Arbeiten.</h2></div>
+                <p>Ein Auszug aus Projekten in Japan, Australien, Europa und den USA — von KI-Assistenten bis zu Tracking-Architektur.</p>
+            </div>
+            <div class="work-grid">
+                <a class="work-card wide" href="/portfolio#matterport">
+                    <div class="work-media"><img src="/pec.png" alt="Porsche Experience Center Tokyo" loading="lazy" decoding="async"></div>
+                    <div class="work-body"><span class="work-cat">3D &amp; Interaktiv</span><h3>Porsche Experience Center Tokyo</h3><p>Immersiver digitaler Zwilling mit eigener UI auf Basis von Matterport SDK und Three.js.</p><div class="work-tags"><span>Matterport SDK</span><span>Three.js</span><span>Custom UI</span></div></div>
+                </a>
+                <a class="work-card wide" href="/portfolio#ai-integration">
+                    <div class="work-media"><img src="/ai.png" alt="Yagan Square AI Assistant" loading="lazy" decoding="async"></div>
+                    <div class="work-body"><span class="work-cat">KI-Integration</span><h3>Yagan Square AI Assistant</h3><p>Ein KI-Concierge im digitalen Zwilling, der weiß, wo sich Besucher im Raum befinden.</p><div class="work-tags"><span>OpenAI API</span><span>React</span></div></div>
+                </a>
+                <a class="work-card " href="/portfolio#matterport">
+                    <div class="work-media placeholder" aria-hidden="true"><span>To The Moon</span></div>
+                    <div class="work-body"><span class="work-cat">3D &amp; Interaktiv</span><h3>WA Museum: To The Moon</h3><p>Barrierearmes, immersives Museumserlebnis mit Multimedia-Layer und Paywall.</p><div class="work-tags"><span>Accessible UX</span><span>Paywall</span><span>Multimedia</span></div></div>
+                </a>
+                <a class="work-card " href="/portfolio#ecommerce">
+                    <div class="work-media"><img src="/shop.png" alt="Chiropraktik Shop Interface" loading="lazy" decoding="async"></div>
+                    <div class="work-body"><span class="work-cat">Web-App &amp; E-Commerce</span><h3>Chiropraktik Training Academy</h3><p>Individuelle E-Commerce-Lösung auf WooCommerce-Basis.</p><div class="work-tags"><span>Custom PHP</span><span>WooCommerce Hooks</span></div></div>
+                </a>
+                <a class="work-card " href="/tracking-audit-demo">
+                    <div class="work-media"><img src="/tracking.jpeg" alt="Tracking-Audit-Simulator" loading="lazy" decoding="async"></div>
+                    <div class="work-body"><span class="work-cat">Tracking &amp; Analytics</span><h3>Tracking-Audit-Simulator</h3><p>Interaktive Demo, die zeigt, welche Daten ein Tracking-Setup wirklich erfasst.</p><div class="work-tags"><span>GA4 / GTM</span><span>Meta CAPI</span><span>Consent</span></div></div>
+                </a>
+                <!-- akeno.ai: bewusst ohne Zahlen und ohne Kundenzitat — Freigabe durch den Kunden steht noch aus. -->
+                <article class="work-card full">
+                    <div class="work-media placeholder" aria-hidden="true"><span>akeno.ai</span></div>
+                    <div class="work-body"><span class="work-cat">Web &amp; Funnel · Tracking</span><h3>akeno.ai</h3><p>Framer-Website mit individuellem Bewerbungs-Funnel (Workable-Anbindung über Cloudflare) sowie vollständigem Tracking-Setup: GTM, GA4, Meta, Reddit, Clarity und Google Ads Enhanced Conversions.</p><div class="work-tags"><span>Framer</span><span>Cloudflare</span><span>Workable</span><span>GTM / GA4</span><span>Enhanced Conversions</span></div></div>
+                </article>
+            </div>
+            <p class="work-more"><a href="/portfolio">Alle Arbeiten ansehen →</a></p>
+        </div>
+    </section>
+
     <!-- Sektion 4: Social Proof — Beweise statt Behauptungen -->
     <section id="referenzen" class="testimonial-section">
         <div class="container">
@@ -408,6 +462,7 @@
             </nav>
             <p data-i18n="footer-copy">&copy; 2026 Jan Dorbath.
             </p>
+            <p class="footer-company">JDCODE LLC · KI-first Development Studio, gegründet von Jan Dorbath.</p>
             <a class="cookie-reset-link" data-i18n="cookie-reset">Cookie-Einstellungen</a>
         </div>
     </footer>
