@@ -25,7 +25,8 @@
         (function () { window.dataLayer.push(arguments); })('event', name, params);
     }
     function track(name, params) {
-        params = Object.assign({ hero_variant: variant, page_language: document.documentElement.lang }, params || {});
+        var budget = null; try { budget = sessionStorage.getItem('jd-budget'); } catch (e) {}
+        params = Object.assign({ hero_variant: variant, page_language: document.documentElement.lang }, budget ? { budget_range: budget } : {}, params || {});
         window.dataLayer.push(Object.assign({ event: name }, params));
         gtagEvent(name, params);
     }
@@ -68,12 +69,32 @@
     }
 })();
 
-/* Pricing display switch: ?price=none (default) | ?price=anchor */
+/* Budget qualification above the booking calendar */
 (function () {
-    var mode = new URLSearchParams(location.search).get('price') === 'anchor' ? 'anchor' : 'none';
-    var a = document.querySelector('[data-price-anchor]'), g = document.querySelector('[data-price-mode]');
-    if (g) g.setAttribute('data-price-mode', mode);
-    if (a) a.hidden = mode !== 'anchor';
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'price_mode', price_mode: mode });
+    var step = document.getElementById('budget-step');
+    var wrap = document.querySelector('.calendar-wrapper');
+    if (!step || !wrap) return;
+    var lang = document.documentElement.lang;
+    var stored = null; try { stored = sessionStorage.getItem('jd-budget'); } catch (e) {}
+    function reveal(scroll) {
+        wrap.classList.remove('is-collapsed');
+        if (scroll) wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    if (stored) {
+        var r = step.querySelector('input[value="' + stored + '"]');
+        if (r) r.checked = true;
+    } else {
+        wrap.classList.add('is-collapsed');
+    }
+    step.addEventListener('change', function (e) {
+        if (!e.target.matches('input[name="budget"]')) return;
+        var val = e.target.value;
+        try { sessionStorage.setItem('jd-budget', val); } catch (err) {}
+        window.dataLayer = window.dataLayer || [];
+        if (window.jdTrack) window.jdTrack('budget_selected', { budget_range: val, lang: lang });
+        else window.dataLayer.push({ event: 'budget_selected', budget_range: val, lang: lang });
+        reveal(true);
+    });
+    var skip = step.querySelector('[data-budget-skip]');
+    if (skip) skip.addEventListener('click', function () { reveal(true); });
 })();
