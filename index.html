@@ -1,418 +1,246 @@
 <!DOCTYPE html>
-<html lang="de" data-static-lang>
-
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jan Dorbath — Technische Betreuung &amp; KI-Beratung</title>
-    <meta name="description"
-        content="Technik, die einfach läuft: Websites ab 700 €, DSGVO-konformes Tracking und laufender Support. Plus KI, die im Alltag wirklich Zeit spart — ohne Hype.">
-    <meta name="author" content="Jan Dorbath">
-    <link rel="canonical" href="https://jdcode.dev/">
-    <link rel="alternate" hreflang="de" href="https://jdcode.dev/">
-    <link rel="alternate" hreflang="en" href="https://jdcode.dev/en">
-    <link rel="alternate" hreflang="x-default" href="https://jdcode.dev/">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
-        rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <link rel="stylesheet" href="style.css">
-    <script src="translations.js"></script>
-
-    <!-- Social Media Meta Tags -->
-    <meta property="og:type" content="website">
-    <meta property="og:locale" content="de_DE">
-    <meta property="og:locale:alternate" content="en_US">
-    <meta property="og:url" content="https://jdcode.dev/">
-    <meta property="og:title" content="Jan Dorbath — Technische Betreuung &amp; KI-Beratung">
-    <meta property="og:description"
-        content="Sie haben ein Unternehmen zu führen. Keinen IT-Helpdesk. Websites ab 700 €, sauberes Tracking, laufender Support — und KI, die wirklich Zeit spart.">
-    <meta property="og:image" content="https://jdcode.dev/og-cover.jpg">
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Jan Dorbath — Tech Care &amp; AI Consulting">
-    <meta name="twitter:description"
-        content="You've got a business to run. Not an IT helpdesk. Websites from €700, clean tracking, ongoing support — and AI that actually saves time.">
-    <meta name="twitter:image" content="https://jdcode.dev/og-cover.jpg">
-    <!-- Structured data. TODO Jan: sameAs-Links (z. B. LinkedIn/GitHub) ergänzen — aktuell sind keine Profil-Links auf der Seite vorhanden. -->
-    <script type="application/ld+json">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Conversion tracking for lead-gen on Meta &amp; Google Ads — JDCODE</title>
+<meta name="description" content="Offline conversion tracking for lead-gen and recruiting funnels: qualified leads and hires from your CRM or ATS go back to Meta and Google Ads, so campaigns optimise for real outcomes. Server-side, monitored, privacy-compliant.">
+<meta name="author" content="Jan Dorbath">
+<link rel="canonical" href="https://jdcode.dev/">
+<link rel="alternate" hreflang="en" href="https://jdcode.dev/">
+<link rel="alternate" hreflang="de" href="https://jdcode.dev/de">
+<link rel="alternate" hreflang="x-default" href="https://jdcode.dev/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/tf.css">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="de_DE">
+<meta property="og:url" content="https://jdcode.dev/">
+<meta property="og:title" content="Conversion tracking for lead-gen on Meta &amp; Google Ads — JDCODE">
+<meta property="og:description" content="Offline conversion tracking for lead-gen and recruiting funnels: qualified leads and hires from your CRM or ATS go back to Meta and Google Ads, so campaigns optimise for real outcomes. Server-side, monitored, privacy-compliant.">
+<meta property="og:image" content="https://jdcode.dev/og-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Conversion tracking for lead-gen on Meta &amp; Google Ads — JDCODE">
+<meta name="twitter:description" content="Offline conversion tracking for lead-gen and recruiting funnels: qualified leads and hires from your CRM or ATS go back to Meta and Google Ads, so campaigns optimise for real outcomes. Server-side, monitored, privacy-compliant.">
+<meta name="twitter:image" content="https://jdcode.dev/og-cover.jpg">
+<script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": [
-        "ProfessionalService",
-        "Organization"
-      ],
-      "@id": "https://jdcode.dev/#org",
-      "name": "JDCODE LLC",
-      "alternateName": "JDCODE",
-      "url": "https://jdcode.dev/",
-      "logo": "https://jdcode.dev/favicon.svg",
-      "image": "https://jdcode.dev/og-cover.jpg",
-      "description": "Technische Betreuung, Web-Tracking und KI-Beratung für Unternehmen.",
-      "founder": {
-        "@id": "https://jdcode.dev/#jan"
-      },
-      "areaServed": "Worldwide",
-      "knowsAbout": [
-        "AI integration",
-        "Web analytics",
-        "Conversion tracking",
-        "Web development"
-      ]
-    },
-    {
-      "@type": "Person",
-      "@id": "https://jdcode.dev/#jan",
-      "name": "Jan Dorbath",
-      "url": "https://jdcode.dev/",
-      "image": "https://jdcode.dev/profile.png",
-      "jobTitle": "Founder",
-      "worksFor": {
-        "@id": "https://jdcode.dev/#org"
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": [
+    "ProfessionalService",
+    "Organization"
+   ],
+   "@id": "https://jdcode.dev/#org",
+   "name": "JDCODE LLC",
+   "alternateName": "JDCODE",
+   "url": "https://jdcode.dev/",
+   "logo": "https://jdcode.dev/favicon.svg",
+   "image": "https://jdcode.dev/og-cover.jpg",
+   "description": "Offline conversion tracking for lead-gen and recruiting funnels: qualified leads and hires from your CRM or ATS go back to Meta and Google Ads, so campaigns optimise for real outcomes. Server-side, monitored, privacy-compliant.",
+   "founder": {
+    "@id": "https://jdcode.dev/#jan"
+   },
+   "areaServed": "Worldwide",
+   "knowsAbout": [
+    "Offline conversion tracking",
+    "Lead generation tracking",
+    "Recruiting funnel tracking",
+    "Conversion tracking",
+    "Server-side tagging",
+    "Google Tag Manager server-side",
+    "Meta Conversions API",
+    "Google Ads Enhanced Conversions for Leads",
+    "Performance Max",
+    "Google Analytics 4",
+    "Consent Mode"
+   ],
+   "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Conversion tracking",
+    "itemListElement": [
+     {
+      "@type": "Offer",
+      "itemOffered": {
+       "@type": "Service",
+       "name": "Free tracking check",
+       "description": "We run an automated check of your site’s tracking setup and send you the findings by email. No call required."
       }
-    },
-    {
-      "@type": "WebPage",
-      "@id": "https://jdcode.dev/#webpage",
-      "url": "https://jdcode.dev/",
-      "inLanguage": "de",
-      "about": {
-        "@id": "https://jdcode.dev/#org"
+     },
+     {
+      "@type": "Offer",
+      "itemOffered": {
+       "@type": "Service",
+       "name": "Tracking Audit",
+       "description": "A complete review of your funnel from ad click to CRM or ATS stage. You get a written report of what is broken or missing, and what it costs your campaigns."
       }
+     },
+     {
+      "@type": "Offer",
+      "itemOffered": {
+       "@type": "Service",
+       "name": "Setup / Fix",
+       "description": "We build the pipeline: server-side container, Meta CAPI, Enhanced Conversions for Leads, GA4, consent mode — and offline conversions from your CRM or ATS back to Meta and Google. Every event is tested before it goes live."
+      }
+     },
+     {
+      "@type": "Offer",
+      "itemOffered": {
+       "@type": "Service",
+       "name": "Monitoring",
+       "description": "AI-driven checks run every day against your live tracking and offline uploads. When volumes drop, stages stop syncing or a tag stops firing, you hear about it before the budget does."
+      }
+     }
+    ]
+   }
+  },
+  {
+   "@type": "Person",
+   "@id": "https://jdcode.dev/#jan",
+   "name": "Jan Dorbath",
+   "url": "https://jdcode.dev/",
+   "image": "https://jdcode.dev/profile.png",
+   "jobTitle": "Founder",
+   "worksFor": {
+    "@id": "https://jdcode.dev/#org"
+   }
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://jdcode.dev/#webpage",
+   "url": "https://jdcode.dev/",
+   "name": "Conversion tracking for lead-gen on Meta & Google Ads — JDCODE",
+   "description": "Offline conversion tracking for lead-gen and recruiting funnels: qualified leads and hires from your CRM or ATS go back to Meta and Google Ads, so campaigns optimise for real outcomes. Server-side, monitored, privacy-compliant.",
+   "inLanguage": "en",
+   "isPartOf": {
+    "@type": "WebSite",
+    "@id": "https://jdcode.dev/#website",
+    "url": "https://jdcode.dev/",
+    "name": "JDCODE",
+    "publisher": {
+     "@id": "https://jdcode.dev/#org"
     }
-  ]
+   },
+   "about": {
+    "@id": "https://jdcode.dev/#org"
+   }
+  }
+ ]
 }
-    </script>
+</script>
 </head>
-
 <body>
-
-    <!-- The thread: tangled in the hero, straight by the CTA. Drawn via --scroll-p. -->
-    <div class="thread-layer" aria-hidden="true">
-        <svg class="thread-svg" viewBox="0 0 1440 5400" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-            <path class="thread-path" pathLength="1" d="M 240 -20
-                C 520 260, 980 120, 900 420
-                C 840 640, 1180 620, 1080 400
-                C 1010 240, 660 260, 740 520
-                C 810 760, 430 700, 520 950
-                C 600 1170, 1020 1080, 960 1360
-                C 910 1600, 560 1540, 600 1820
-                C 640 2080, 900 2040, 880 2320
-                C 864 2560, 660 2520, 680 2800
-                C 696 3040, 800 3010, 790 3280
-                C 782 3520, 730 3500, 726 3760
-                C 723 3980, 721 4000, 720 4240
-                L 720 5400" />
-        </svg>
-    </div>
-
-    <div class="background-liquid">
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
-    </div>
-
-    <nav class="nav-bar">
-        <div class="container nav-container">
-            <a href="/" class="logo">Jan Dorbath<span style="color:var(--accent-glut);">.</span></a>
-            <div class="mobile-menu-toggle">
-                <i class="fa-solid fa-bars"></i>
-            </div>
-            <div class="nav-links">
-                <a href="#ki-hebel" data-i18n="nav-ki">KI im Alltag</a>
-                <a href="#angebot" data-i18n="nav-services">Angebot</a>
-                <a href="#referenzen" data-i18n="nav-references">Referenzen</a>
-                <a href="#contact" class="btn-nav-cta" data-i18n="nav-contact">Erstgespräch</a>
-            </div>
-            <div class="nav-right">
-                <div class="lang-switch">
-                    <a class="lang-btn active" data-lang="de" href="/" hreflang="de" lang="de" style="text-decoration:none" aria-current="page">DE</a>
-                    <span class="lang-divider">|</span>
-                    <a class="lang-btn" data-lang="en" href="/en" hreflang="en" lang="en" style="text-decoration:none">EN</a>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Sektion 1: Hero — Der Spiegel -->
-    <section class="hero-section">
-        <div class="container hero-container">
-            <span class="hero-kicker" data-i18n="hero-badge">Technische Betreuung &amp; KI-Beratung</span>
-            <h1 class="headline" data-i18n="hero-headline">Sie haben ein Unternehmen zu führen.<br><em>Keinen
-                    IT-Helpdesk.</em></h1>
-            <p class="subheadline" data-i18n="hero-subheadline">
-                Die Website zickt, das Tracking lügt, und irgendwer sagt ständig, Sie müssten „jetzt was mit KI
-                machen“. Muss nicht Ihr Problem sein. Ich bin die eine Nummer, die Sie für all das anrufen — und
-                danach läuft es einfach.
-            </p>
-
-            <div class="hero-actions">
-                <a href="#contact" class="btn-glut"><span data-i18n="hero-cta-primary">30 Minuten reden — kostenlos,
-                        ohne Pitch</span> <span aria-hidden="true">→</span></a>
-                <a href="#ki-hebel" class="hero-secondary" data-i18n="hero-cta-secondary">Erstmal schauen, was ich
-                    mache ↓</a>
-            </div>
-
-            <div class="hero-trust">
-                <div class="hero-stars">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                </div>
-                <div class="hero-avatars">
-                    <img src="uwe.png" alt="Uwe Schaefer">
-                    <img src="jan-keller.png" alt="Jan Keller">
-                    <img src="kathi.png" alt="Kathi Tippmann">
-                </div>
-                <div class="trust-label" data-i18n="hero-trust">5,0 Sterne von Kunden</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sektion 1b: Das Nadelöhr -->
-    <section class="pain-section">
-        <div class="container pain-container">
-            <p class="pain-line reveal" data-i18n="pain-1">„Kurze Frage, ist bestimmt schnell gemacht …“<span
-                    class="pain-src">— Ihre dritte Technik-Mail diese Woche.</span></p>
-            <p class="pain-line reveal" style="transition-delay:.12s" data-i18n="pain-2">„Das Formular geht seit wann
-                nicht mehr?!“<span class="pain-src">— Freitag, 17:42 Uhr.</span></p>
-            <p class="pain-line reveal" style="transition-delay:.24s" data-i18n="pain-3">„Wir müssten auch mal was mit
-                KI …“<span class="pain-src">— jedes Meeting seit zwei Jahren.</span></p>
-            <p class="pain-outro reveal" style="transition-delay:.4s" data-i18n="pain-outro"><em>Kommt Ihnen bekannt
-                    vor? Dann sind Sie hier richtig.</em></p>
-        </div>
-    </section>
-
-    <!-- Sektion 2: Der KI-Hebel — KI ohne Theater -->
-    <section id="ki-hebel" class="ki-section">
-        <div class="container">
-            <div class="ki-grid">
-                <div class="ki-sticky">
-                    <span class="kicker" data-i18n="ki-kicker">KI ohne Theater</span>
-                    <h2 class="section-headline" data-i18n="ki-title">Vergessen Sie den KI-Hype.<br>Behalten Sie die
-                        6 Stunden pro Woche.</h2>
-                    <p class="ki-intro" data-i18n="ki-intro">
-                        KI ist kein Zauberstab und kein Weltuntergang. Sie ist ein Werkzeug — und wie jedes Werkzeug
-                        ist sie nur so gut wie die Hand, die sie einrichtet. Ich zeige Ihnen die zwei, drei Stellen
-                        in <em>Ihrem</em> Alltag, an denen KI wirklich Zeit spart. Den Rest lassen wir weg.
-                    </p>
-                    <p class="ki-sticky-label mono-label" data-i18n="ki-label">Was KI bei meinen Kunden wirklich
-                        tut:</p>
-                </div>
-                <div class="ki-cases">
-                    <article class="ki-card reveal">
-                        <span class="ki-card-num" aria-hidden="true">01</span>
-                        <h3 data-i18n="ki-card-1-title">Der Posteingang</h3>
-                        <p class="ki-step"><span class="ki-tag" data-i18n="ki-tag-before">Vorher</span> <span
-                                data-i18n="ki-card-1-before">40 Anfragen täglich, von Hand sortiert und
-                                beantwortet.</span></p>
-                        <p class="ki-step"><span class="ki-tag ki-tag-after" data-i18n="ki-tag-after">Nachher</span>
-                            <span data-i18n="ki-card-1-after">KI kategorisiert und entwirft Antworten. Sie geben nur
-                                noch frei.</span>
-                        </p>
-                        <div class="ki-stat" data-i18n="ki-card-1-stat">~5 Std/Woche gespart</div>
-                    </article>
-                    <article class="ki-card reveal">
-                        <span class="ki-card-num" aria-hidden="true">02</span>
-                        <h3 data-i18n="ki-card-2-title">Die Angebots-Maschine</h3>
-                        <p class="ki-step"><span class="ki-tag" data-i18n="ki-tag-before">Vorher</span> <span
-                                data-i18n="ki-card-2-before">Jedes Angebot beginnt bei null. Zwei Stunden, jedes
-                                Mal.</span></p>
-                        <p class="ki-step"><span class="ki-tag ki-tag-after" data-i18n="ki-tag-after">Nachher</span>
-                            <span data-i18n="ki-card-2-after">KI baut den Entwurf aus Ihren alten Angeboten. Sie
-                                feilen 10 Minuten.</span>
-                        </p>
-                        <div class="ki-stat" data-i18n="ki-card-2-stat">Angebot in 15 Min statt 2 Std</div>
-                    </article>
-                    <article class="ki-card reveal">
-                        <span class="ki-card-num" aria-hidden="true">03</span>
-                        <h3 data-i18n="ki-card-3-title">Das Website-Update</h3>
-                        <p class="ki-step"><span class="ki-tag" data-i18n="ki-tag-before">Vorher</span> <span
-                                data-i18n="ki-card-3-before">„Dafür brauchen wir die Agentur, dauert zwei
-                                Wochen.“</span></p>
-                        <p class="ki-step"><span class="ki-tag ki-tag-after" data-i18n="ki-tag-after">Nachher</span>
-                            <span data-i18n="ki-card-3-after">Texte, Bilder, kleine Änderungen — selbst gemacht, mit
-                                dem Workflow, den ich Ihnen einrichte.</span>
-                        </p>
-                        <div class="ki-stat" data-i18n="ki-card-3-stat">0 € Agentur-Warteschleife</div>
-                    </article>
-                    <p class="ki-outro reveal" data-i18n="ki-outro">Keine Tool-Liste. Kein Prompt-Kurs. Ich richte es
-                        ein, es läuft, Sie sparen Zeit. Das ist der ganze Trick.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sektion 3: Das Angebot — Drei Wege, ein Ansprechpartner -->
-    <section id="angebot" class="offers-section">
-        <div class="container">
-            <div class="offers-header">
-                <span class="kicker" data-i18n="offers-kicker">Angebot</span>
-                <h2 class="section-headline" data-i18n="offers-title">Kein Projektdschungel.<br>Drei klare Angebote.
-                </h2>
-            </div>
-            <div class="offers-grid">
-                <article class="offer-card reveal">
-                    <span class="offer-kicker" data-i18n="offer-1-kicker">Website</span>
-                    <h3 data-i18n="offer-1-name">Die Website, die einfach läuft.</h3>
-                    <div class="offer-price" data-i18n="offer-1-price">ab 700 €</div>
-                    <div class="offer-price-note" data-i18n="offer-1-note">einmalig, inkl. Einweisung</div>
-                    <p class="offer-desc" data-i18n="offer-1-desc">Modern, schnell, rechtssicher — und so gebaut,
-                        dass Sie sie selbst pflegen können. Inklusive Einweisung, bei der Sie nichts kaputtmachen
-                        können. Versprochen.</p>
-                    <p class="offer-for" data-i18n="offer-1-for"><em>Für alle, die seit zwei Jahren „eigentlich mal
-                            die Website erneuern“ wollen.</em></p>
-                    <a href="#contact" class="offer-link" data-i18n="offers-cta">Erstgespräch buchen →</a>
-                </article>
-                <article class="offer-card offer-featured reveal" style="transition-delay:.12s">
-                    <span class="offer-flag" data-i18n="offer-2-badge">⭐ Meistgewählt</span>
-                    <span class="offer-kicker" data-i18n="offer-2-kicker">Tracking &amp; Datenschutz</span>
-                    <h3 data-i18n="offer-2-name">Wissen, was wirklich passiert.</h3>
-                    <div class="offer-price" data-i18n="offer-2-price">Festpreis</div>
-                    <div class="offer-price-note" data-i18n="offer-2-note">nach kostenlosem Kurz-Audit</div>
-                    <p class="offer-desc" data-i18n="offer-2-desc">Saubere Web-Analyse, DSGVO-konform eingerichtet.
-                        Sie sehen endlich, was Ihre Website bringt — ohne Abmahn-Bauchschmerzen und ohne
-                        Zahlenfriedhof.</p>
-                    <p class="offer-for" data-i18n="offer-2-for"><em>Für alle, die Marketing-Geld ausgeben und nicht
-                            wissen, was ankommt.</em></p>
-                    <a href="#contact" class="offer-link" data-i18n="offers-cta">Erstgespräch buchen →</a>
-                </article>
-                <article class="offer-card reveal" style="transition-delay:.24s">
-                    <span class="offer-kicker" data-i18n="offer-3-kicker">Laufender Support</span>
-                    <h3 data-i18n="offer-3-name">Der Fels in der Brandung.</h3>
-                    <div class="offer-price" data-i18n="offer-3-price">monatlich</div>
-                    <div class="offer-price-note" data-i18n="offer-3-note">jederzeit kündbar</div>
-                    <p class="offer-desc" data-i18n="offer-3-desc">Eine Nummer für alles Technische. Updates,
-                        Notfälle, „können Sie mal kurz schauen“, KI-Fragen. Antwort in unter 24 Stunden — meistens
-                        deutlich schneller.</p>
-                    <p class="offer-for" data-i18n="offer-3-for"><em>Für alle, die nachts lieber schlafen als
-                            googeln.</em></p>
-                    <a href="#contact" class="offer-link" data-i18n="offers-cta">Erstgespräch buchen →</a>
-                </article>
-            </div>
-            <p class="offers-note reveal" data-i18n="offers-note">Nicht sicher, was Sie brauchen? Genau dafür ist das
-                kostenlose Erstgespräch da. Ich verkaufe Ihnen nichts, was Sie nicht brauchen — das spricht sich
-                nämlich rum.</p>
-        </div>
-    </section>
-
-    <!-- Sektion 4: Social Proof — Beweise statt Behauptungen -->
-    <section id="referenzen" class="testimonial-section">
-        <div class="container">
-            <div class="proof-header">
-                <span class="kicker" data-i18n="testimonial-badge">Referenzen</span>
-                <h2 class="proof-quote" data-i18n="proof-title">„Jans Stärke ist nicht, was er baut — sondern wovor
-                    er warnt.“</h2>
-                <p class="proof-sub" data-i18n="proof-subtitle">— Uwe Schaefer, Eventspace3D. Und ja, das nehme ich
-                    als Kompliment.</p>
-            </div>
-            <div class="testimonial-grid">
-                <div class="testimonial-card reveal">
-                    <div class="t-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i></div>
-                    <p class="t-text" data-i18n="testimonial-1-text">"Jans Stärke ist nicht, was er baut — sondern
-                        wovor er warnt. Bei zwei Projekten hat sein 'das machen wir besser anders' uns jeweils einen
-                        Monat gespart."</p>
-                    <div class="t-author">
-                        <img src="uwe.png" class="t-avatar" alt="Uwe">
-                        <div class="t-info">
-                            <h4>Uwe Schaefer</h4><span>Eventspace3D</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card reveal" style="transition-delay:.12s">
-                    <div class="t-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i></div>
-                    <p class="t-text" data-i18n="testimonial-2-text">"Jan beantwortet keine Tech-Fragen — er stellt
-                        sie schärfer. Nach unserem Audit war klar, dass wir nicht skaliert hätten, sondern ein
-                        Custom-Backend gebraucht hätten. Genau die Antwort, für die ich extern bezahlen wollte."</p>
-                    <div class="t-author">
-                        <img src="jan-keller.png" class="t-avatar" alt="Jan">
-                        <div class="t-info">
-                            <h4>Jan Keller</h4><span>CEO Twaer GmbH</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card reveal" style="transition-delay:.24s">
-                    <div class="t-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i></div>
-                    <p class="t-text" data-i18n="testimonial-3-text">"Jan versteht nicht nur GA4 und CAPI, sondern
-                        was das Marketing-Team eigentlich entscheiden muss. Klare Diagnose, klare Empfehlung — kein
-                        Berater-Theater."</p>
-                    <div class="t-author">
-                        <img src="kathi.png" class="t-avatar" alt="Kathi">
-                        <div class="t-info">
-                            <h4>Kathi Tippmann</h4><span>Creative Director</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="trust-strip reveal">
-                <div class="strip-item">
-                    <span class="stat-num" data-count="5.0" data-decimals="1">5,0</span>
-                    <span class="strip-label" data-i18n="strip-rating">★ Kundenbewertung</span>
-                </div>
-                <div class="strip-divider" aria-hidden="true"></div>
-                <div class="strip-item">
-                    <span class="strip-label" data-i18n="strip-projects">Projekte u.&nbsp;a. für Porsche Tokyo &amp;
-                        F1 Melbourne</span>
-                </div>
-                <div class="strip-divider" aria-hidden="true"></div>
-                <div class="strip-item">
-                    <span class="stat-wrap">&lt;&nbsp;<span class="stat-num" data-count="24"
-                            data-decimals="0">24</span></span>
-                    <span class="strip-label" data-i18n="strip-response">Std Antwortzeit</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sektion 5: Call to Action — Der ruhigste Ort der Seite -->
-    <section id="contact" class="contact-section">
-        <div class="container contact-container">
-            <div class="contact-header">
-                <h2 data-i18n="contact-title">Der erste Schritt dauert 30 Minuten. Und kostet nichts.</h2>
-                <p data-i18n="contact-subtitle">Erzählen Sie mir, was nervt. Ich sage Ihnen ehrlich, was ich tun
-                    würde — auch wenn die Antwort lautet: „Das brauchen Sie gar nicht.“ Kein Verkaufsgespräch, keine
-                    Folien, kein Fachchinesisch.</p>
-            </div>
-            <div class="calendar-wrapper">
-                <iframe
-                    src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0tMtOl7-WKsatAV-S0bjpJpwHWAYaDK8Gtsu4cq2G4IbGzz0L1dXiskyHFkQLCS_0bF8ohz4mY?gv=true"
-                    style="border: 0" width="100%" height="600" frameborder="0"></iframe>
-            </div>
-            <p class="contact-assurance" data-i18n="contact-assurance">Kein Abo-Zwang · Keine Vorbereitung nötig ·
-                Sie müssen nichts Technisches erklären können</p>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <nav class="footer-links" aria-label="Footer">
-                <!-- <a href="portfolio.html" data-i18n="footer-link-works">Arbeiten</a>
-                <a href="framer-guide-signup.html" data-i18n="footer-link-framer-guide">Framer Cookie Guide</a>
-                <a href="cookie-banner-guide.html" data-i18n="footer-link-cookie-code">Cookie Banner Code</a>
-                <a href="tracking-audit-demo.html" data-i18n="footer-link-audit">Audit Simulator</a> -->
-            </nav>
-            <p data-i18n="footer-copy">&copy; 2026 Jan Dorbath.
-            </p>
-            <a class="cookie-reset-link" data-i18n="cookie-reset">Cookie-Einstellungen</a>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="wrap">
+<a class="brand" href="/">JDCODE <span>/ tracking</span></a>
+<nav class="nav" aria-label="Main"><a class="hide-m" href="#problem">Problem</a><a class="hide-m" href="#offer">Offer</a><a class="hide-m" href="#quality">Quality</a><a class="hide-m" href="#proof">Proof</a><a class="lang" href="/de" hreflang="de" lang="de">DE</a></nav>
+</div></header>
+<main id="main">
+<section class="hero"><div class="wrap">
+<!-- Hero variants: ?hv=a (default, live) | ?hv=b | ?hv=c — hero_variant is included in every dataLayer event. -->
+<script type="application/json" id="hero-variants">{"a": {"h": "Your ads are optimising for form fills. Not for hires or customers.", "s": "We send qualified leads and hires from your CRM or ATS back to Meta and Google Ads as offline conversions — server-side, privacy-compliant and monitored daily."}, "b": {"h": "Teach Meta and Google what a good lead looks like.", "s": "Offline conversions from your CRM or ATS, Enhanced Conversions for Leads and Meta CAPI — so Performance Max and Advantage+ chase qualified leads, not cheap clicks."}, "c": {"h": "Stop paying for leads that never become hires.", "s": "For recruiting and B2B lead-gen funnels: we connect real outcomes in your CRM or ATS to your ad platforms, verify every event and keep it accurate."}}</script>
+<p class="label">Lead-gen conversion tracking · Meta + Google Ads</p>
+<h1 id="hero-title" style="margin-top:24px">Your ads are optimising for form fills. Not for hires or customers.</h1>
+<p class="lead" id="hero-sub">We send qualified leads and hires from your CRM or ATS back to Meta and Google Ads as offline conversions — server-side, privacy-compliant and monitored daily.</p>
+<div class="ctas"><a class="btn btn-p" href="#contact" data-cta="audit" data-cta-location="hero">Get a tracking audit <span class="arr" aria-hidden="true">→</span></a><a class="btn btn-s" href="#free-check" data-cta="free_check" data-cta-location="hero">Free tracking check</a></div><p style="margin-top:16px;font-size:14px"><a href="#booking" data-cta="call" data-cta-location="hero_link">Book a free 30-min call</a></p>
+<div class="hero-meta"><div><span class="label">For</span>Recruiting funnels, B2B &amp; service firms</div><div><span class="label">Stack</span>CRM / ATS → Meta CAPI · Google Ads</div><div><span class="label">Privacy</span>Server-side, consent mode v2</div><div><span class="label">After launch</span>Daily automated checks</div></div>
+</div></section>
+<div class="diagram"><div class="wrap">
+<figure class="fig" id="diagram"><svg viewBox="0 0 1000 450" role="img" aria-labelledby="dg-t dg-d" xmlns="http://www.w3.org/2000/svg">
+<title id="dg-t">Data flow: browser and CRM/ATS to server container to ad platforms, with monitoring</title><desc id="dg-d">Form events leave the browser and land in your CRM or ATS. Both web events and offline outcomes such as qualified lead or hire pass through a server-side Google Tag Manager container and are sent to Meta Conversions API, Google Ads Enhanced Conversions for Leads and GA4. A monitoring node checks each destination daily.</desc>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#111"/></marker>
+<marker id="ahg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#0B7A4B"/></marker></defs>
+<g fill="none" stroke="#111" stroke-width="1.25">
+<rect x="20" y="150" width="190" height="96"/>
+<rect x="350" y="130" width="250" height="136"/>
+<rect x="770" y="30" width="210" height="70"/><rect x="770" y="160" width="210" height="70"/><rect x="770" y="290" width="210" height="70"/>
+<path d="M210 198H346" marker-end="url(#ah)"/>
+<rect x="20" y="330" width="190" height="96"/>
+<path d="M115 246V326" marker-end="url(#ah)"/>
+<path d="M210 378C290 378 280 250 346 250" marker-end="url(#ah)"/>
+<path d="M600 175C680 175 690 65 766 65" marker-end="url(#ah)"/>
+<path d="M600 198H766" marker-end="url(#ah)"/>
+<path d="M600 221C680 221 690 325 766 325" marker-end="url(#ah)"/>
+</g>
+<g fill="none" stroke="#0B7A4B" stroke-width="1.25" stroke-dasharray="4 4">
+<rect x="350" y="360" width="250" height="70" stroke-dasharray="none"/>
+<path d="M475 270V356" marker-start="url(#ahg)"/>
+<path d="M604 395H875V364" marker-end="url(#ahg)"/>
+</g>
+<g font-size="12" fill="#77756F"><text x="20" y="140">01 / CLIENT</text><text x="20" y="320" fill="#77756F"></text><text x="350" y="120">02 / SERVER</text><text x="770" y="20">03 / DESTINATIONS</text></g>
+<g font-size="17" fill="#111" font-weight="600">
+<text x="38" y="188">Browser</text><text x="368" y="168">Server container</text>
+<text x="788" y="68">Meta CAPI</text><text x="788" y="198">Google Ads</text><text x="788" y="328">GA4</text>
+<text x="38" y="368">CRM / ATS</text><text x="368" y="394" fill="#0B7A4B">Monitoring</text></g>
+<g font-size="12" fill="#3C3C3A">
+<text x="38" y="212">GTM web · consent mode</text><text x="38" y="230">first-party cookies</text>
+<text x="368" y="192">sGTM · first-party domain</text><text x="368" y="212">dedup event_id · hashed PII</text><text x="368" y="232">consent signals forwarded</text>
+<text x="788" y="88">CAPI · lead stages</text><text x="788" y="218">EC for Leads · offline</text><text x="788" y="348">Measurement Protocol</text>
+<text x="38" y="392">qualified · interview</text><text x="38" y="410">hired · won</text><text x="124" y="292" font-size="11">form submit</text><text x="222" y="404" font-size="11">offline conv.</text>
+<text x="368" y="416" fill="#0B7A4B">daily checks · anomaly alerts</text>
+<text x="222" y="188" font-size="11">page_view</text><text x="222" y="216" font-size="11">generate_lead</text></g>
+<g font-size="11" fill="#0B7A4B">
+<rect x="920" y="56" width="52" height="18" fill="#E7F2EC"/><text x="946" y="69" text-anchor="middle">OK</text>
+<rect x="920" y="186" width="52" height="18" fill="#E7F2EC"/><text x="946" y="199" text-anchor="middle">OK</text>
+<rect x="920" y="316" width="52" height="18" fill="#E7F2EC"/><text x="946" y="329" text-anchor="middle">OK</text>
+<rect x="636" y="380" width="78" height="18" fill="#0B7A4B"/><text x="675" y="393" text-anchor="middle" fill="#FBFAF7">ALERT</text></g>
+</svg>
+<figcaption><span>Fig. 1 — Reference architecture. Each arrow is tested before launch and checked daily afterwards.</span><span class="mono">Simplified</span></figcaption></figure>
+</div></div>
+<section id="problem" class="sec"><div class="wrap">
+<div class="sec-head"><p class="label">01 — The problem</p><h2>Your ad platforms only see the form submit. Everything that matters happens after it.</h2></div>
+<ol class="signs"><li><span class="n">01</span><h3>Ads optimise on form submits, not qualified leads</h3><p>Meta and Google count every submission as a win. The algorithm learns to find people who fill in forms — not people who get hired or sign.</p></li><li><span class="n">02</span><h3>Junk leads get cheaper, good leads get rarer</h3><p>Spam, duplicates and unqualified applicants look identical to great ones in the ad account. Cost per lead drops while pipeline quality erodes.</p></li><li><span class="n">03</span><h3>CRM and ATS outcomes never reach the ad platforms</h3><p>Qualified, interviewed, hired, won: these stages live in your CRM or ATS and never flow back. The ad platforms optimise blind.</p></li><li><span class="n">04</span><h3>iOS and consent signal loss</h3><p>Browser restrictions, ad blockers and declined consent remove conversions before they are counted — unless tracking is built server-side to recover what can legitimately be recovered.</p></li><li><span class="n">05</span><h3>Performance Max chases the cheapest conversion</h3><p>Given only form fills, PMax and Advantage+ find the cheapest inventory that produces them. Volume goes up, outcomes do not.</p></li></ol>
+<div class="qa" style="margin-top:72px"><div class="practice"><p class="label" style="padding-top:12px">Built for</p><div><h3>Recruiting and hiring funnels</h3><p>Career sites and application funnels feeding an ATS such as Workable, Greenhouse or Personio.</p></div><div><h3>B2B and service firms with custom stacks</h3><p>Framer or Webflow sites, custom forms, a CRM — and paid campaigns on Meta and Google Ads.</p></div></div><div class="practice"><p class="label" style="padding-top:12px">Not for</p><div><h3>E-commerce and online shops</h3><p>Shop tracking is a different discipline with its own specialists. We do not take it on.</p></div><div><h3>Teams without paid ads</h3><p>If you are not spending on Meta or Google Ads, the offline conversion loop has nothing to feed.</p></div></div></div>
+</div></section>
+<section id="offer" class="sec"><div class="wrap">
+<div class="sec-head"><p class="label">02 — The offer</p><h2>Start with a free check. Go as far as you need.</h2></div>
+<!-- TODO Jan: decide how free checks are delivered (e.g. form service like Formspree/Cal.com routing form, or a mailto address). Right now the form only stores URL/email locally, pushes dataLayer 'free_check_request' (no PII) and sends the visitor to the booking section. Nothing is sent to you automatically yet. -->
+<form class="freecheck" id="free-check" novalidate>
+<div class="fc-h"><div class="label" style="display:flex;justify-content:space-between"><span>Step 00</span><span>Free</span></div><h3>Free tracking check</h3><p>We run an automated check of your site’s tracking setup and send you the findings by email. No call required.</p></div>
+<div class="fc-f"><label for="fc-url" class="label">Website URL</label><input id="fc-url" name="url" type="url" required placeholder="https://" autocomplete="url">
+<label for="fc-email" class="label">Work email</label><input id="fc-email" name="email" type="email" required placeholder="you@company.com" autocomplete="email">
+<button class="btn btn-p" type="submit" data-cta="free_check" data-cta-location="offer_free_check">Request free check <span class="arr" aria-hidden="true">→</span></button>
+<p class="b-note" id="fc-note" role="status" aria-live="polite" data-ok="Thanks — request noted. To make sure it reaches me, please pick a short slot below or mention your URL when booking." data-err="Please enter a valid website URL and work email."></p></div>
+</form>
+<div class="steps"><article class="step"><div class="label"><span>Step 01</span><span>Fixed scope · days</span></div><h3>Tracking Audit</h3><p>A complete review of your funnel from ad click to CRM or ATS stage. You get a written report of what is broken or missing, and what it costs your campaigns.</p><ul><li>Event &amp; lead-stage inventory</li><li>Consent and privacy review</li><li>Match quality &amp; dedup checks</li><li>Prioritised fix plan</li></ul><p class="out">Deliverable: audit report</p></article><article class="step"><div class="label"><span>Step 02</span><span>Implementation</span></div><h3>Setup / Fix</h3><p>We build the pipeline: server-side container, Meta CAPI, Enhanced Conversions for Leads, GA4, consent mode — and offline conversions from your CRM or ATS back to Meta and Google. Every event is tested before it goes live.</p><ul><li>Server-side GTM on your domain</li><li>Offline conversions CRM/ATS → Meta &amp; Google</li><li>Enhanced Conversions for Leads, CAPI</li><li>QA sign-off before launch</li></ul><p class="out">Deliverable: verified pipeline + documentation</p></article><article class="step"><div class="label"><span>Step 03</span><span>Ongoing retainer</span></div><h3>Monitoring</h3><p>AI-driven checks run every day against your live tracking and offline uploads. When volumes drop, stages stop syncing or a tag stops firing, you hear about it before the budget does.</p><ul><li>Daily automated checks</li><li>Alerts on anomalies</li><li>Fixes for what breaks</li><li>Monthly report</li></ul><p class="out">Deliverable: alerts + monthly report</p></article></div>
+<div class="ctas" style="margin-top:40px"><a class="btn btn-p" href="#contact" data-cta="audit" data-cta-location="offer">Get a tracking audit <span class="arr" aria-hidden="true">→</span></a></div>
+</div></section>
+<section id="quality" class="sec"><div class="wrap">
+<div class="sec-head"><p class="label">03 — Quality</p><h2>Rigour is the product. Here is how it is ensured.</h2></div>
+<div class="qa"><div><p class="label" style="margin-bottom:12px">Pre-launch QA checklist (excerpt)</p><ul class="check"><li><span>Every lead fires once, with a stable lead / event ID</span><span class="status">✓ verified</span></li><li><span>Browser and server events deduplicated via event_id</span><span class="status">✓ verified</span></li><li><span>CRM/ATS stages mapped to offline conversions in Meta and Google</span><span class="status">✓ verified</span></li><li><span>Consent state respected and forwarded server-side</span><span class="status">✓ verified</span></li><li><span>Hashed user data matches platform requirements</span><span class="status">✓ verified</span></li><li><span>Daily check: offline uploads arriving, volumes as expected</span><span class="status alert">! monitor</span></li></ul></div>
+<div class="practice"><div><h3>Documented before built</h3><p>A written tracking plan defines every event, parameter and destination. Nothing is implemented that is not specified.</p></div><div><h3>Tested in each platform</h3><p>Events are validated in the platforms’ own diagnostic tools — not just in the browser.</p></div><div><h3>Watched after launch</h3><p>Automated daily checks compare live data against expectations and flag deviations early.</p></div><div><h3>Privacy by default</h3><p>Consent mode and first-party data handling are part of the setup, not an afterthought.</p></div></div></div>
+</div></section>
+<section id="proof" class="sec"><div class="wrap">
+<div class="sec-head"><p class="label">04 — Proof</p><h2>Recent work and what clients say.</h2></div>
+<div class="proof">
+<!-- akeno.ai case: client approval pending — do not publish before written OK. -->
+<article class="case"><div class="case-h"><span class="label">Case · recruiting</span><span class="status">✓ live</span></div>
+<div class="case-b"><h3>akeno.ai — recruiting funnel</h3><p>A Framer careers site with a custom application funnel into the Workable ATS, routed via Cloudflare. Tracking built end-to-end so every application step is measured and attributed for paid campaigns.</p><dl><dt>Site</dt><dd>Framer</dd><dt>Funnel</dt><dd>Custom application flow → Workable ATS via Cloudflare</dd><dt>Tracking</dt><dd>GTM, GA4, Google Ads Enhanced Conversions</dd><dt>Pixels</dt><dd>Meta, Reddit, Microsoft Clarity</dd></dl></div></article>
+<div>
+<!-- EN translations of German originals (translated, pending client approval). -->
+<blockquote class="q-main"><p>“Jan doesn’t just understand GA4 and CAPI — he understands what the marketing team actually needs to decide. Clear diagnosis, clear recommendation — no consultant theater.”</p><footer class="q-by"><img src="/kathi.png" alt="" width="40" height="40" loading="lazy"><span><strong>Kathi Tippmann</strong> · Creative Director</span></footer></blockquote>
+<div class="q-more"><blockquote><p>“Jan doesn’t answer tech questions — he sharpens them. After our audit it was clear we wouldn’t have scaled, we’d have needed a custom backend. Exactly the answer I wanted to pay externally for.”</p><cite>— Jan Keller, CEO Twaer GmbH</cite></blockquote><blockquote><p>“Jan’s strength isn’t what he builds — it’s what he warns you against. On two projects, his ‘let’s do this differently’ saved us a month each.”</p><cite>— Uwe Schaefer, Eventspace3D</cite></blockquote></div>
+<p class="names">Previous projects include work for Porsche Tokyo, F1 Melbourne and Twaer GmbH.</p>
+</div></div>
+</div></section>
+<section id="contact" class="sec final"><div class="wrap">
+<div class="sec-head"><p class="label">05 — Next step</p><div><h2>Find out what your ads are really optimising for.</h2><p class="lead" style="margin-top:20px">Request the free check, start with an audit, or use a free 30-minute call to talk through your funnel. You will get a straight answer on whether it is worth fixing.</p>
+<div class="ctas"><a class="btn btn-p" href="#contact" data-cta="audit" data-cta-location="final">Get a tracking audit <span class="arr" aria-hidden="true">→</span></a><a class="btn btn-s" href="#booking" data-cta="call" data-cta-location="final">Book a free 30-min call</a></div></div></div>
+<div class="booking" id="booking">
+<form id="budget" class="budget" onsubmit="return false"><fieldset><legend>Monthly ad spend</legend><p>Optional. Helps me prepare for the call.</p><label class="radio"><input type="radio" name="budget" value="lt_5k"> &lt; $5k</label><label class="radio"><input type="radio" name="budget" value="5k_15k"> $5–15k</label><label class="radio"><input type="radio" name="budget" value="15k_plus"> $15k+</label></fieldset>
+<button type="button" class="skip-b" id="budget-skip">Skip this question</button>
+<p class="b-note" id="fc-confirm" role="status" aria-live="polite"></p>
+<p class="b-note" id="budget-note" role="status" aria-live="polite" data-ok="Thanks — noted. Pick a time on the right." data-skip="No problem. Pick a time on the right."></p></form>
+<div class="cal"><iframe id="cal-frame" title="Book a free 30-minute call" src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0tMtOl7-WKsatAV-S0bjpJpwHWAYaDK8Gtsu4cq2G4IbGzz0L1dXiskyHFkQLCS_0bF8ohz4mY?gv=true" loading="lazy"></iframe></div>
+</div>
+</div></section>
+</main>
+<footer><div class="wrap"><span>© 2026 JDCODE LLC · Jan Dorbath</span><nav aria-label="Footer"><a href="/portfolio">Portfolio</a><a class="cookie-reset-link" href="#" role="button">Cookie settings</a></nav></div></footer>
+<div class="sticky"><a class="btn btn-p" href="#contact" data-cta="audit" data-cta-location="sticky_mobile">Get a tracking audit <span class="arr" aria-hidden="true">→</span></a></div>
+<script src="/assets/tf.js" defer></script>
 </body>
-
 </html>
