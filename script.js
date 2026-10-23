@@ -146,8 +146,9 @@ document.addEventListener('DOMContentLoaded', () => {
             <a href="${base}">${translations[i18n.currentLang]['nav-home']}</a>
             <a href="${base}#ki-hebel">${translations[i18n.currentLang]['nav-ki']}</a>
             <a href="${base}#angebot">${translations[i18n.currentLang]['nav-services']}</a>
+            <a href="${base}#work">${translations[i18n.currentLang]['nav-work']}</a>
             <a href="${base}#referenzen">${translations[i18n.currentLang]['nav-references']}</a>
-            <a href="${base}#contact">${translations[i18n.currentLang]['nav-contact']}</a>
+            <a href="${base}#contact" data-cta="book_call" data-cta-location="mobile_menu">${translations[i18n.currentLang]['nav-contact']}</a>
         `;
         if (navBar) {
             navBar.after(mobileMenu);
