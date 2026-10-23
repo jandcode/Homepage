@@ -67,3 +67,13 @@
         new IntersectionObserver(function (en) { sticky.classList.toggle('is-hidden', en[0].isIntersecting); }, { threshold: 0.1 }).observe(contact);
     }
 })();
+
+/* Pricing display switch: ?price=none (default) | ?price=anchor */
+(function () {
+    var mode = new URLSearchParams(location.search).get('price') === 'anchor' ? 'anchor' : 'none';
+    var a = document.querySelector('[data-price-anchor]'), g = document.querySelector('[data-price-mode]');
+    if (g) g.setAttribute('data-price-mode', mode);
+    if (a) a.hidden = mode !== 'anchor';
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'price_mode', price_mode: mode });
+})();
