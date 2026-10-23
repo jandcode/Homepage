@@ -64,6 +64,21 @@
     });
   }
 
+  // --- Free check form (no backend: stored locally, event without PII, then to booking) ---
+  var fc = d.getElementById('free-check');
+  if (fc) fc.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var u = fc.querySelector('#fc-url'), m = fc.querySelector('#fc-email'), n = d.getElementById('fc-note');
+    if (!u.checkValidity() || !m.checkValidity()) { if (n) n.textContent = n.getAttribute('data-err'); return; }
+    var host = ''; try { host = new URL(u.value).hostname; } catch (x) {}
+    try { localStorage.setItem('jd_free_check', JSON.stringify({ url: u.value, email: m.value, ts: Date.now() })); } catch (x) {}
+    push('free_check_request', { site_host: host });
+    var c = d.getElementById('fc-confirm');
+    if (c && n) c.textContent = n.getAttribute('data-ok');
+    if (n) n.textContent = n.getAttribute('data-ok');
+    var b = d.getElementById('booking'); if (b) b.scrollIntoView();
+  });
+
   // --- Booking view / completion (best effort) ---
   var cal = d.getElementById('booking');
   if (cal && 'IntersectionObserver' in w) {

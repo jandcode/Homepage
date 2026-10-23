@@ -153,3 +153,11 @@ footer a{color:var(--ink-3);text-decoration:none;cursor:pointer}footer a:hover{c
 .consent .ctas .btn{padding:11px 14px;font-size:14px}
 @media (max-width:760px){.consent{left:12px;right:12px;bottom:84px;max-width:none}}
 @media (max-width:760px){.fig{overflow-x:auto;-webkit-overflow-scrolling:touch}.fig svg{min-width:720px}.fig figcaption{flex-direction:column;gap:4px}}
+/* free check (step 00) */
+.freecheck{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);border-top:1px solid var(--ink);padding:28px 0 40px;margin-bottom:0}
+.fc-h h3{font-size:26px;margin:28px 0 14px}.fc-h p{color:var(--ink-2)}
+.fc-f{display:grid;gap:8px;align-content:start}
+.fc-f input{font:400 16px/1.4 var(--mono);padding:13px 14px;border:1px solid var(--rule);background:#fff;border-radius:2px;color:var(--ink);margin-bottom:10px}
+.fc-f input:focus{outline:2px solid var(--ink);outline-offset:0;border-color:var(--ink)}
+.fc-f .btn{justify-self:start;margin-top:4px}
+@media (max-width:860px){.freecheck{grid-template-columns:1fr}}
