@@ -11,13 +11,13 @@
     <link rel="canonical" href="https://jdcode.dev/en">
     <link rel="alternate" hreflang="de" href="https://jdcode.dev/">
     <link rel="alternate" hreflang="en" href="https://jdcode.dev/en">
-    <link rel="alternate" hreflang="x-default" href="https://jdcode.dev/">
+    <link rel="alternate" hreflang="x-default" href="https://jdcode.dev/en">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@400;500;600;700&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -91,45 +91,25 @@
   ]
 }
     </script>
+    <!-- Redesign layer (AI-first studio look) -->
+    <link rel="stylesheet" href="/redesign.css">
 </head>
 
 <body>
 
-    <!-- The thread: tangled in the hero, straight by the CTA. Drawn via --scroll-p. -->
-    <div class="thread-layer" aria-hidden="true">
-        <svg class="thread-svg" viewBox="0 0 1440 5400" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-            <path class="thread-path" pathLength="1" d="M 240 -20
-                C 520 260, 980 120, 900 420
-                C 840 640, 1180 620, 1080 400
-                C 1010 240, 660 260, 740 520
-                C 810 760, 430 700, 520 950
-                C 600 1170, 1020 1080, 960 1360
-                C 910 1600, 560 1540, 600 1820
-                C 640 2080, 900 2040, 880 2320
-                C 864 2560, 660 2520, 680 2800
-                C 696 3040, 800 3010, 790 3280
-                C 782 3520, 730 3500, 726 3760
-                C 723 3980, 721 4000, 720 4240
-                L 720 5400" />
-        </svg>
-    </div>
-
-    <div class="background-liquid">
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
-    </div>
-
     <nav class="nav-bar">
         <div class="container nav-container">
-            <a href="/en" class="logo">Jan Dorbath<span style="color:var(--accent-glut);">.</span></a>
+            <a href="/en" class="logo">JDCODE<span style="color:var(--accent-glut);">.</span></a>
             <div class="mobile-menu-toggle">
                 <i class="fa-solid fa-bars"></i>
             </div>
             <div class="nav-links">
-                <a href="#ki-hebel" data-i18n="nav-ki">AI in practice</a>
                 <a href="#angebot" data-i18n="nav-services">Services</a>
+                <a href="#work" data-i18n="nav-work">Work</a>
+                <a href="#how">How it works</a>
+                <a href="#faq">FAQ</a>
                 <a href="#referenzen" data-i18n="nav-references">References</a>
-                <a href="#contact" class="btn-nav-cta" data-i18n="nav-contact">Intro call</a>
+                <a href="#contact" class="btn-nav-cta" data-cta="book_call" data-cta-location="nav">Book a call</a>
             </div>
             <div class="nav-right">
                 <div class="lang-switch">
@@ -141,41 +121,82 @@
         </div>
     </nav>
 
-        <section class="hero-section">
+    <!-- HERO A/B VARIANTS (EN). Live = A. Switch for testing via ?hv=a|b|c (handled in redesign.js, sent as hero_variant in dataLayer events).
+         Variant A (LIVE): AI-first speed. Senior-level rigor. | JDCODE builds AI automations, conversion funnels and tracking that hold up in production — every workflow reviewed, every conversion verified before launch. For clients in any time zone.
+         Variant B: Production-grade AI, funnels and tracking — built fast, verified before launch. | One senior founder working with AI agents, with human review on everything that ships. Calm, accountable delivery for clients in any time zone.
+         Variant C: Turn AI and data into measurable growth — built to production standard. | JDCODE is an AI-first studio: one senior founder plus AI agents delivers automations, conversion funnels and tracking quickly — reviewed, tested and verified before anything goes live.
+    -->
+    <section class="hero-section" data-hero-variant="a" data-hero-variants="{&quot;a&quot;: {&quot;h&quot;: &quot;AI-first speed. Senior-level rigor.&quot;, &quot;s&quot;: &quot;JDCODE builds AI automations, conversion funnels and tracking that hold up in production — every workflow reviewed, every conversion verified before launch. For clients in any time zone.&quot;}, &quot;b&quot;: {&quot;h&quot;: &quot;Production-grade AI, funnels and tracking — built fast, verified before launch.&quot;, &quot;s&quot;: &quot;One senior founder working with AI agents, with human review on everything that ships. Calm, accountable delivery for clients in any time zone.&quot;}, &quot;c&quot;: {&quot;h&quot;: &quot;Turn AI and data into measurable growth — built to production standard.&quot;, &quot;s&quot;: &quot;JDCODE is an AI-first studio: one senior founder plus AI agents delivers automations, conversion funnels and tracking quickly — reviewed, tested and verified before anything goes live.&quot;}}">
         <div class="container hero-container">
-            <span class="hero-kicker" data-i18n="hero-badge">AI-first development studio</span>
-            <h1 class="headline" data-i18n="hero-headline">You've got a business to run.<br><em>Not an IT helpdesk.</em></h1>
-            <p class="subheadline" data-i18n="hero-subheadline">The website acts up, the tracking lies, and someone keeps telling you to “do something with AI”. None of that has to be your problem. JDCODE is the one team you call for AI integrations, tracking and web — and then things just run.</p>
-
+            <span class="hero-kicker">JDCODE LLC · AI-first development studio</span>
+            <h1 class="headline" data-hero-h>AI-first speed. Senior-level rigor.</h1>
+            <p class="subheadline" data-hero-s>JDCODE builds AI automations, conversion funnels and tracking that hold up in production — every workflow reviewed, every conversion verified before launch. For clients in any time zone.</p>
             <div class="hero-actions">
-                <a href="#contact" class="btn-glut"><span data-i18n="hero-cta-primary">Talk for 30 minutes — free, no pitch</span> <span aria-hidden="true">→</span></a>
-                <a href="#ki-hebel" class="hero-secondary" data-i18n="hero-cta-secondary">See what I do first ↓</a>
-            </div>
-
-            <div class="hero-trust">
-                <div class="hero-stars">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                </div>
-                <div class="hero-avatars">
-                    <img src="/uwe.png" alt="Uwe Schaefer">
-                    <img src="/jan-keller.png" alt="Jan Keller">
-                    <img src="/kathi.png" alt="Kathi Tippmann">
-                </div>
-                <div class="trust-label" data-i18n="hero-trust">5.0 stars from clients</div>
+                <a href="#contact" class="btn-glut" data-cta="book_call" data-cta-location="hero">Book a free 30-min call <span aria-hidden="true">→</span></a>
+                <a href="#work" class="hero-secondary" data-cta="secondary" data-cta-location="hero">See selected work</a>
             </div>
         </div>
     </section>
 
-        <section class="pain-section">
-        <div class="container pain-container">
-            <p class="pain-line reveal" data-i18n="pain-1">“Quick question, probably a two-minute fix …”<span class="pain-src">— your third tech email this week.</span></p>
-            <p class="pain-line reveal" style="transition-delay:.12s" data-i18n="pain-2">“Since when has the form been broken?!”<span class="pain-src">— Friday, 5:42 pm.</span></p>
-            <p class="pain-line reveal" style="transition-delay:.24s" data-i18n="pain-3">“We really should do something with AI …”<span class="pain-src">— every meeting for two years.</span></p>
-            <p class="pain-outro reveal" style="transition-delay:.4s" data-i18n="pain-outro"><em>Sound familiar? Then you're in the right place.</em></p>
+    <!-- Proof directly under hero: only real names/ratings already on the site (no logos used). -->
+    <section class="proof-bar" aria-label="Trusted on projects for">
+        <div class="container proof-bar-inner">
+            <div class="proof-names"><span class="proof-label">Trusted on projects for</span>
+                <ul><li>Porsche Experience Center Tokyo</li><li>F1 Melbourne</li><li>akeno.ai</li><li>Twaer GmbH</li></ul>
+            </div>
+            <div class="proof-rating">
+                <div class="hero-avatars"><img src="/uwe.png" alt="Uwe Schaefer" width="36" height="36"><img src="/jan-keller.png" alt="Jan Keller" width="36" height="36"><img src="/kathi.png" alt="Kathi Tippmann" width="36" height="36"></div>
+                <div><div class="hero-stars" aria-hidden="true">★★★★★</div><span class="trust-label">5.0 client rating</span></div>
+            </div>
+            <figure class="proof-quote-mini"><blockquote>“Jan’s strength isn’t what he builds — it’s what he warns you about.”</blockquote><figcaption>— Uwe Schaefer, Eventspace3D</figcaption></figure>
+        </div>
+    </section>
+
+    <section id="angebot" class="offers-section">
+        <div class="container">
+            <div class="offers-header">
+                <span class="kicker">Services</span>
+                <h2 class="section-headline">Four packages. One accountable studio.</h2>
+            </div>
+            <div class="offers-grid offers-4">
+                <article class="offer-card">
+                    <span class="offer-kicker">Conversion website</span>
+                    <h3>Conversion website on Framer.</h3>
+                    <div class="offer-price offer-scoped">Scoped after a free 30-min call</div>
+                    <p class="offer-desc">Conversion-focused Framer sites you can edit yourself — copy, structure and CTAs built around one goal, with forms and tracking tested before launch.</p>
+                    <p class="offer-for"><strong>For:</strong> Companies that need a credible site that turns visitors into enquiries.</p>
+                    <div class="work-tags"><span>Framer</span><span>CMS</span><span>SEO basics</span></div>
+                    <a href="#contact" class="offer-link" data-cta="book_call" data-cta-location="offer_1">Book a free 30-min call →</a>
+                </article>
+                <article class="offer-card offer-featured">
+                    <span class="offer-kicker">Funnel &amp; site refresh</span>
+                    <h3>Funnel &amp; site refresh.</h3>
+                    <div class="offer-price offer-scoped">Scoped after a free 30-min call</div>
+                    <p class="offer-desc">Rework your funnel and site end to end — new structure, conversion copy and motion design incl. animations (e.g. Lottie), migrated on staging with redirects and parity checks.</p>
+                    <p class="offer-for"><strong>For:</strong> Teams whose site or funnel looks dated and leaks leads or applicants.</p>
+                    <div class="work-tags"><span>Funnel redesign</span><span>Animations / Lottie</span><span>A/B-ready</span></div>
+                    <a href="#contact" class="offer-link" data-cta="book_call" data-cta-location="offer_2">Book a free 30-min call →</a>
+                </article>
+                <article class="offer-card">
+                    <span class="offer-kicker">Tracking &amp; integrations</span>
+                    <h3>Tracking &amp; integrations.</h3>
+                    <div class="offer-price offer-scoped">Scoped after a free 30-min call</div>
+                    <p class="offer-desc">GTM, GA4, ad pixels and Google Ads Enhanced Conversions, plus ATS integrations (e.g. Workable) for recruiting funnels — every event QA’d and documented.</p><div class="offer-module"><span class="offer-module-k">Module · Google for Jobs</span><p>Structured JobPosting data so your open roles can appear in Google’s job search — wired into your recruiting funnel and ATS.</p></div>
+                    <p class="offer-for"><strong>For:</strong> Teams spending on ads or hiring who need data they can trust.</p>
+                    <div class="work-tags"><span>GTM / GA4</span><span>Pixels</span><span>Enhanced Conversions</span><span>ATS / Workable</span></div>
+                    <a href="#contact" class="offer-link" data-cta="book_call" data-cta-location="offer_3">Book a free 30-min call →</a>
+                </article>
+                <article class="offer-card">
+                    <span class="offer-kicker">AI automation &amp; support</span>
+                    <h3>AI automation &amp; ongoing support.</h3>
+                    <div class="offer-price offer-scoped">Scoped after a free 30-min call</div>
+                    <p class="offer-desc">Inbox triage, proposal drafts, workflows and AI agents with human review and guardrails — plus ongoing support and monitoring for your site and stack.</p>
+                    <p class="offer-for"><strong>For:</strong> Teams that want AI doing the busywork and one accountable tech partner.</p>
+                    <div class="work-tags"><span>AI agents</span><span>Workflows</span><span>Support</span></div>
+                    <a href="#contact" class="offer-link" data-cta="book_call" data-cta-location="offer_4">Book a free 30-min call →</a>
+                </article>
+            </div>
+            <div class="section-cta"><a href="#contact" class="btn-glut" data-cta="book_call" data-cta-location="offers">Book a free 30-min call <span aria-hidden="true">→</span></a></div>
         </div>
     </section>
 
@@ -222,47 +243,71 @@
                     <p class="ki-outro reveal" data-i18n="ki-outro">No tool lists. No prompt course. I set it up, it runs, you save time. That's the whole trick.</p>
                 </div>
             </div>
+            <div class="section-cta"><a href="#contact" class="btn-glut" data-cta="book_call" data-cta-location="ki">Book a free 30-min call <span aria-hidden="true">→</span></a></div>
         </div>
     </section>
 
-        <section id="angebot" class="offers-section">
+    <section id="work" class="work-section">
         <div class="container">
-            <div class="offers-header">
-                <span class="kicker" data-i18n="offers-kicker">Services</span>
-                <h2 class="section-headline" data-i18n="offers-title">No project jungle.<br>Three clear offers.</h2>
+            <div class="work-header">
+                <div><span class="kicker">Selected work</span><h2 class="section-headline">Selected work.</h2></div>
+                <p>A cut from projects across Japan, Australia, Europe and the US — from AI assistants to tracking architecture.</p>
             </div>
-            <!-- TODO Jan: USD prices unknown — pricing shown as "Project-based, contact us". Fill in real USD prices if desired. -->
-            <div class="offers-grid">
-                <article class="offer-card reveal">
-                    <span class="offer-kicker" data-i18n="offer-1-kicker">Website</span>
-                    <h3 data-i18n="offer-1-name">The website that simply works.</h3>
-                    <div class="offer-price" data-i18n="offer-1-price">Project-based</div>
-                    <div class="offer-price-note" data-i18n="offer-1-note">contact us for a quote</div>
-                    <p class="offer-desc" data-i18n="offer-1-desc">Modern, fast and built so you can maintain it yourself. Including a walkthrough where you can't break anything. Promise.</p>
-                    <p class="offer-for" data-i18n="offer-1-for"><em>For everyone who's been meaning to redo their website for two years.</em></p>
-                    <a href="#contact" class="offer-link" data-i18n="offers-cta">Book an intro call →</a>
-                </article>
-                <article class="offer-card offer-featured reveal" style="transition-delay:.12s">
-                    <span class="offer-flag" data-i18n="offer-2-badge">⭐ Most popular</span>
-                    <span class="offer-kicker" data-i18n="offer-2-kicker">Analytics &amp; tracking</span>
-                    <h3 data-i18n="offer-2-name">Know what's really happening.</h3>
-                    <div class="offer-price" data-i18n="offer-2-price">Project-based</div>
-                    <div class="offer-price-note" data-i18n="offer-2-note">contact us — starts with a free mini audit</div>
-                    <p class="offer-desc" data-i18n="offer-2-desc">Clean web analytics and conversion tracking, set up properly and privacy-aware. You finally see what your website delivers — no graveyard of numbers.</p>
-                    <p class="offer-for" data-i18n="offer-2-for"><em>For everyone spending marketing money without knowing what lands.</em></p>
-                    <a href="#contact" class="offer-link" data-i18n="offers-cta">Book an intro call →</a>
-                </article>
-                <article class="offer-card reveal" style="transition-delay:.24s">
-                    <span class="offer-kicker" data-i18n="offer-3-kicker">Ongoing support</span>
-                    <h3 data-i18n="offer-3-name">The rock in the surf.</h3>
-                    <div class="offer-price" data-i18n="offer-3-price">Project-based</div>
-                    <div class="offer-price-note" data-i18n="offer-3-note">contact us · cancel anytime</div>
-                    <p class="offer-desc" data-i18n="offer-3-desc">One number for everything technical. Updates, emergencies, “could you take a quick look”, AI questions. Answer within 24 hours — usually much faster.</p>
-                    <p class="offer-for" data-i18n="offer-3-for"><em>For everyone who'd rather sleep at night than google.</em></p>
-                    <a href="#contact" class="offer-link" data-i18n="offers-cta">Book an intro call →</a>
+            <div class="work-grid">
+                <a class="work-card wide" href="/portfolio#matterport">
+                    <div class="work-media"><img src="/pec.png" alt="Porsche Experience Center Tokyo" loading="lazy" decoding="async"></div>
+                    <div class="work-body"><span class="work-cat">3D &amp; interactive</span><h3>Porsche Experience Center Tokyo</h3><p>Immersive digital twin with a custom UI built on Matterport SDK and Three.js.</p><div class="work-tags"><span>Matterport SDK</span><span>Three.js</span><span>Custom UI</span></div></div>
+                </a>
+                <a class="work-card wide" href="/portfolio#ai-integration">
+                    <div class="work-media"><img src="/ai.png" alt="Yagan Square AI Assistant" loading="lazy" decoding="async"></div>
+                    <div class="work-body"><span class="work-cat">AI integration</span><h3>Yagan Square AI Assistant</h3><p>An AI concierge inside a digital twin that knows where visitors are in the space.</p><div class="work-tags"><span>OpenAI API</span><span>React</span></div></div>
+                </a>
+                <a class="work-card " href="/portfolio#matterport">
+                    <div class="work-media placeholder" aria-hidden="true"><span>To The Moon</span></div>
+                    <div class="work-body"><span class="work-cat">3D &amp; interactive</span><h3>WA Museum: To The Moon</h3><p>Accessible, immersive museum experience with a multimedia layer and paywall.</p><div class="work-tags"><span>Accessible UX</span><span>Paywall</span><span>Multimedia</span></div></div>
+                </a>
+                <a class="work-card " href="/portfolio#ecommerce">
+                    <div class="work-media"><img src="/shop.png" alt="Chiropraktik shop interface" loading="lazy" decoding="async"></div>
+                    <div class="work-body"><span class="work-cat">Web app &amp; e-commerce</span><h3>Chiropraktik Training Academy</h3><p>Custom e-commerce solution built on WooCommerce.</p><div class="work-tags"><span>Custom PHP</span><span>WooCommerce Hooks</span></div></div>
+                </a>
+                <a class="work-card " href="/tracking-audit-demo">
+                    <div class="work-media"><img src="/tracking.jpeg" alt="Tracking audit simulator" loading="lazy" decoding="async"></div>
+                    <div class="work-body"><span class="work-cat">Tracking &amp; analytics</span><h3>Tracking Audit Simulator</h3><p>Interactive demo showing what a tracking setup actually captures.</p><div class="work-tags"><span>GA4 / GTM</span><span>Meta CAPI</span><span>Consent</span></div></div>
+                </a>
+                <!-- akeno.ai: bewusst ohne Zahlen und ohne Kundenzitat — Freigabe durch den Kunden steht noch aus. -->
+                <article class="work-card full">
+                    <div class="work-media placeholder" aria-hidden="true"><span>akeno.ai</span></div>
+                    <div class="work-body"><span class="work-cat">Web &amp; funnel · Tracking</span><h3>akeno.ai</h3><p>Framer website with a custom application funnel (Workable integration via Cloudflare) plus a full tracking stack: GTM, GA4, Meta, Reddit, Clarity and Google Ads Enhanced Conversions.</p><div class="work-tags"><span>Framer</span><span>Cloudflare</span><span>Workable</span><span>GTM / GA4</span><span>Enhanced Conversions</span></div></div>
                 </article>
             </div>
-            <p class="offers-note reveal" data-i18n="offers-note">Not sure what you need? That's exactly what the free intro call is for. I won't sell you anything you don't need — word gets around.</p>
+            <p class="work-more"><a href="/portfolio">See all work →</a></p>
+            <div class="section-cta"><a href="#contact" class="btn-glut" data-cta="book_call" data-cta-location="work">Book a free 30-min call <span aria-hidden="true">→</span></a></div>
+        </div>
+    </section>
+
+    <section id="how" class="how-section">
+        <div class="container">
+            <span class="kicker">How it works</span>
+            <h2 class="section-headline">From first call to live in three steps.</h2>
+            <ol class="how-grid"><li class="how-step"><span class="cap-idx">01</span><h3>Free 30-min call</h3><p>You explain the goal, I tell you honestly what I would build — or that you don’t need it.</p></li><li class="how-step"><span class="cap-idx">02</span><h3>AI-first build with senior review</h3><p>AI agents accelerate the build; every change is reviewed, tested and shown to you on a preview deployment.</p></li><li class="how-step"><span class="cap-idx">03</span><h3>QA, launch &amp; measure</h3><p>Tracking and integrations are QA’d before go-live, then monitored so you can see what the work delivers.</p></li></ol>
+            <div class="section-cta"><a href="#contact" class="btn-glut" data-cta="book_call" data-cta-location="how">Book a free 30-min call <span aria-hidden="true">→</span></a></div>
+        </div>
+    </section>
+
+    <section id="quality" class="quality-section">
+        <div class="container">
+            <span class="kicker">Quality standards</span>
+            <h2 class="section-headline">How we ensure quality</h2>
+            <p class="quality-intro">AI makes us fast. These practices make the work hold up.</p>
+            <ul class="quality-grid">
+                <li class="q-item"><span class="q-check" aria-hidden="true">✓</span><div><h3>Tracking QA before launch</h3><p>Every event, pixel and conversion is tested and verified in debug and preview tools before go-live.</p></div></li>
+                <li class="q-item"><span class="q-check" aria-hidden="true">✓</span><div><h3>Migrations without data loss</h3><p>Staging environments, redirect maps and parity checks before anything is switched over.</p></div></li>
+                <li class="q-item"><span class="q-check" aria-hidden="true">✓</span><div><h3>Safe AI workflows</h3><p>AI and Claude Code work runs with human review, preview deployments and guardrails — nothing ships unreviewed.</p></div></li>
+                <li class="q-item"><span class="q-check" aria-hidden="true">✓</span><div><h3>Production-grade code</h3><p>Clean, maintainable code with testing, not prototypes dressed up as products.</p></div></li>
+                <li class="q-item"><span class="q-check" aria-hidden="true">✓</span><div><h3>Monitoring after launch</h3><p>We watch tracking, forms and integrations after go-live and fix issues early.</p></div></li>
+                <li class="q-item"><span class="q-check" aria-hidden="true">✓</span><div><h3>Documentation &amp; handover</h3><p>You get documentation of what was built and a proper handover, so nothing depends on guesswork.</p></div></li>
+            </ul>
+            <div class="section-cta"><a href="#contact" class="btn-glut" data-cta="book_call" data-cta-location="quality">Book a free 30-min call <span aria-hidden="true">→</span></a></div>
         </div>
     </section>
 
@@ -329,6 +374,23 @@
                     <span class="strip-label" data-i18n="strip-response">hrs response time</span>
                 </div>
             </div>
+            <div class="section-cta"><a href="#contact" class="btn-glut" data-cta="book_call" data-cta-location="refs">Book a free 30-min call <span aria-hidden="true">→</span></a></div>
+        </div>
+    </section>
+
+    <!-- FAQ: TODO Jan — please confirm the contracting/LLC and GDPR answers are accurate for you. -->
+    <section id="faq" class="faq-section">
+        <div class="container faq-container">
+            <span class="kicker">FAQ</span>
+            <h2 class="section-headline">Frequently asked questions</h2>
+            <div class="faq-list">
+                <details class="faq-item"><summary>Isn’t AI-built work lower quality?</summary><p>Not when it’s done properly. AI speeds up the build, but it doesn’t replace judgment: every change is reviewed by a senior developer, tested, and checked on a preview deployment before it goes live. Tracking is verified event by event. The goal is speed with the same rigor you’d expect from a senior team — not mass-produced output.</p></details>
+                <details class="faq-item"><summary>What does a project cost?</summary><p>Every project gets a fixed quote after the free 30-minute call, so you know the price before work starts.</p></details>
+                <details class="faq-item"><summary>Do you work across time zones?</summary><p>Yes. JDCODE is location-independent and has delivered projects for clients in Japan, Australia and Europe. We agree on overlap hours for calls; everything else runs asynchronously. Replies come in under 24 hours.</p></details>
+                <details class="faq-item"><summary>Who do I contract with?</summary><p>You contract with JDCODE LLC, a US limited liability company founded by Jan Dorbath. Scope, price and payment terms are set out in a written proposal before work starts.</p></details>
+                <details class="faq-item"><summary>How do you handle data privacy and GDPR?</summary><p>Tracking is set up consent-first (cookie banner and consent mode) and documented, so you can see exactly what is collected. Privacy requirements for your market are discussed in the intro call; I don’t provide legal advice.</p></details>
+            </div>
+            <div class="section-cta"><a href="#contact" class="btn-glut" data-cta="book_call" data-cta-location="faq">Book a free 30-min call <span aria-hidden="true">→</span></a></div>
         </div>
     </section>
 
@@ -338,10 +400,22 @@
                 <h2 data-i18n="contact-title">The first step takes 30 minutes. And costs nothing.</h2>
                 <p data-i18n="contact-subtitle">Tell me what's bugging you. I'll tell you honestly what I'd do — even if the answer is “you don't need that at all.” No sales talk, no slides, no jargon.</p>
             </div>
+            <!-- Budget qualification (client-side only; Google Calendar embed can't take extra fields). True capture with the booking needs Cal.com/Calendly. -->
+            <fieldset class="budget-step" id="budget-step">
+                <legend>Project budget</legend>
+                <p class="budget-hint" id="budget-hint">Pick a range to open the calendar.</p>
+                <div class="budget-chips" role="radiogroup" aria-describedby="budget-hint">
+                    <label class="budget-chip"><input type="radio" name="budget" value="lt5k" data-budget-label="< $5k"><span>&lt; $5k</span></label>
+                    <label class="budget-chip"><input type="radio" name="budget" value="5-15k" data-budget-label="$5–15k"><span>$5–15k</span></label>
+                    <label class="budget-chip"><input type="radio" name="budget" value="15k+" data-budget-label="$15k+"><span>$15k+</span></label>
+                </div>
+                <button type="button" class="budget-skip" data-budget-skip>Skip and show calendar</button>
+            </fieldset>
             <div class="calendar-wrapper">
-                <iframe
+                <iframe title="Book a call" id="booking-calendar"
                     src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0tMtOl7-WKsatAV-S0bjpJpwHWAYaDK8Gtsu4cq2G4IbGzz0L1dXiskyHFkQLCS_0bF8ohz4mY?gv=true"
                     style="border: 0" width="100%" height="600" frameborder="0"></iframe>
+                <p class="calendar-fallback"><a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0tMtOl7-WKsatAV-S0bjpJpwHWAYaDK8Gtsu4cq2G4IbGzz0L1dXiskyHFkQLCS_0bF8ohz4mY?gv=true" target="_blank" rel="noopener" data-cta="book_call" data-cta-location="contact_fallback">Calendar not loading? Open it in a new tab ↗</a></p>
             </div>
             <p class="contact-assurance" data-i18n="contact-assurance">No subscription trap · No preparation needed · No tech vocabulary required</p>
         </div>
@@ -356,11 +430,14 @@
                 <a href="/tracking-audit-demo.html" data-i18n="footer-link-audit">Audit Simulator</a> -->
             </nav>
             <p data-i18n="footer-copy">&copy; 2026 JDCODE LLC · Jan Dorbath.</p>
+            <p class="footer-company">JDCODE LLC · AI-first development studio, founded by Jan Dorbath.</p>
             <a class="cookie-reset-link" data-i18n="cookie-reset">Cookie Settings</a>
         </div>
     </footer>
+    <div class="sticky-cta" aria-hidden="false"><a href="#contact" data-cta="book_call" data-cta-location="sticky_mobile">Free 30-min call →</a></div>
 
     <script src="/script.js"></script>
+    <script src="/redesign.js" defer></script>
 </body>
 
 </html>
