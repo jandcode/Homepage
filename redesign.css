@@ -317,3 +317,10 @@ footer p, footer a, .footer-links a, .cookie-reset-link { color: var(--text-dim)
 }
 .hero-secondary { display: inline-flex; align-items: center; justify-content: center; }
 @media (max-width: 768px) { body:has(.cookie-banner[style*="flex"]) .sticky-cta { display: none; } }
+.offers-grid.offers-4 { display: grid !important; grid-template-columns: repeat(4, 1fr) !important; gap: 16px !important; }
+.offer-module { border: 1px dashed var(--border-strong); border-radius: 10px; padding: 12px 14px; background: rgba(139,156,255,.06); }
+.offer-module-k { font-family: var(--font-mono); font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-2); }
+.offer-module p { color: var(--text-muted); font-size: .88rem; margin-top: 4px; }
+@media (max-width: 1100px) { .offers-grid.offers-4 { grid-template-columns: repeat(2, 1fr) !important; } }
+@media (max-width: 640px) { .offers-grid.offers-4 { grid-template-columns: 1fr !important; } }
+.offer-price { text-transform: none !important; }
