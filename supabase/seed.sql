@@ -1,0 +1,1 @@
+-- The CRM starts empty. Admins are mirrored from CRM_ADMIN_EMAILS at login.

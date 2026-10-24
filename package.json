@@ -1,0 +1,13 @@
+{
+  "name": "jdcode",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "preview": "node scripts/preview-admin.mjs"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.118.0",
+    "@vercel/functions": "^3.10.3"
+  }
+}
