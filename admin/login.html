@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="referrer" content="no-referrer">
+  <title>Sign in — JDCODE CRM</title>
+  <link rel="icon" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,460;9..144,560&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/admin/assets/admin.css">
+</head>
+<body class="login-body">
+  <main class="login-card">
+    <p class="brand">JDCODE <span>CRM</span></p>
+    <h1>Sign in</h1>
+    <p class="lede">Private workspace for deals, follow-ups, and notes. This page is not indexed.</p>
+    <form id="login-form" class="stack">
+      <p id="login-error" class="warn-text" role="alert"></p>
+      <label>Email <input name="email" type="email" autocomplete="username" required maxlength="320"></label>
+      <label>Password <input name="password" type="password" autocomplete="current-password" required></label>
+      <button class="btn" type="submit">Sign in</button>
+    </form>
+    <p class="fine"><a href="/">Back to jdcode.dev</a></p>
+  </main>
+  <script type="module" src="/admin/assets/login.js"></script>
+</body>
+</html>
