@@ -331,6 +331,14 @@ test('migration enables rls and keeps the allowlist helper private', () => {
   assert.match(filter, /title\.ilike\."%a b%"/);
 });
 
+test('vercel rewrites multi-segment crm api paths to the catch-all handler', () => {
+  const vercel = JSON.parse(readFileSync(join(root, 'vercel.json'), 'utf8'));
+  const rewrite = vercel.rewrites?.find((entry) => entry.source?.startsWith('/api/crm/'));
+  assert.ok(rewrite, 'expected a CRM API rewrite in vercel.json');
+  assert.match(rewrite.source, /:path\*$/);
+  assert.equal(rewrite.destination, '/api/crm/[...path]');
+});
+
 test('public pages stay free of the admin area', () => {
   const robots = readFileSync(join(root, 'robots.txt'), 'utf8');
   const sitemap = readFileSync(join(root, 'sitemap.xml'), 'utf8');
