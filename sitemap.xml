@@ -14,5 +14,21 @@
   </url>
   <url>
     <loc>https://jdcode.dev/portfolio</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jdcode.dev/portfolio"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://jdcode.dev/de/portfolio"/>
   </url>
+  <url>
+    <loc>https://jdcode.dev/de/portfolio</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jdcode.dev/portfolio"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://jdcode.dev/de/portfolio"/>
+  </url>
+  <url><loc>https://jdcode.dev/privacy</loc></url>
+  <url><loc>https://jdcode.dev/imprint</loc></url>
+  <url><loc>https://jdcode.dev/de/datenschutz</loc></url>
+  <url><loc>https://jdcode.dev/de/impressum</loc></url>
+  <url><loc>https://jdcode.dev/cookie-banner-guide</loc></url>
+  <url><loc>https://jdcode.dev/de/cookie-banner-guide</loc></url>
+  <url><loc>https://jdcode.dev/framer-guide-signup</loc></url>
+  <url><loc>https://jdcode.dev/tracking-audit-demo</loc></url>
+  <url><loc>https://jdcode.dev/de/tracking-audit-demo</loc></url>
 </urlset>

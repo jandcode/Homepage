@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Audit-Simulator: Tracking-Parameter — JDCODE</title>
+<meta name="description" content="Live-Demo: UTM- und Click-IDs bei Subdomain-Wechsel — und wie Datenverlust vermieden wird.">
+<link rel="canonical" href="https://jdcode.dev/de/tracking-audit-demo">
+<link rel="alternate" hreflang="en" href="https://jdcode.dev/tracking-audit-demo">
+<link rel="alternate" hreflang="de" href="https://jdcode.dev/de/tracking-audit-demo">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/cine.css">
+<link rel="stylesheet" href="/assets/pages.css">
+<style>
+.demo-card{border:1px solid var(--line);padding:28px;margin:24px 0}
+.demo-card h3{font-size:22px;margin-bottom:12px}
+.current-url{font-family:var(--mono);font-size:13px;padding:14px;border:1px solid var(--line2);word-break:break-all;margin:12px 0 20px}
+.btn-demo{display:inline-flex;padding:12px 20px;border:1px solid var(--fg);font-weight:500;cursor:pointer;text-decoration:none;margin-top:8px}
+.btn-broken{border-color:#c45c5c;color:#f0a8a8}
+.btn-fixed{border-color:#6bc49a;color:#b8e6d0}
+.btn-secondary{border-color:var(--line2);color:var(--mut)}
+.result-card{display:none;border:1px solid var(--acc);padding:24px;margin-top:24px}
+.result-card.is-error{border-color:#c45c5c}
+.variant{padding:20px 0;border-top:1px solid var(--line)}
+.variant:first-child{border-top:0}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Zum Inhalt springen</a>
+<header class="top"><div class="wrap">
+<a class="brand" href="/de">JDCODE</a>
+<nav class="nav"><a class="hide-m" href="/de/portfolio">Portfolio</a><a class="lang" href="/tracking-audit-demo" hreflang="en">EN</a></nav>
+</div></header>
+<main id="main" class="page-main">
+<div class="wrap prose" style="max-width:760px">
+<p class="label">Live-Demo</p>
+<h1 style="margin-top:12px">Audit-Simulator: Tracking-Parameter</h1>
+<p>Was passiert mit UTM- und Click-IDs beim Wechsel auf eine externe Subdomain — und wie verhindert man Datenverlust?</p>
+<div class="demo-card">
+<h3>1 — Aktuelle URL</h3>
+<p>Simulierte Parameter:</p>
+<div id="urlDisplay" class="current-url">Keine Parameter</div>
+<button type="button" class="btn btn-s btn-secondary" onclick="addParams()">Google-Ads-Klick simulieren</button>
+</div>
+<div class="demo-card">
+<h3>2 — Klick zur externen App</h3>
+<p>Buttons zeigen auf <code>forms.beispiel-marke.de</code> (z.&nbsp;B. externer Funnel):</p>
+<div class="variant">
+<h4>Variante A — statischer Link</h4>
+<p class="label">Ohne Passthrough — häufig in Legacy-Setups.</p>
+<a href="https://forms.beispiel-marke.de/start" id="brokenLink" class="btn-demo btn-broken">Check starten (kaputt)</a>
+</div>
+<div class="variant">
+<h4>Variante B — Passthrough-Skript</h4>
+<p class="label">Hängt die Query beim Klick an.</p>
+<a href="https://forms.beispiel-marke.de/start" id="fixedLink" class="btn-demo btn-fixed">Check starten (fixed)</a>
+</div>
+</div>
+<div class="demo-card result-card" id="resultCard">
+<h3>3 — Ergebnis auf der Zielseite</h3>
+<p id="resultText"></p>
+</div>
+</div>
+</main>
+<footer><div class="wrap"><span>© 2026 JDCODE · Jan Dorbath</span><nav><a href="/de">Start</a><a href="/de/portfolio">Portfolio</a><a class="cookie-reset-link" href="#">Cookie-Einstellungen</a></nav></div></footer>
+<script>
+const TARGET_BASE='https://forms.beispiel-marke.de/start';
+function addParams(){var u=window.location.protocol+'//'+window.location.host+window.location.pathname+'?utm_source=google&utm_medium=cpc&gclid=ABC-123-XYZ&test=demo';window.history.pushState({path:u},'',u);updateDisplay();}
+function updateDisplay(){document.getElementById('urlDisplay').textContent=window.location.href;applyPassthrough();}
+function applyPassthrough(){var q=window.location.search,f=document.getElementById('fixedLink');f.setAttribute('href',q?TARGET_BASE+q:TARGET_BASE);}
+document.querySelectorAll('.btn-broken,.btn-fixed').forEach(function(btn){btn.addEventListener('click',function(e){e.preventDefault();var t=this.getAttribute('href'),card=document.getElementById('resultCard'),text=document.getElementById('resultText');card.style.display='block';if(t.indexOf('?')!==-1){card.classList.remove('is-error');text.innerHTML='<strong>Erfolg.</strong> Parameter übertragen:<br><code>'+t+'</code>';}else{card.classList.add('is-error');text.innerHTML='<strong>Datenverlust.</strong> Ziel-URL:<br><code>'+t+'</code>';}card.scrollIntoView({behavior:'smooth',block:'center'});});});
+window.onload=updateDisplay;
+</script>
+<script src="/assets/tf.js" defer></script>
+</body>
+</html>

@@ -1,284 +1,57 @@
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Framer Cookie Banner Guide - Premium Anleitung</title>
-    <meta name="description"
-        content="Lerne, wie du einen hochkonvertierenden und designtechnisch perfekten Cookie-Banner in Framer erstellst.">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        .lead-wrapper {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 40px 20px;
-        }
-
-        .lead-card {
-            background: rgba(255, 252, 246, 0.7);
-            backdrop-filter: blur(25px);
-            border: 1px solid rgba(31, 61, 79, 0.10);
-            padding: 60px;
-            border-radius: 40px;
-            max-width: 1100px;
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
-            box-shadow: 0 40px 100px rgba(31, 61, 79, 0.12);
-            text-align: left;
-            overflow: hidden;
-            /* Added to containment */
-        }
-
-        @media (max-width: 900px) {
-            .lead-card {
-                grid-template-columns: 1fr;
-                padding: 40px;
-                text-align: center;
-                max-width: 500px;
-            }
-
-            .bullet-list {
-                justify-content: center;
-            }
-        }
-
-        .headline {
-            font-family: 'Fraunces', Georgia, serif;
-            font-optical-sizing: auto;
-            font-size: 3.2rem;
-            line-height: 1.05;
-            margin-bottom: 20px;
-            letter-spacing: -1.5px;
-            font-weight: 400;
-            color: var(--text-main);
-        }
-
-        .subheadline {
-            font-size: 1.3rem;
-            color: var(--text-muted);
-            margin-bottom: 30px;
-            line-height: 1.5;
-            font-weight: 500;
-        }
-
-        .bullet-list {
-            list-style: none;
-            margin: 30px 0;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .bullet-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text-main);
-        }
-
-        .bullet-icon {
-            color: var(--accent-olive);
-            font-size: 1.2rem;
-        }
-
-        .visual-side img {
-            width: 100%;
-            max-height: 450px;
-            /* Constrain height */
-            object-fit: contain;
-            /* Keep aspect ratio */
-            border-radius: 20px;
-            box-shadow: 0 20px 50px rgba(31, 61, 79, 0.18);
-            transform: perspective(1000px) rotateY(-5deg) rotateX(2deg);
-            transition: transform 0.5s ease;
-        }
-
-        .visual-side:hover img {
-            transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
-        }
-
-        .input-group {
-            margin-top: 30px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .email-input {
-            width: 100%;
-            padding: 20px 24px;
-            border-radius: 16px;
-            border: 1px solid rgba(31, 61, 79, 0.15);
-            font-size: 1.1rem;
-            font-family: inherit;
-            color: var(--text-main);
-            outline: none;
-            transition: all 0.2s;
-            background: rgba(255, 252, 246, 0.6);
-        }
-
-        .email-input:focus {
-            border-color: var(--accent-olive);
-            background: #FFFCF6;
-            box-shadow: 0 0 0 4px rgba(61, 74, 46, 0.15);
-        }
-
-        .submit-btn {
-            width: 100%;
-            background: var(--accent-navy);
-            color: #FFFCF6;
-            border: none;
-            padding: 20px;
-            border-radius: 16px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-3px);
-            background: #0A1530;
-            box-shadow: 0 15px 30px rgba(20, 33, 61, 0.30);
-        }
-
-        .privacy-note {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-top: 20px;
-        }
-
-        .tech-check-hint {
-            margin-top: 40px;
-            padding-top: 30px;
-            border-top: 1px solid rgba(31, 61, 79, 0.10);
-            font-size: 0.95rem;
-            color: var(--text-muted);
-        }
-
-        .tech-check-hint a {
-            color: var(--accent-olive);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .accent-orange {
-            color: var(--accent-olive);
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Framer Cookie Banner Guide — JDCODE</title>
+<meta name="description" content="Kostenloser Ghost-Mode Cookie-Banner Code für Framer — DSGVO-konform, ohne Abo.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://jdcode.dev/framer-guide-signup">
+<link rel="alternate" hreflang="de" href="https://jdcode.dev/framer-guide-signup">
+<link rel="alternate" hreflang="en" href="https://jdcode.dev/framer-guide-signup">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/cine.css">
+<link rel="stylesheet" href="/assets/pages.css">
+<style>
+.lead-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;padding:48px 0 80px}
+.lead-grid img{border:1px solid var(--line)}
+.email-input{background:transparent;border:0;border-bottom:1px solid var(--line2);color:var(--fg);font:400 18px var(--sans);padding:12px 0;width:100%;margin-bottom:16px}
+@media(max-width:900px){.lead-grid{grid-template-columns:1fr}}
+</style>
 </head>
-
 <body>
-    <div class="background-liquid">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
-    </div>
-
-    <div class="lead-wrapper" style="min-height: auto; padding-top: 60px; padding-bottom: 40px;">
-        <div class="lead-card">
-            <div class="content-side">
-                <div class="badge">Gratis Code & Anleitung</div>
-                <h1 class="headline">Schluss mit hässlichen Cookie-Bannern.</h1>
-                <p class="subheadline">Hol dir den <span class="accent-orange">"Ghost Mode"</span> Code für Framer. 0€
-                    Fixkosten. 100% Design-Kontrolle. DSGVO-konform.</p>
-
-                <ul class="bullet-list">
-                    <li class="bullet-item"><span class="bullet-icon">✅</span> Copy & Paste Code: Kein Dev nötig</li>
-                    <li class="bullet-item"><span class="bullet-icon">✅</span> Spart 240€/Jahr: Nie wieder Abo-Gebühren
-                    </li>
-                    <li class="bullet-item"><span class="bullet-icon">✅</span> Design-Friendly: Dein Style, keine
-                        Kompromisse</li>
-                </ul>
-
-                <form id="leadForm" class="input-group">
-                    <input type="email" id="email" class="email-input" placeholder="Deine E-Mail Adresse" required>
-                    <button type="submit" class="submit-btn" id="submitBtn">Den Code jetzt kostenlos erhalten</button>
-                </form>
-
-                <p class="privacy-note">Kein Spam. Nur der Code und exklusive Framer-Tipps.</p>
-
-                <div class="tech-check-hint">
-                    Keine Zeit für den Einbau? <a href="/#contact">Sichere dir einen 15-Min Tech-Check mit Jan →</a>
-                    <br><br>
-                    <a class="cookie-reset-link" style="font-size: 0.8rem; opacity: 0.5;">Cookie-Einstellungen</a>
-                </div>
-            </div>
-
-            <div class="visual-side">
-                <img src="cookie-banner-mockup.png" alt="Framer Cookie Banner Preview">
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        <div class="container">
-            <nav class="footer-links" aria-label="Footer">
-                <a href="/" data-i18n="nav-home">Home</a>
-                <a href="portfolio.html" data-i18n="footer-link-works">Arbeiten</a>
-                <a href="cookie-banner-guide.html" data-i18n="footer-link-cookie-code">Cookie Banner Code</a>
-                <a href="tracking-audit-demo.html" data-i18n="footer-link-audit">Audit Simulator</a>
-            </nav>
-            <p data-i18n="footer-copy">&copy; 2026 Jan Dorbath. <span style="opacity:0.6;">Operated by JDCode.</span></p>
-            <a class="cookie-reset-link" data-i18n="cookie-reset">Cookie-Einstellungen</a>
-        </div>
-    </footer>
-
-    <script>
-        document.getElementById('leadForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            const emailInput = document.getElementById('email');
-            const email = emailInput.value;
-            const btn = document.getElementById('submitBtn');
-
-            if (email) {
-                btn.innerHTML = 'Wird gesendet...';
-                btn.disabled = true;
-
-                // Senden an Formspree
-                fetch('https://formspree.io/f/maqqnwnk', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        email: email,
-                        message: 'Neuer Lead für Framer Cookie Guide'
-                    })
-                })
-                    .then(response => {
-                        if (response.ok) {
-                            btn.innerHTML = 'Erfolg! Leite weiter...';
-                            setTimeout(() => {
-                                window.location.href = 'cookie-banner-guide.html';
-                            }, 1000);
-                        } else {
-                            btn.innerHTML = 'Fehler beim Senden';
-                            btn.disabled = false;
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        btn.innerHTML = 'Netzwerkfehler';
-                        btn.disabled = false;
-                    });
-            }
-        });
-    </script>
-    <script src="translations.js"></script>
-    <script src="script.js"></script>
+<a class="skip" href="#main">Zum Inhalt springen</a>
+<header class="top"><div class="wrap">
+<a class="brand" href="/de">JDCODE</a>
+<nav class="nav"><a class="hide-m" href="/de/cookie-banner-guide">Anleitung</a><a class="lang" href="/" hreflang="en">EN</a></nav>
+</div></header>
+<main id="main" class="page-main">
+<div class="wrap lead-grid">
+<div>
+<p class="label">Gratis Code &amp; Anleitung</p>
+<h1 style="margin-top:16px">Schluss mit hässlichen Cookie-Bannern.</h1>
+<p class="sub">Hol dir den <strong>Ghost Mode</strong> Code für Framer. Keine Fixkosten. Volle Design-Kontrolle. DSGVO-konform.</p>
+<ul class="prose">
+<li>Copy &amp; Paste — kein Dev nötig</li>
+<li>Spart Abo-Gebühren für Cookie-Tools</li>
+<li>Dein Style, keine Kompromisse</li>
+</ul>
+<form id="leadForm">
+<label class="label" for="email">E-Mail</label>
+<input type="email" id="email" class="email-input" placeholder="deine@adresse.de" required autocomplete="email">
+<button type="submit" class="btn btn-p" id="submitBtn">Code kostenlos erhalten <span aria-hidden="true">→</span></button>
+</form>
+<p class="label" style="margin-top:16px">Kein Spam. Nur der Code und Framer-Tipps.</p>
+<p class="prose" style="margin-top:24px"><a href="/de#contact">15-Min Tech-Check mit Jan buchen →</a></p>
+</div>
+<div><img src="/cookie-banner-mockup.png" alt="Cookie-Banner Vorschau"></div>
+</div>
+</main>
+<footer><div class="wrap"><span>© 2026 JDCODE · Jan Dorbath</span><nav><a href="/de">Start</a><a href="/de/cookie-banner-guide">Cookie-Code</a><a class="cookie-reset-link" href="#">Cookie-Einstellungen</a></nav></div></footer>
+<script>
+document.getElementById('leadForm').addEventListener('submit',function(e){e.preventDefault();var email=document.getElementById('email').value,btn=document.getElementById('submitBtn');if(!email)return;btn.textContent='Wird gesendet…';btn.disabled=true;fetch('https://formspree.io/f/maqqnwnk',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({email:email,message:'Neuer Lead für Framer Cookie Guide'})}).then(function(r){if(r.ok){btn.textContent='Weiter zur Anleitung…';setTimeout(function(){window.location.href='/de/cookie-banner-guide';},800);}else{btn.textContent='Fehler — bitte erneut';btn.disabled=false;}}).catch(function(){btn.textContent='Netzwerkfehler';btn.disabled=false;});});
+</script>
+<script src="/assets/tf.js" defer></script>
 </body>
-
 </html>
