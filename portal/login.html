@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <title>Sign in — JDCODE portal</title>
+  <link rel="icon" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,460&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/portal/assets/portal.css">
+</head>
+<body class="login-body">
+  <section class="login-card stack">
+    <a class="brand" href="/">JDCODE <span>PORTAL</span></a>
+    <h1>Client sign-in</h1>
+    <p class="lede">We use a secure email link — no password. Use the address Jan invited you with.</p>
+    <form id="login-form" class="stack">
+      <label>Work email <input name="email" type="email" required autocomplete="email" maxlength="320"></label>
+      <button class="btn" type="submit">Email me a sign-in link</button>
+      <p id="login-error" class="warn-text" role="alert"></p>
+    </form>
+    <p id="login-success" class="fine" hidden>Check your inbox for the link. It expires after a short time.</p>
+    <button type="button" id="preview-login" class="btn btn-ghost">Preview as demo client (local)</button>
+  </section>
+  <script type="module" src="/portal/assets/login.js"></script>
+</body>
+</html>
