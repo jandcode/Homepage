@@ -34,14 +34,44 @@ function formatDate(value) {
   return new Date(value).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' });
 }
 
-function renderStepper(timeline) {
+const TAB_FOR_STEP = {
+  agreement: 'agreement',
+  payment: 'payment',
+  access: 'checklist',
+  kickoff: 'kickoff',
+  in_progress: 'updates',
+  delivered: 'documents',
+  retainer: 'updates',
+};
+
+function nextAction(projectId, timeline) {
+  const current = timeline.find((s) => s.status === 'current');
+  if (!current) return { label: 'All stages complete', hint: 'Check updates and documents for deliverables.', tab: 'updates' };
+  const hints = {
+    agreement: 'Review and accept the statement of work to start onboarding.',
+    payment: 'Complete payment so we can schedule your kickoff.',
+    access: 'Grant platform access using the checklist — we cannot audit without it.',
+    kickoff: 'Book your 45-minute kickoff call when you are ready.',
+    in_progress: 'Work is in progress. Watch the updates feed for milestones.',
+    delivered: 'Your deliverables are in Documents.',
+    retainer: 'Retainer monitoring is active.',
+  };
+  return {
+    label: current.label,
+    hint: hints[current.id] || 'Continue in the portal.',
+    tab: TAB_FOR_STEP[current.id] || 'overview',
+  };
+}
+
+function renderStepper(timeline, projectId) {
   return `<ol class="stepper">${timeline.map((step, index) => `
     <li class="${step.status}">
-      <span class="dot" aria-hidden="true">${step.status === 'done' ? '✓' : index + 1}</span>
+      <span class="dot" aria-hidden="true">${step.status === 'done' ? '✓' : String(index + 1).padStart(2, '0')}</span>
       <div>
         <strong>${step.label}</strong>
-        ${step.status === 'current' ? '<div class="fine">You are here</div>' : ''}
+        ${step.status === 'current' ? '<div class="fine">Active stage</div>' : ''}
       </div>
+      <span class="stage-tag">${step.status === 'done' ? 'Complete' : step.status === 'current' ? 'Now' : 'Queued'}</span>
     </li>`).join('')}</ol>`;
 }
 
@@ -62,28 +92,40 @@ function tabs(projectId, active) {
 
 function renderOverview(detail) {
   const p = detail.project;
+  const next = nextAction(p.id, detail.timeline);
+  const doneCount = detail.timeline.filter((s) => s.done).length;
   return `
-    <div class="page-head">
+    <header class="mission-hero">
       <div>
-        <p class="kicker">${p.client?.name || 'Project'}</p>
+        <p class="kicker">${p.client?.name || 'Project'} · ${p.package}</p>
         <h1>${p.title}</h1>
-        <p class="fine">Package: ${p.package} · Payment: ${p.payment_status}</p>
+        <div class="mission-meta">
+          <div><span class="label">Payment</span><span class="status-pill ${p.payment_status === 'paid' ? 'ok' : ''}">${p.payment_status}</span></div>
+          <div><span class="label">Stages</span><span>${doneCount} / ${detail.timeline.length}</span></div>
+          <div><span class="label">Phase</span><span>${p.work_phase.replace('_', ' ')}</span></div>
+        </div>
       </div>
-    </div>
+      <aside class="mission-next">
+        <span class="label">Next action</span>
+        <strong>${next.label}</strong>
+        <p>${next.hint}</p>
+        <a class="btn btn-acc" href="#/project/${p.id}?tab=${next.tab}" style="margin-top:14px">Go to step</a>
+      </aside>
+    </header>
     ${tabs(p.id, 'overview')}
     <div class="split">
       <section class="panel">
-        <h2>Your timeline</h2>
-        ${renderStepper(detail.timeline)}
+        <h2>Mission timeline</h2>
+        ${renderStepper(detail.timeline, p.id)}
       </section>
       <section class="panel">
-        <h2>Latest updates</h2>
+        <h2>Status feed</h2>
         ${detail.updates.length ? detail.updates.slice(0, 3).map((u) => `
           <article class="feed-item">
             <div class="meta">${formatDate(u.published_at)}</div>
             <strong>${u.title}</strong>
             <div class="md">${renderMarkdown(u.body_markdown)}</div>
-          </article>`).join('') : '<p class="empty">No updates yet.</p>'}
+          </article>`).join('') : '<p class="empty">No transmissions yet — updates appear here as work progresses.</p>'}
       </section>
     </div>`;
 }
@@ -135,7 +177,7 @@ function renderPayment(detail) {
     <section class="panel stack">
       <p class="kicker">Status</p>
       <p class="price">${paid ? 'Paid' : 'Pending'}</p>
-      ${!paid && p.payment_url ? `<a class="btn" href="${p.payment_url}" target="_blank" rel="noopener noreferrer">Pay now</a>` : ''}
+      ${!paid && p.payment_url ? `<a class="btn btn-acc" href="${p.payment_url}" target="_blank" rel="noopener noreferrer">Pay now</a>` : ''}
       ${!paid && !p.payment_url ? '<p class="fine">Your payment link will appear here once issued.</p>' : ''}
       ${p.payment_status === 'waived' ? '<p class="fine">Payment waived for this project.</p>' : ''}
     </section>`;

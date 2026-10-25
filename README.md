@@ -107,3 +107,7 @@ Uses the same server-side Supabase vars as the CRM (`SUPABASE_URL`, `SUPABASE_AN
 ### Local mock mode
 
 `npm run preview` includes in-memory portal data (Acme Recruiting DEMO). Use **Preview as demo client** on `/portal/login` or **Preview admin** on `/portal/admin/login`.
+
+### App UI (portal + CRM)
+
+Logged-in surfaces load `app/assets/mission.css`, which imports `assets/cine.css` from the public site and adds mission-control layout (tables, pipeline, portal stepper). Light Terrafab patterns live in `assets/tf.css` on the marketing pages only.

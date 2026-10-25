@@ -20,7 +20,13 @@ async function renderDashboard() {
   const data = await portalApi('admin/overview');
   const projects = data.projects || [];
   view.innerHTML = `
-    <div class="page-head"><h1>Portal admin</h1><button class="btn" id="new-project">New project</button></div>
+    <header class="page-head">
+      <div>
+        <p class="kicker">Delivery ops</p>
+        <h1>Portal admin</h1>
+      </div>
+      <button class="btn" id="new-project">New project</button>
+    </header>
     <section class="panel">
       <div class="table-wrap">
         <table class="table">
