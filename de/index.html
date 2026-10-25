@@ -186,12 +186,11 @@
 <div class="ctas rv"><a class="btn btn-s" href="#booking" data-cta="call" data-cta-location="agencies">30-Min-Gespräch buchen</a></div>
 </div></section>
 <section id="proof" class="sec"><div class="wrap">
-<!-- akeno.ai case: confirm client approval before merging to main. -->
 <div class="sec-k label rv"><span>04</span><span>Referenz</span></div>
-<h2 class="rv">akeno.ai</h2><p class="sub rv">Ein eigener Bewerbungs-Funnel, durchgehend gemessen.</p>
-<div class="metrics"><div class="metric rv"><b>80,6<small>%</small></b><p>der Kandidaten, die eine Bewerbung begonnen haben, haben sie abgeschickt (50 von 62).</p></div><div class="metric rv"><b>75,8<small>%</small></b><p>haben den letzten Abschluss-Schritt erreicht (47 von 62).</p></div><div class="metric rv"><b>232<small></small></b><p>Personen haben eine Stelle auf der Website angesehen.</p></div></div>
-<div class="case-grid"><div class="rv"><p class="intro">Für akeno, das KI-Software für Produktionsplanung entwickelt, hat JDCODE einen eigenen Bewerbungs-Funnel gebaut: Stellendaten aus dem Workable-ATS laufen über Cloudflare in die Framer-Website, sodass Kandidaten auf akenos eigener Domain stöbern und sich bewerben.</p><dl><dt>Funnel</dt><dd>Workable → Cloudflare → Framer</dd><dt>Tag-Layer</dt><dd>Google Tag Manager</dd><dt>Analytics</dt><dd>GA4-Events für jeden Funnel-Schritt</dd><dt>Pixel</dt><dd>Meta, Reddit, Microsoft Clarity</dd><dt>Ads</dt><dd>Google Ads Enhanced Conversions</dd></dl></div>
-<figure class="funnel rv"><div class="fn-row"><span>Stelle angesehen</span><span class="bar"><i style="width:100.0%"></i></span><b>232</b></div><div class="fn-row"><span>Bewerbung begonnen</span><span class="bar"><i style="width:26.7%"></i></span><b>62</b></div><div class="fn-row"><span>Abgeschickt</span><span class="bar"><i style="width:21.6%"></i></span><b>50</b></div><div class="fn-row"><span>Abgeschlossen</span><span class="bar"><i style="width:20.3%"></i></span><b>47</b></div><figcaption><span class="label">GA4 · 1. Sep – 23. Okt 2026</span><span class="label">Nur Website-Daten</span></figcaption></figure></div>
+<h2 class="rv">KI-Recruiting-Plattform</h2><p class="sub rv">Ein eigener Bewerbungs-Funnel, durchgehend gemessen.</p>
+<div class="metrics"><div class="metric rv"><b>~80<small>%</small></b><p>der Kandidaten, die eine Bewerbung begonnen haben, haben sie abgeschickt.</p></div><div class="metric rv"><b>~75<small>%</small></b><p>haben den letzten Abschluss-Schritt erreicht.</p></div><div class="metric rv"><b>~230<small></small></b><p>Personen haben eine Stelle auf der Karriere-Website angesehen.</p></div></div>
+<div class="case-grid"><div class="rv"><p class="intro">Für eine B2B-KI-Recruiting-Plattform hat JDCODE einen eigenen Bewerbungs-Funnel gebaut: Offene Stellen aus dem ATS des Kunden werden über eine Edge-Schicht in die Marketing-Website synchronisiert, sodass Kandidaten auf der eigenen Domain stöbern und sich bewerben.</p><dl><dt>Funnel</dt><dd>ATS → Edge-Proxy → Site-Builder</dd><dt>Tag-Layer</dt><dd>Google Tag Manager</dd><dt>Analytics</dt><dd>GA4-Events für jeden Funnel-Schritt</dd><dt>Pixel</dt><dd>Meta, Reddit, Microsoft Clarity</dd><dt>Ads</dt><dd>Google Ads Enhanced Conversions</dd></dl></div>
+<figure class="funnel rv"><div class="fn-row"><span>Stelle angesehen</span><span class="bar"><i style="width:100.0%"></i></span><b>~230</b></div><div class="fn-row"><span>Bewerbung begonnen</span><span class="bar"><i style="width:28.0%"></i></span><b>~65</b></div><div class="fn-row"><span>Abgeschickt</span><span class="bar"><i style="width:22.0%"></i></span><b>~50</b></div><div class="fn-row"><span>Abgeschlossen</span><span class="bar"><i style="width:21.0%"></i></span><b>~48</b></div><figcaption><span class="label">GA4 · letzte 8 Wochen</span><span class="label">Nur Website-Daten · gerundet</span></figcaption></figure></div>
 <p class="note">Aktive Nutzer in einer GA4-Funnel-Exploration. Die Zahlen beschreiben die Leistung des Funnels; sie sind kein Vorher-Nachher-Vergleich.</p>
 </div></section>
 <section id="contact" class="sec"><div class="wrap">
@@ -205,8 +204,8 @@
 <p class="b-note" id="budget-note" role="status" aria-live="polite" data-ok="Danke — notiert. Wählen Sie einen Termin." data-skip="Kein Problem. Wählen Sie einen Termin."></p></form>
 <div class="cal"><iframe id="cal-frame" title="30-Minuten-Gespräch buchen" src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0tMtOl7-WKsatAV-S0bjpJpwHWAYaDK8Gtsu4cq2G4IbGzz0L1dXiskyHFkQLCS_0bF8ohz4mY?gv=true" loading="lazy"></iframe></div>
 </div>
-<!-- TODO Jan: free check has no backend yet — stores URL/email locally, pushes 'free_check_request' (no PII), scrolls to booking. -->
-<form class="freecheck" id="free-check" novalidate>
+<!-- Free check: kein Server-Endpunkt — mailto + Scroll zur Buchung; siehe assets/tf.js -->
+<form class="freecheck" id="free-check" novalidate data-contact-email="jan@jdcode.dev">
 <div><p class="label">00</p><h3 style="margin-top:16px">Kostenloser Tracking-Check</h3><p>Hinterlassen Sie Ihre URL, und wir sehen uns das Tracking-Setup Ihrer Website an.</p></div>
 <div class="fc-f"><label for="fc-url" class="label">Website-URL</label><input id="fc-url" name="url" type="url" required placeholder="https://" autocomplete="url">
 <label for="fc-email" class="label">Geschäftliche E-Mail</label><input id="fc-email" name="email" type="email" required placeholder="you@company.com" autocomplete="email">

@@ -1,5 +1,7 @@
 User-agent: *
 Disallow: /cookie-banner-guide.html
 Disallow: /framer-guide-signup.html
+Disallow: /admin
+Disallow: /api/
 
 Sitemap: https://jdcode.dev/sitemap.xml

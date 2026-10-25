@@ -186,12 +186,11 @@
 <div class="ctas rv"><a class="btn btn-s" href="#booking" data-cta="call" data-cta-location="agencies">Book a 30-min call</a></div>
 </div></section>
 <section id="proof" class="sec"><div class="wrap">
-<!-- akeno.ai case: confirm client approval before merging to main. -->
 <div class="sec-k label rv"><span>04</span><span>Proof</span></div>
-<h2 class="rv">akeno.ai</h2><p class="sub rv">A custom application funnel, measured end to end.</p>
-<div class="metrics"><div class="metric rv"><b>80.6<small>%</small></b><p>of candidates who started an application submitted it (50 of 62).</p></div><div class="metric rv"><b>75.8<small>%</small></b><p>reached the final completion step (47 of 62).</p></div><div class="metric rv"><b>232<small></small></b><p>people viewed a job on the site.</p></div></div>
-<div class="case-grid"><div class="rv"><p class="intro">For akeno, which builds AI software for production planning, JDCODE built a custom application funnel: job data from the Workable ATS is piped through Cloudflare into the Framer site, so candidates browse and apply on akeno’s own domain.</p><dl><dt>Funnel</dt><dd>Workable → Cloudflare → Framer</dd><dt>Tag layer</dt><dd>Google Tag Manager</dd><dt>Analytics</dt><dd>GA4 events for every funnel step</dd><dt>Pixels</dt><dd>Meta, Reddit, Microsoft Clarity</dd><dt>Ads</dt><dd>Google Ads Enhanced Conversions</dd></dl></div>
-<figure class="funnel rv"><div class="fn-row"><span>Viewed a job</span><span class="bar"><i style="width:100.0%"></i></span><b>232</b></div><div class="fn-row"><span>Started application</span><span class="bar"><i style="width:26.7%"></i></span><b>62</b></div><div class="fn-row"><span>Submitted</span><span class="bar"><i style="width:21.6%"></i></span><b>50</b></div><div class="fn-row"><span>Completed</span><span class="bar"><i style="width:20.3%"></i></span><b>47</b></div><figcaption><span class="label">GA4 · Sep 1 – Oct 23, 2026</span><span class="label">Website data only</span></figcaption></figure></div>
+<h2 class="rv">AI recruiting platform</h2><p class="sub rv">A custom application funnel, measured end to end.</p>
+<div class="metrics"><div class="metric rv"><b>~80<small>%</small></b><p>of candidates who started an application submitted it.</p></div><div class="metric rv"><b>~75<small>%</small></b><p>reached the final completion step.</p></div><div class="metric rv"><b>~230<small></small></b><p>people viewed a job on the careers site.</p></div></div>
+<div class="case-grid"><div class="rv"><p class="intro">For a B2B AI recruiting platform, JDCODE built a custom application funnel: open roles from the client’s ATS are synced through an edge layer into their marketing site, so candidates browse and apply on the client’s own domain.</p><dl><dt>Funnel</dt><dd>ATS → edge proxy → site builder</dd><dt>Tag layer</dt><dd>Google Tag Manager</dd><dt>Analytics</dt><dd>GA4 events for every funnel step</dd><dt>Pixels</dt><dd>Meta, Reddit, Microsoft Clarity</dd><dt>Ads</dt><dd>Google Ads Enhanced Conversions</dd></dl></div>
+<figure class="funnel rv"><div class="fn-row"><span>Viewed a job</span><span class="bar"><i style="width:100.0%"></i></span><b>~230</b></div><div class="fn-row"><span>Started application</span><span class="bar"><i style="width:28.0%"></i></span><b>~65</b></div><div class="fn-row"><span>Submitted</span><span class="bar"><i style="width:22.0%"></i></span><b>~50</b></div><div class="fn-row"><span>Completed</span><span class="bar"><i style="width:21.0%"></i></span><b>~48</b></div><figcaption><span class="label">GA4 · recent 8-week window</span><span class="label">Website data only · rounded</span></figcaption></figure></div>
 <p class="note">Active users in a GA4 funnel exploration. These figures describe how the funnel performs; they are not a before/after comparison.</p>
 </div></section>
 <section id="contact" class="sec"><div class="wrap">
@@ -205,8 +204,8 @@
 <p class="b-note" id="budget-note" role="status" aria-live="polite" data-ok="Thanks — noted. Pick a time." data-skip="No problem. Pick a time."></p></form>
 <div class="cal"><iframe id="cal-frame" title="Book a 30-minute call" src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0tMtOl7-WKsatAV-S0bjpJpwHWAYaDK8Gtsu4cq2G4IbGzz0L1dXiskyHFkQLCS_0bF8ohz4mY?gv=true" loading="lazy"></iframe></div>
 </div>
-<!-- TODO Jan: free check has no backend yet — stores URL/email locally, pushes 'free_check_request' (no PII), scrolls to booking. -->
-<form class="freecheck" id="free-check" novalidate>
+<!-- Free check: no server endpoint — submits via mailto + booking scroll; see assets/tf.js -->
+<form class="freecheck" id="free-check" novalidate data-contact-email="jan@jdcode.dev">
 <div><p class="label">00</p><h3 style="margin-top:16px">Free tracking check</h3><p>Leave your URL and we look at the tracking setup of your site.</p></div>
 <div class="fc-f"><label for="fc-url" class="label">Website URL</label><input id="fc-url" name="url" type="url" required placeholder="https://" autocomplete="url">
 <label for="fc-email" class="label">Work email</label><input id="fc-email" name="email" type="email" required placeholder="you@company.com" autocomplete="email">

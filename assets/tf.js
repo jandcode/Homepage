@@ -64,7 +64,7 @@
     });
   }
 
-  // --- Free check form (no backend: stored locally, event without PII, then to booking) ---
+  // --- Free check form (no backend: mailto + booking scroll; local backup + event without PII) ---
   var fc = d.getElementById('free-check');
   if (fc) fc.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -73,10 +73,14 @@
     var host = ''; try { host = new URL(u.value).hostname; } catch (x) {}
     try { localStorage.setItem('jd_free_check', JSON.stringify({ url: u.value, email: m.value, ts: Date.now() })); } catch (x) {}
     push('free_check_request', { site_host: host });
+    var to = fc.getAttribute('data-contact-email') || 'jan@jdcode.dev';
+    var subj = lang === 'de' ? 'Kostenloser Tracking-Check' : 'Free tracking check';
+    var body = (lang === 'de' ? 'Website: ' : 'Website: ') + u.value + '\n' + (lang === 'de' ? 'E-Mail: ' : 'Email: ') + m.value;
+    try { w.location.href = 'mailto:' + to + '?subject=' + encodeURIComponent(subj) + '&body=' + encodeURIComponent(body); } catch (x) {}
     var c = d.getElementById('fc-confirm');
     if (c && n) c.textContent = n.getAttribute('data-ok');
     if (n) n.textContent = n.getAttribute('data-ok');
-    var b = d.getElementById('booking'); if (b) b.scrollIntoView();
+    var b = d.getElementById('booking'); if (b) b.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 
   // --- Booking view / completion (best effort) ---

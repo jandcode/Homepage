@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="referrer" content="no-referrer">
+  <title>CRM — JDCODE</title>
+  <link rel="icon" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,460;9..144,560&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/admin/assets/admin.css">
+</head>
+<body>
+  <header class="bar">
+    <a class="brand" href="#/">JDCODE <span>CRM</span></a>
+    <nav aria-label="CRM">
+      <a href="#/" data-nav="dashboard">Dashboard</a>
+      <a href="#/pipeline" data-nav="pipeline">Pipeline</a>
+      <a href="#/deals" data-nav="deals">Deals</a>
+      <a href="#/contacts" data-nav="contacts">Contacts</a>
+      <a href="#/companies" data-nav="companies">Companies</a>
+    </nav>
+    <div class="bar-actions">
+      <form id="search-form" role="search">
+        <input id="search" type="search" name="q" placeholder="Search" aria-label="Search the CRM" maxlength="100">
+      </form>
+      <button type="button" id="quick-open" class="btn">New deal</button>
+      <button type="button" id="logout" class="btn btn-ghost">Log out</button>
+    </div>
+  </header>
+  <p id="flash" role="status"></p>
+  <main id="view"></main>
+
+  <dialog id="quick">
+    <form id="quick-form" class="stack">
+      <header class="dialog-head">
+        <h2>New deal</h2>
+        <button type="button" class="btn btn-ghost" id="quick-close">Close</button>
+      </header>
+      <p id="quick-error" class="warn-text" role="alert"></p>
+      <label>Title <input name="title" required maxlength="200" placeholder="Northwind audit"></label>
+      <div class="pair">
+        <label>Company <input name="company_name" maxlength="200"></label>
+        <label>Contact <input name="contact_name" maxlength="200"></label>
+      </div>
+      <label>Contact email <input name="contact_email" type="email" maxlength="320"></label>
+      <div class="pair">
+        <label>Value <input name="value" inputmode="decimal" placeholder="990"></label>
+        <label>Currency <input name="currency" value="USD" maxlength="3"></label>
+      </div>
+      <div class="pair">
+        <label>Stage
+          <select name="stage">
+            <option value="lead">Lead</option>
+            <option value="contacted">Contacted</option>
+            <option value="audit_call_booked">Audit call booked</option>
+            <option value="audit_paid">Audit paid</option>
+            <option value="fix_project">Fix project</option>
+            <option value="retainer">Retainer</option>
+            <option value="won">Won</option>
+            <option value="lost">Lost</option>
+          </select>
+        </label>
+        <label>Source <input name="source" maxlength="200" placeholder="referral"></label>
+      </div>
+      <label>Next step <input name="next_step" maxlength="500"></label>
+      <label>Next step date <input type="date" name="next_step_date"></label>
+      <button class="btn" type="submit">Create deal</button>
+    </form>
+  </dialog>
+  <script type="module" src="/admin/assets/app.js"></script>
+  <script type="module">
+    document.querySelector('#quick-close').addEventListener('click', () => {
+      document.querySelector('#quick').close();
+    });
+  </script>
+</body>
+</html>
