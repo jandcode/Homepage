@@ -193,10 +193,16 @@ main {
 .lede { color: var(--muted); margin-top: 8px; font-size: 15px; max-width: 42ch; line-height: 1.5; }
 
 /* —— layout blocks —— */
-.stats, .split, .bars { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.stats, .split, .bars {
+  display: grid;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  align-items: stretch;
+}
 
 .stats { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-bottom: 20px; }
-.split { grid-template-columns: minmax(260px, 0.9fr) minmax(280px, 1.1fr); align-items: start; margin-bottom: 20px; }
+.split { grid-template-columns: minmax(260px, 0.9fr) minmax(280px, 1.1fr); margin-bottom: 20px; }
 .bars { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
 
 .stats article, .panel, .card, .login-card, dialog, .mission-panel {
@@ -204,6 +210,19 @@ main {
   border: none;
   border-radius: 0;
   box-shadow: none;
+}
+
+.stats > article,
+.split > .panel,
+.split > section,
+.bars > .bar,
+.bars > a {
+  min-height: 100%;
+}
+
+.split > .panel,
+.split > section {
+  margin-bottom: 0;
 }
 
 .stats article { padding: 18px 20px; }
@@ -263,44 +282,64 @@ main {
   font-style: normal;
 }
 
-/* —— controls —— */
-.btn {
+/* —— controls (override marketing .btn defaults from cine.css) —— */
+body.mission-app button,
+body.mission-app [type="button"],
+body.mission-app [type="submit"],
+body.mission-app [type="reset"] {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+body.mission-app .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   border: 1px solid var(--fg);
   border-radius: var(--radius);
-  background: var(--fg);
-  color: var(--bg);
-  padding: 12px 18px;
-  min-height: 44px;
-  font-weight: 500;
-  font-size: 14px;
+  background: transparent;
+  color: var(--fg);
+  padding: 11px 16px;
+  min-height: 40px;
+  font: 500 14px/1 var(--sans);
   text-decoration: none;
   transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
 
-.btn:hover {
+body.mission-app .btn-p,
+body.mission-app .btn:not(.btn-ghost):not(.btn-acc):not(.btn-s) {
+  background: var(--fg);
+  color: var(--bg);
+  border-color: var(--fg);
+}
+
+body.mission-app .btn-p:hover,
+body.mission-app .btn:not(.btn-ghost):not(.btn-acc):not(.btn-s):hover {
   background: transparent;
   color: var(--fg);
 }
 
-.btn-ghost {
+body.mission-app .btn-ghost,
+body.mission-app .btn-s {
   background: transparent;
   color: var(--fg);
   border-color: var(--line-strong);
 }
 
-.btn-ghost:hover { border-color: var(--fg); }
+body.mission-app .btn-ghost:hover,
+body.mission-app .btn-s:hover {
+  border-color: var(--fg);
+  color: var(--fg);
+}
 
-.btn-acc {
+body.mission-app .btn-acc {
   background: transparent;
   color: var(--acc);
   border-color: var(--acc);
 }
 
-.btn-acc:hover {
+body.mission-app .btn-acc:hover {
   background: var(--acc-dim);
   color: var(--acc);
 }
@@ -315,7 +354,9 @@ label {
   color: var(--muted);
 }
 
-input, select, textarea {
+body.mission-app input,
+body.mission-app select,
+body.mission-app textarea {
   width: 100%;
   border: 1px solid var(--line-strong);
   background: var(--bg);
@@ -324,12 +365,35 @@ input, select, textarea {
   min-height: 44px;
   font-family: var(--font-body);
   font-size: 15px;
+  color: var(--fg);
   transition: border-color 0.15s ease;
+  color-scheme: dark;
 }
 
-input:focus, select:focus, textarea:focus {
+body.mission-app input::placeholder,
+body.mission-app textarea::placeholder {
+  color: var(--dim);
+}
+
+body.mission-app input:focus,
+body.mission-app select:focus,
+body.mission-app textarea:focus {
   outline: none;
   border-color: var(--acc);
+}
+
+body.mission-app select option {
+  background: var(--bg2);
+  color: var(--fg);
+}
+
+body.mission-app input[type="search"] {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+body.mission-app .bar-actions input[type="search"] {
+  min-width: 200px;
 }
 
 textarea { min-height: 96px; resize: vertical; }
@@ -490,9 +554,6 @@ textarea { min-height: 96px; resize: vertical; }
 
 .stepper li.current {
   background: linear-gradient(90deg, var(--acc-dim), transparent 70%);
-  margin: 0 calc(-1 * var(--shell-pad));
-  padding-left: var(--shell-pad);
-  padding-right: var(--shell-pad);
 }
 
 .stepper li.current .dot {
