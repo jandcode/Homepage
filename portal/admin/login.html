@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <title>Admin sign-in — JDCODE portal</title>
+  <link rel="icon" href="/favicon.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/portal/assets/portal.css">
+</head>
+<body class="login-body mission-app">
+  <section class="login-card stack">
+    <a class="brand" href="/">JDCODE <span>PORTAL ADMIN</span></a>
+    <h1>Admin sign-in</h1>
+    <p class="lede">Jan only. Same Supabase user as the CRM.</p>
+    <form id="login-form" class="stack">
+      <label>Email <input name="email" type="email" required autocomplete="email"></label>
+      <label>Password <input name="password" type="password" required autocomplete="current-password"></label>
+      <button class="btn" type="submit">Sign in</button>
+      <p id="login-error" class="warn-text" role="alert"></p>
+    </form>
+    <button type="button" id="preview-login" class="btn btn-ghost">Preview admin (local)</button>
+  </section>
+  <script type="module" src="/portal/admin/assets/login.js"></script>
+</body>
+</html>

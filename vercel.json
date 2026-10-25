@@ -9,6 +9,10 @@
     {
       "source": "/api/crm/:path*",
       "destination": "/api/crm/[...path]"
+    },
+    {
+      "source": "/api/portal/:path*",
+      "destination": "/api/portal/[...path]"
     }
   ]
 }

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <title>Portal admin — JDCODE</title>
+  <link rel="icon" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/portal/assets/portal.css">
+</head>
+<body class="mission-app">
+  <header class="bar">
+    <a class="brand" href="#/">JDCODE <span>PORTAL ADMIN</span></a>
+    <nav><a href="#/">Overview</a><a href="#/new-project">New project</a></nav>
+    <div class="bar-actions">
+      <a class="btn btn-ghost" href="/portal">Client view</a>
+      <button type="button" id="logout" class="btn btn-ghost">Log out</button>
+    </div>
+  </header>
+  <p id="flash" role="status"></p>
+  <main id="view"></main>
+  <script type="module" src="/portal/admin/assets/app.js"></script>
+</body>
+</html>

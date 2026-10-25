@@ -9,6 +9,26 @@ import { parseCookies } from '../lib/crm/cookies.js';
 import { classifyAdminPath, decideGate, hashAlias, safeNextPath } from '../lib/crm/gate.js';
 import { createMemoryStore } from '../lib/crm/memory-store.js';
 import { handleCrmRequest } from '../lib/crm/router.js';
+import {
+  handlePortalAdminLoginRequest,
+  handlePortalLogoutRequest,
+  handlePortalMagicLinkRequest,
+  handlePortalPreviewLoginRequest,
+  handlePortalRefreshRequest,
+  handlePortalSessionRequest,
+} from '../lib/auth/portal-handlers.js';
+import { DEMO_CLIENT_EMAIL } from '../lib/portal/constants.js';
+import { parseCookies as parsePortalCookies } from '../lib/portal/cookies.js';
+import {
+  classifyPortalPath,
+  decidePortalGate,
+  hashPortalAlias,
+  safePortalNextPath,
+} from '../lib/portal/gate.js';
+import { createPortalMemoryStore } from '../lib/portal/memory-store.js';
+import { handlePortalRequest } from '../lib/portal/router.js';
+
+process.env.PORTAL_PREVIEW = 'true';
 
 if (process.env.VERCEL) {
   console.error('preview-admin is for local use only.');
@@ -18,6 +38,8 @@ if (process.env.VERCEL) {
 const root = join(import.meta.dirname, '..');
 const port = Number(process.env.PORT || 4173);
 const tokens = new Map();
+const portalTokens = new Map();
+const portalStore = createPortalMemoryStore();
 const env = {
   SUPABASE_URL: 'http://preview.local',
   SUPABASE_ANON_KEY: 'preview-anon',
@@ -87,6 +109,76 @@ function authDeps() {
       tokens.set(access, { email: row.email });
       return { access_token: access, refresh_token: token, expires_in: 3600, email: row.email };
     },
+  };
+}
+
+function portalDeps() {
+  return {
+    env,
+    now: () => new Date(),
+    store: portalStore,
+    verifyAccessToken: async (token) => {
+      const row = portalTokens.get(token);
+      if (!row || row.refresh) return null;
+      return { id: row.user_id || row.email, email: row.email };
+    },
+  };
+}
+
+function portalAuthDeps() {
+  return {
+    env,
+    now: () => new Date(),
+    secure: () => false,
+    rateLimit: () => true,
+    signIn: authDeps().signIn,
+    revoke: async (token) => { portalTokens.delete(token); },
+    verifyAccessToken: portalDeps().verifyAccessToken,
+    refresh: async (token) => {
+      const row = portalTokens.get(token);
+      if (!row?.refresh) return null;
+      const access = randomUUID();
+      portalTokens.set(access, { email: row.email, user_id: row.user_id });
+      return { access_token: access, refresh_token: token, expires_in: 3600, email: row.email, user_id: row.user_id };
+    },
+    sendMagicLink: async ({ email }) => {
+      const ok = await portalStore.emailIsPortalMember(email);
+      if (!ok) throw Object.assign(new Error('not invited'), { status: 403, expose: true });
+      return { ok: true };
+    },
+    verifyMagicLink: null,
+    isInvitedEmail: (email) => portalStore.emailIsPortalMember(email),
+    linkMember: (userId, email) => portalStore.linkMemberUser(userId, email),
+    allowPreview: true,
+    previewLogin: async ({ email, admin }) => {
+      const normalized = String(email || '').toLowerCase();
+      if (admin && !isAllowlisted(normalized, allowlist)) return null;
+      if (!admin && normalized !== DEMO_CLIENT_EMAIL) {
+        const ok = await portalStore.emailIsPortalMember(normalized);
+        if (!ok) return null;
+      }
+      const access = randomUUID();
+      const refresh = randomUUID();
+      const user_id = randomUUID();
+      portalTokens.set(access, { email: normalized, user_id });
+      portalTokens.set(refresh, { email: normalized, user_id, refresh: true });
+      await portalStore.linkMemberUser(user_id, normalized);
+      return { access_token: access, refresh_token: refresh, expires_in: 3600 };
+    },
+  };
+}
+
+function portalSessionState(cookieHeader) {
+  const cookies = parsePortalCookies(cookieHeader);
+  const access = cookies.portal_access ? portalTokens.get(cookies.portal_access) : null;
+  const pathAdmin = false;
+  let state = 'none';
+  if (access && !access.refresh) state = 'valid';
+  else if (cookies.portal_access) state = 'invalid';
+  return {
+    state,
+    hasRefresh: Boolean(cookies.portal_refresh && portalTokens.get(cookies.portal_refresh)?.refresh),
+    cookies,
   };
 }
 
@@ -166,6 +258,50 @@ const server = createServer(async (req, res) => {
     if (url.pathname.startsWith('/api/auth/refresh')) return send(res, await handleRefreshRequest(request, authDeps()));
     if (url.pathname.startsWith('/api/crm')) return send(res, await handleCrmRequest(request, crmDeps()));
 
+    if (url.pathname.startsWith('/api/portal/auth/')) {
+      const action = url.pathname.replace('/api/portal/auth/', '').replace(/\/$/, '');
+      const deps = portalAuthDeps();
+      if (action === 'magic-link') return send(res, await handlePortalMagicLinkRequest(request, deps));
+      if (action === 'admin-login') return send(res, await handlePortalAdminLoginRequest(request, deps));
+      if (action === 'logout') return send(res, await handlePortalLogoutRequest(request, deps));
+      if (action === 'session') return send(res, await handlePortalSessionRequest(request, deps));
+      if (action === 'refresh') return send(res, await handlePortalRefreshRequest(request, deps));
+      if (action === 'preview-login') return send(res, await handlePortalPreviewLoginRequest(request, deps));
+    }
+    if (url.pathname.startsWith('/api/portal')) return send(res, await handlePortalRequest(request, portalDeps()));
+
+    const portalKind = classifyPortalPath(url.pathname);
+    if (portalKind !== 'other') {
+      const session = portalSessionState(req.headers.cookie);
+      const adminRoute = portalKind.startsWith('admin');
+      if (adminRoute && session.state === 'valid') {
+        const email = portalTokens.get(parsePortalCookies(req.headers.cookie).portal_access)?.email;
+        if (!isAllowlisted(email, allowlist)) session.state = 'forbidden';
+      }
+      const decision = decidePortalGate({
+        kind: portalKind,
+        sessionState: session.state,
+        hasRefresh: session.hasRefresh,
+        configured: true,
+      });
+      const target = portalKind.endsWith('alias')
+        ? hashPortalAlias(url.pathname, url.search, { admin: adminRoute })
+        : `${url.pathname}${url.search}`;
+      if (decision.type === 'hash') {
+        res.writeHead(302, { location: hashPortalAlias(url.pathname, url.search, { admin: adminRoute }) });
+        res.end();
+        return;
+      }
+      if (decision.type === 'refresh' || decision.type === 'login') {
+        const location = decision.type === 'refresh'
+          ? `/api/portal/auth/refresh?next=${encodeURIComponent(safePortalNextPath(target, { admin: adminRoute }))}${adminRoute ? '&admin=1' : ''}`
+          : `${adminRoute ? '/portal/admin/login' : '/portal/login'}?next=${encodeURIComponent(safePortalNextPath(target, { admin: adminRoute }))}`;
+        res.writeHead(302, { location });
+        res.end();
+        return;
+      }
+    }
+
     const kind = classifyAdminPath(url.pathname);
     if (kind !== 'other') {
       const session = sessionState(req.headers.cookie);
@@ -198,7 +334,7 @@ const server = createServer(async (req, res) => {
       return;
     }
     const headers = { 'content-type': file.type };
-    if (url.pathname.startsWith('/admin')) {
+    if (url.pathname.startsWith('/admin') || url.pathname.startsWith('/portal')) {
       headers['x-robots-tag'] = 'noindex, nofollow, noarchive';
       headers['cache-control'] = 'private, no-store';
     }
@@ -213,6 +349,8 @@ const server = createServer(async (req, res) => {
 
 server.listen(port, '127.0.0.1', () => {
   console.log(`preview http://127.0.0.1:${port}`);
-  console.log('admin login jan@jdcode.dev / preview');
+  console.log('crm admin jan@jdcode.dev / preview');
+  console.log('portal client: /portal/login → Preview as demo client');
+  console.log('portal admin: /portal/admin/login → Preview admin (local)');
   console.log('api key preview-api-key');
 });

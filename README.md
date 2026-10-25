@@ -67,6 +67,47 @@ npm test
 npm run preview
 ```
 
-`npm run preview` serves the site with an in-memory CRM at `http://127.0.0.1:4173`. It prints a local login. It does not talk to Supabase and must not be deployed.
+`npm run preview` serves the site with an in-memory CRM and client portal at `http://127.0.0.1:4173`. It prints local login hints. It does not talk to Supabase and must not be deployed.
 
-There is no compile step for the public HTML. `npm test` checks the CRM, and Vercel serves the repository root plus the functions in `/api`.
+There is no compile step for the public HTML. `npm test` checks the CRM and portal, and Vercel serves the repository root plus the functions in `/api`.
+
+## Client portal (`/portal`)
+
+Logged-in area for clients after they say yes to a project: onboarding timeline, agreement clickwrap, payment link, welcome doc, access checklist, kickoff booking, documents, and status updates. Jan manages projects at `/portal/admin`. Routes are `noindex` and do not affect the public marketing site.
+
+### Supabase setup (portal)
+
+1. Apply migrations in order under `supabase/migrations/` (CRM, then `20261025120000_portal_init.sql`). Do not apply to production until you are ready.
+
+2. **Auth — clients (magic link)**  
+   - Keep **Email** provider enabled.  
+   - You can leave sign-up disabled for random visitors; invited clients are created on first magic link (`should_create_user`).  
+   - Under **Authentication → URL configuration**, add redirect URLs:
+     - `https://jdcode.dev/api/portal/auth/callback`
+     - `https://<your-preview-host>/api/portal/auth/callback` (for Vercel previews)
+     - `http://127.0.0.1:4173/api/portal/auth/callback` (local preview with Supabase, if used)
+
+3. **Auth — Jan (portal admin)**  
+   Same Supabase user as the CRM (`CRM_ADMIN_EMAILS`). Password sign-in at `/portal/admin/login`.
+
+4. **Optional demo rows**  
+   Run `supabase/seed_portal.sql` in a dev project only (clearly labeled DEMO data).
+
+5. **Storage**  
+   Migration creates a private `portal-documents` bucket. Admin document links can be external URLs; storage uploads can be wired later.
+
+### Environment variables (portal)
+
+Uses the same server-side Supabase vars as the CRM (`SUPABASE_URL`, `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `CRM_ADMIN_EMAILS`). No keys in the browser.
+
+| Name | Purpose |
+| --- | --- |
+| `PORTAL_PREVIEW` | Optional. Set `true` on Vercel **Preview** to allow `preview-login` for demos. Never set on production. |
+
+### Local mock mode
+
+`npm run preview` includes in-memory portal data (Acme Recruiting DEMO). Use **Preview as demo client** on `/portal/login` or **Preview admin** on `/portal/admin/login`.
+
+### App UI (portal + CRM)
+
+Logged-in surfaces load `app/assets/mission.css`, which imports `assets/cine.css` from the public site and adds mission-control layout (tables, pipeline, portal stepper). Light Terrafab patterns live in `assets/tf.css` on the marketing pages only.

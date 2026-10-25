@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="referrer" content="no-referrer">
+  <title>Client portal — JDCODE</title>
+  <link rel="icon" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/portal/assets/portal.css">
+</head>
+<body class="mission-app">
+  <div id="demo-banner" class="demo-banner" hidden></div>
+  <header class="bar">
+    <a class="brand" href="#/">JDCODE <span>PORTAL</span></a>
+    <nav aria-label="Portal">
+      <a href="#/">Home</a>
+    </nav>
+    <div class="bar-actions">
+      <a id="admin-link" class="btn btn-ghost" href="/portal/admin" hidden>Admin</a>
+      <button type="button" id="logout" class="btn btn-ghost">Log out</button>
+    </div>
+  </header>
+  <p id="flash" role="status"></p>
+  <main id="view"></main>
+  <script type="module" src="/portal/assets/app.js"></script>
+</body>
+</html>
